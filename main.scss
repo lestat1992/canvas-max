@@ -1,0 +1,34 @@
+//COSE
+/*
+ma devo realmente usare le classi js
+*/
+
+/*
+//animzione bg gradiente
+https://codepen.io/bviertl/pen/OJbePbQ?editors=0010
+
+//UFO
+https://codepen.io/sephhh/pen/OVpELO?editors=1010
+
+//animzione baletto
+https://stackoverflow.com/questions/52128997/how-to-create-canvas-class-with-javascript-es6
+
+//https://css-tricks.com/easing-animations-in-canvas/
+
+
+*/
+
+.hero-bg {
+  width: 100%;
+  height: 56vw;
+  max-height: 100vh;
+  background-color: antiquewhite;
+  position: relative;
+  canvas {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

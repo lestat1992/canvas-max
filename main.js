@@ -1,7 +1,11 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import "./main.scss";
 
+import "./canvas/app-1";
+
+//import javascriptLogo from "./javascript.svg";
+//import { setupCounter } from "./counter.js";
+
+/*
 document.querySelector('#app').innerHTML = `
   <div>
     <a href="https://vitejs.dev" target="_blank">
@@ -19,5 +23,5 @@ document.querySelector('#app').innerHTML = `
     </p>
   </div>
 `
-
-setupCounter(document.querySelector('#counter'))
+*/
+//setupCounter(document.querySelector('#counter'))
