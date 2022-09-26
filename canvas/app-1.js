@@ -29,12 +29,20 @@ function render() {
   let newBackground = new GradientFullPage(ctx, {
     colorStart: "silver",
     colorEnd: "blue",
+    length: 100,
+    angle: 0,
   });
 
-  newBackground.drawLinear(ctx, { length: 100, angle: 0 });
+  newBackground.drawLinear();
 
-  let Node1 = new Node(ctx, vw(1));
-  Node1.drawLine(ctx, [0, vh(80)], [vw(30), vh(80) - vw(15)]);
+  let Node1 = new Node(ctx, {
+    stroke: vw(1),
+    startPosition: [0, vh(80)],
+    endPosition: [vw(30), vh(80) - vw(15)],
+    headWidth: vw(15),
+    headType: 1,
+  });
+  Node1.draw();
 
   window.requestAnimationFrame(render);
 }

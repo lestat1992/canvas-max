@@ -25,12 +25,4 @@ class CanvasSize {
   }
 }
 
-/*
-function 
-
-function 
-
-getSize();
-*/
-
 export default CanvasSize;
