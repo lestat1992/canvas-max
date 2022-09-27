@@ -18,8 +18,15 @@ class Node {
 
   line() {
     this.ctx.beginPath();
-    this.ctx.moveTo(this.startPosition[0], this.startPosition[1]);
-    this.ctx.lineTo(this.endPosition[0], this.endPosition[1]);
+    this.ctx.moveTo(
+      this.startPosition[0] - this.stroke / 2,
+      this.startPosition[1] + this.stroke / 2
+    );
+    this.ctx.lineTo(
+      this.endPosition[0] + this.stroke / 2,
+      this.endPosition[1] - this.stroke / 2
+    );
+    this.ctx.lineWidth = this.stroke;
     this.ctx.stroke();
   }
 
@@ -33,7 +40,8 @@ class Node {
     this.ctx.arcTo(x, y + h, x, y, r);
     this.ctx.arcTo(x, y, x + w, y, r);
     this.ctx.closePath();
-    this.ctx.fill();
+    //this.ctx.fill();
+    this.ctx.lineWidth = 1;
     this.ctx.stroke();
   }
 
@@ -46,11 +54,11 @@ class Node {
 
     this.line(this.headWidth);
     this.roundRect(
-      this.endPosition[0] - this.headWidth,
-      this.endPosition[1],
+      this.endPosition[0] - this.headWidth / 2,
+      this.endPosition[1] - this.headHeight,
       this.headWidth,
       this.headHeight,
-      20
+      6
     );
   }
 
