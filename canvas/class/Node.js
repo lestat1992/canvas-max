@@ -29,7 +29,6 @@ class Node {
       this.endPosition.y - this.stroke / 2
     );
     this.ctx.lineWidth = this.stroke;
-    this.ctx.stroke();
   }
 
   roundRect(x, y, w, h, r) {
@@ -42,9 +41,8 @@ class Node {
     this.ctx.arcTo(x, y + h, x, y, r);
     this.ctx.arcTo(x, y, x + w, y, r);
     this.ctx.closePath();
+
     //this.ctx.fill();
-    this.ctx.lineWidth = 1;
-    this.ctx.stroke();
   }
 
   head() {}
@@ -54,7 +52,22 @@ class Node {
     console.log(this);
     console.log("####################");
 
+    //---------------------------------------
     this.line(this.headWidth);
+    let grd1 = createGradient(this.ctx, {
+      x: this.x,
+      y: this.y,
+      startPosition: this.startPosition,
+      endPosition: this.endPosition,
+      colorStep: [
+        { position: 0, color: "grey" },
+        { position: 1, color: "black" },
+      ],
+      type: "linear",
+    });
+    this.ctx.strokeStyle = grd1;
+    this.ctx.stroke();
+    //--------------------------------------
 
     this.roundRect(
       this.endPosition.x - this.headWidth / 2,
@@ -63,6 +76,22 @@ class Node {
       this.headHeight,
       6
     );
+    let grd2 = createGradient(this.ctx, {
+      startPosition: this.endPosition,
+      endPosition: {
+        x: this.endPosition.x - this.headHeight,
+        y: this.endPosition.y - this.headHeight,
+      },
+      colorStep: [
+        { position: 0, color: "grey" },
+        { position: 1, color: "black" },
+      ],
+      type: "linear",
+    });
+    this.ctx.fillStyle = grd2;
+    this.ctx.fill();
+    //this.ctx.lineWidth = 1;
+    //this.ctx.stroke();
   }
 
   drawBox() {}

@@ -17,9 +17,6 @@ class GradientFullPage {
   }
   drawLinear() {
     let grd = createGradient(this.ctx, {
-      x: this.x,
-      y: this.y,
-
       startPosition: this.startPosition,
       endPosition: this.endPosition,
 
