@@ -15,6 +15,8 @@ function vh(percentage) {
 }
 let client = CSizes.client;
 
+let isAnimation = false;
+
 //RENDER ##################
 window.requestAnimationFrame(render);
 
@@ -27,23 +29,38 @@ function render() {
   ctx.canvas.height = client.height;
 
   let newBackground = new GradientFullPage(ctx, {
-    colorStart: "silver",
-    colorEnd: "blue",
+    type: "linear",
+    startPosition: {
+      x: 0,
+      y: 0,
+    },
+    endPosition: {
+      x: vw(100),
+      y: 0,
+    },
+    colorStep: [
+      { position: 0.0, color: "lightblue" },
+      { position: 1, color: "red" },
+    ],
+    /*
     length: 100,
     angle: 0,
+    */
   });
 
   newBackground.drawLinear();
 
   let Node1 = new Node(ctx, {
     stroke: vw(1),
-    startPosition: [0, vh(80)],
-    endPosition: [vw(30), vh(80) - vw(15)],
+    startPosition: { x: 0, y: vh(80) },
+    endPosition: { x: vw(30), y: vh(80) - vw(15) },
     headWidth: vw(15),
     headType: 1,
   });
   Node1.draw();
 
-  window.requestAnimationFrame(render);
+  if (isAnimation) {
+    window.requestAnimationFrame(render);
+  }
 }
 //########################

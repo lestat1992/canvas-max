@@ -1,18 +1,20 @@
 function createGradient(ctx, args) {
+  console.log(args);
   let grd;
-  if (args.typr == "linear") {
-    grd = this.ctx.createLinearGradient(
-      args.x,
-      args.y,
-      args.width + Math.cos(this.angle) * args.length,
-      args.height + Math.sin(this.angle) * args.length
+  if (args.type == "linear") {
+    grd = ctx.createLinearGradient(
+      args.startPosition.x,
+      args.startPosition.y,
+      args.endPosition.x,
+      args.endPosition.y
     );
   }
 
   args.colorStep.forEach((el) => {
     grd.addColorStop(el.position, el.color);
-    //grd.addColorStop(1, this.colorEnd);
   });
 
   return grd;
 }
+
+export default createGradient;

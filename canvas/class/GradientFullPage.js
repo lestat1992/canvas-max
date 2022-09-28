@@ -1,24 +1,31 @@
+import createGradient from "../functions/createGradient";
+
 class GradientFullPage {
-  constructor(ctx, attr) {
+  constructor(ctx, args) {
     this.ctx = ctx;
     this.x = 0;
     this.y = 0;
+
     this.width = ctx.canvas.width;
     this.height = ctx.canvas.height;
-    this.colorStart = attr.colorStart;
-    this.colorEnd = attr.colorEnd;
-    this.length = attr.length;
-    this.angle = attr.angle;
+    this.colorStep = args.colorStep;
+
+    this.startPosition = args.startPosition;
+    this.endPosition = args.endPosition;
+
+    this.type = args.type;
   }
   drawLinear() {
-    let grd = this.ctx.createLinearGradient(
-      this.x,
-      this.y,
-      this.width + Math.cos(this.angle) * this.length,
-      this.height + Math.sin(this.angle) * this.length
-    );
-    grd.addColorStop(0, this.colorStart);
-    grd.addColorStop(1, this.colorEnd);
+    let grd = createGradient(this.ctx, {
+      x: this.x,
+      y: this.y,
+
+      startPosition: this.startPosition,
+      endPosition: this.endPosition,
+
+      colorStep: this.colorStep,
+      type: this.type,
+    });
     this.ctx.fillStyle = grd;
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
   }

@@ -1,3 +1,5 @@
+import createGradient from "../functions/createGradient";
+
 class Node {
   constructor(ctx, attr) {
     this.ctx = ctx;
@@ -19,12 +21,12 @@ class Node {
   line() {
     this.ctx.beginPath();
     this.ctx.moveTo(
-      this.startPosition[0] - this.stroke / 2,
-      this.startPosition[1] + this.stroke / 2
+      this.startPosition.x - this.stroke / 2,
+      this.startPosition.y + this.stroke / 2
     );
     this.ctx.lineTo(
-      this.endPosition[0] + this.stroke / 2,
-      this.endPosition[1] - this.stroke / 2
+      this.endPosition.x + this.stroke / 2,
+      this.endPosition.y - this.stroke / 2
     );
     this.ctx.lineWidth = this.stroke;
     this.ctx.stroke();
@@ -53,9 +55,10 @@ class Node {
     console.log("####################");
 
     this.line(this.headWidth);
+
     this.roundRect(
-      this.endPosition[0] - this.headWidth / 2,
-      this.endPosition[1] - this.headHeight,
+      this.endPosition.x - this.headWidth / 2,
+      this.endPosition.y - this.headHeight,
       this.headWidth,
       this.headHeight,
       6
