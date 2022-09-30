@@ -51,13 +51,16 @@ function render() {
   newBackground.drawLinear();
 
   let Node1 = new Node(ctx, {
-    stroke: vw(1),
+    stroke: vw(0.5),
+    pointSize: vw(1),
     startPosition: { x: 0, y: vh(80) },
     endPosition: { x: vw(30), y: vh(80) - vw(15) },
     headWidth: vw(15),
     headType: 1,
+    borderRadious: vw(0.5),
   });
   Node1.draw();
+  Node1.debug();
 
   if (isAnimation) {
     window.requestAnimationFrame(render);

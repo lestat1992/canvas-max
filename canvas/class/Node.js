@@ -1,4 +1,6 @@
 import createGradient from "../functions/createGradient";
+import pointCordinates from "../functions/utility/pointCordinates";
+import printCircle from "../functions/printCircle";
 
 class Node {
   constructor(ctx, attr) {
@@ -8,9 +10,13 @@ class Node {
     this.endPosition = attr.endPosition;
     this.headWidth = attr.headWidth;
     this.headType = attr.headType;
+    this.pointSize = attr.pointSize;
+    this.borderRadious = attr.borderRadious;
+    this.ratio = false;
     switch (attr.headType) {
       case 1:
-        this.headHeight = this.headWidth * 0.56; //16/9
+        this.ratio = 0.56;
+        this.headHeight = this.headWidth * this.ratio; //16/9
         break;
 
       default:
@@ -19,16 +25,22 @@ class Node {
   }
 
   line() {
+    console.log("COSEEE");
+    console.log(this.endPosition.x / this.endPosition.y);
+
     this.ctx.beginPath();
     this.ctx.moveTo(
-      this.startPosition.x - this.stroke / 2,
-      this.startPosition.y + this.stroke / 2
+      this.startPosition.x, //- this.stroke / 2,
+      this.startPosition.y //+ this.stroke / 2
     );
     this.ctx.lineTo(
-      this.endPosition.x + this.stroke / 2,
-      this.endPosition.y - this.stroke / 2
+      this.endPosition.x, //+ this.stroke / 2,
+      this.endPosition.y //- this.stroke / 2
     );
     this.ctx.lineWidth = this.stroke;
+
+    console.log("CORREGGIMI!!!");
+    //https://www.w3schools.com/tags/canvas_translate.asp
   }
 
   roundRect(x, y, w, h, r) {
@@ -46,6 +58,24 @@ class Node {
   }
 
   head() {}
+
+  entryPoint() {
+    printCircle(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y,
+      color: "white",
+      radious: this.pointSize,
+    });
+  }
+
+  exitPoint() {
+    printCircle(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y - this.headHeight,
+      color: "white",
+      radious: this.pointSize,
+    });
+  }
 
   draw() {
     console.log("####################");
@@ -74,24 +104,68 @@ class Node {
       this.endPosition.y - this.headHeight,
       this.headWidth,
       this.headHeight,
-      6
+      this.borderRadious
     );
     let grd2 = createGradient(this.ctx, {
-      startPosition: this.endPosition,
-      endPosition: {
-        x: this.endPosition.x - this.headHeight,
+      startPosition: {
+        x: this.endPosition.x,
         y: this.endPosition.y - this.headHeight,
       },
+      endPosition: {
+        x: this.endPosition.x,
+        y: this.endPosition.y - this.headHeight + this.pointSize * 3,
+      },
+
       colorStep: [
         { position: 0, color: "grey" },
+        { position: 0.95, color: "grey" },
+        { position: 0.95, color: "pink" },
+        { position: 1, color: "pink" },
         { position: 1, color: "black" },
       ],
       type: "linear",
     });
     this.ctx.fillStyle = grd2;
     this.ctx.fill();
+
+    //-------------------------------------
+
+    this.entryPoint();
+
+    this.exitPoint();
+
+    //exit point
+
     //this.ctx.lineWidth = 1;
     //this.ctx.stroke();
+  }
+
+  debug() {
+    //LINE -------------------------
+    /*
+    pointCordinates(this.ctx, {
+      x: this.startPosition.x,
+      y: this.startPosition.y,
+      color: "#ccfd00",
+    });
+    pointCordinates(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y,
+      color: "#ccfd00",
+    });
+    */
+
+    pointCordinates(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y - this.headHeight,
+      color: "#ccfd00",
+    });
+    pointCordinates(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y - this.headHeight + this.pointSize * 3,
+      color: "#d00ccf",
+    });
+    //--------------------------
   }
 
   drawBox() {}
