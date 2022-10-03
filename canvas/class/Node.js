@@ -1,6 +1,9 @@
 import createGradient from "../functions/createGradient";
 import pointCordinates from "../functions/utility/pointCordinates";
-import printCircle from "../functions/printCircle";
+import circle from "../functions/circle";
+
+import line from "../functions/line";
+import roundRect from "../functions/roundRect";
 
 class Node {
   constructor(ctx, attr) {
@@ -24,43 +27,10 @@ class Node {
     }
   }
 
-  line() {
-    console.log("COSEEE");
-    console.log(this.endPosition.x / this.endPosition.y);
-
-    this.ctx.beginPath();
-    this.ctx.moveTo(
-      this.startPosition.x, //- this.stroke / 2,
-      this.startPosition.y //+ this.stroke / 2
-    );
-    this.ctx.lineTo(
-      this.endPosition.x, //+ this.stroke / 2,
-      this.endPosition.y //- this.stroke / 2
-    );
-    this.ctx.lineWidth = this.stroke;
-
-    console.log("CORREGGIMI!!!");
-    //https://www.w3schools.com/tags/canvas_translate.asp
-  }
-
-  roundRect(x, y, w, h, r) {
-    if (w < 2 * r) r = w / 2;
-    if (h < 2 * r) r = h / 2;
-    this.ctx.beginPath();
-    this.ctx.moveTo(x + r, y);
-    this.ctx.arcTo(x + w, y, x + w, y + h, r);
-    this.ctx.arcTo(x + w, y + h, x, y + h, r);
-    this.ctx.arcTo(x, y + h, x, y, r);
-    this.ctx.arcTo(x, y, x + w, y, r);
-    this.ctx.closePath();
-
-    //this.ctx.fill();
-  }
-
   head() {}
 
   entryPoint() {
-    printCircle(this.ctx, {
+    circle(this.ctx, {
       x: this.endPosition.x,
       y: this.endPosition.y,
       color: "white",
@@ -69,7 +39,7 @@ class Node {
   }
 
   exitPoint() {
-    printCircle(this.ctx, {
+    circle(this.ctx, {
       x: this.endPosition.x,
       y: this.endPosition.y - this.headHeight,
       color: "white",
@@ -83,28 +53,31 @@ class Node {
     console.log("####################");
 
     //---------------------------------------
-    this.line(this.headWidth);
-    let grd1 = createGradient(this.ctx, {
-      x: this.x,
-      y: this.y,
-      startPosition: this.startPosition,
-      endPosition: this.endPosition,
-      colorStep: [
-        { position: 0, color: "grey" },
-        { position: 1, color: "black" },
-      ],
-      type: "linear",
+    line(this.ctx, {
+      startPosition: {
+        x: this.startPosition.x,
+        y: this.startPosition.y,
+      },
+      endPosition: {
+        x: this.endPosition.x,
+        y: this.endPosition.y,
+      },
+      stroke: this.stroke,
+      fill: "black",
     });
-    this.ctx.strokeStyle = grd1;
-    this.ctx.stroke();
+
     //--------------------------------------
 
-    this.roundRect(
-      this.endPosition.x - this.headWidth / 2,
-      this.endPosition.y - this.headHeight,
-      this.headWidth,
-      this.headHeight,
-      this.borderRadious
+    roundRect(
+      this.ctx,
+      {
+        x: this.endPosition.x - this.headWidth / 2,
+        y: this.endPosition.y - this.headHeight,
+        width: this.headWidth,
+        height: this.headHeight,
+        borderRadious: this.borderRadious,
+      },
+      false
     );
     let grd2 = createGradient(this.ctx, {
       startPosition: {
@@ -118,9 +91,7 @@ class Node {
 
       colorStep: [
         { position: 0, color: "grey" },
-        { position: 0.95, color: "grey" },
-        { position: 0.95, color: "pink" },
-        { position: 1, color: "pink" },
+        { position: 1, color: "grey" },
         { position: 1, color: "black" },
       ],
       type: "linear",

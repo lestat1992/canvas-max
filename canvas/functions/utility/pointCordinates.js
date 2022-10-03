@@ -1,8 +1,8 @@
-import printCircle from "../printCircle";
+import circle from "../circle";
 import invertColor from "./colors/invertColor";
 
 function pointCordinates(ctx, args) {
-  printCircle(ctx, {
+  circle(ctx, {
     x: args.x,
     y: args.y,
     color: args.color,
