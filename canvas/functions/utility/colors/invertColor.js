@@ -4,7 +4,6 @@
 */
 
 function invertColor(hex, bw) {
-  console.log(hex);
   if (hex.indexOf("#") === 0) {
     hex = hex.slice(1);
   }

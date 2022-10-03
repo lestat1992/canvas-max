@@ -59,7 +59,7 @@ function render() {
     headType: 1,
     borderRadious: vw(0.5),
   });
-  Node1.draw();
+  Node1.drawAll();
   Node1.debug();
 
   if (isAnimation) {

@@ -5,7 +5,6 @@ class CanvasSize {
     this.getSize();
     addEventListener("resize", (event) => {
       this.getSize();
-      console.log(this.client);
     });
   }
   getSize() {
@@ -19,7 +18,6 @@ class CanvasSize {
     return result;
   }
   vh(percentage) {
-    console.log();
     let result = (this.client.height * percentage) / 100;
     return result;
   }

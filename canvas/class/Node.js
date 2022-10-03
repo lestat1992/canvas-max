@@ -27,32 +27,7 @@ class Node {
     }
   }
 
-  head() {}
-
-  entryPoint() {
-    circle(this.ctx, {
-      x: this.endPosition.x,
-      y: this.endPosition.y,
-      color: "white",
-      radious: this.pointSize,
-    });
-  }
-
-  exitPoint() {
-    circle(this.ctx, {
-      x: this.endPosition.x,
-      y: this.endPosition.y - this.headHeight,
-      color: "white",
-      radious: this.pointSize,
-    });
-  }
-
-  draw() {
-    console.log("####################");
-    console.log(this);
-    console.log("####################");
-
-    //---------------------------------------
+  line() {
     line(this.ctx, {
       startPosition: {
         x: this.startPosition.x,
@@ -65,9 +40,9 @@ class Node {
       stroke: this.stroke,
       fill: "black",
     });
+  }
 
-    //--------------------------------------
-
+  head() {
     roundRect(
       this.ctx,
       {
@@ -98,17 +73,31 @@ class Node {
     });
     this.ctx.fillStyle = grd2;
     this.ctx.fill();
+  }
 
-    //-------------------------------------
+  entryPoint() {
+    circle(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y,
+      color: "white",
+      radious: this.pointSize,
+    });
+  }
 
+  exitPoint() {
+    circle(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y - this.headHeight,
+      color: "white",
+      radious: this.pointSize,
+    });
+  }
+
+  drawAll() {
+    this.line();
+    this.head();
     this.entryPoint();
-
     this.exitPoint();
-
-    //exit point
-
-    //this.ctx.lineWidth = 1;
-    //this.ctx.stroke();
   }
 
   debug() {
@@ -138,8 +127,6 @@ class Node {
     });
     //--------------------------
   }
-
-  drawBox() {}
 }
 
 export default Node;

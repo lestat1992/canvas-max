@@ -1,9 +1,6 @@
 import drawElement from "./drawElement";
 
 function roundRect(ctx, args, draw = true) {
-  console.log("GUARDA QUI");
-  console.log(args);
-
   if (args.width < 2 * args.borderRadious) args.borderRadious = args.width / 2;
   if (args.height < 2 * args.borderRadious)
     args.borderRadious = args.height / 2;
