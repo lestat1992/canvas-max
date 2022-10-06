@@ -1,4 +1,8 @@
 function getEase(currentProgress, start, distance, steps, animationFunction) {
+  function linear() {
+    return currentProgress;
+  }
+
   function getQuadraticEase(currentProgress, start, distance, steps) {
     currentProgress /= steps / 2;
     if (currentProgress <= 1) {
@@ -60,7 +64,6 @@ function getEase(currentProgress, start, distance, steps, animationFunction) {
     case "static":
       return cardPadding;
       break;
-
     case "quadratic": //??Non funziona
       return getQuadraticEase(currentProgress, start, distance, steps);
       break;
@@ -79,6 +82,8 @@ function getEase(currentProgress, start, distance, steps, animationFunction) {
     case "exponential":
       return getExponentialEase(currentProgress, start, distance, steps);
       break;
+    default:
+      return linear(currentProgress, start, distance, steps);
   }
 }
 
