@@ -1,27 +1,12 @@
 import CanvasSize from "./class/CanvasSize";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
-
-import getEase from "./functions/animation/getEase";
+import { getX, getY } from "./functions/animation/valueAnimated";
 
 //ELEMENTO CANVAS
 const canvas = document.querySelector("#hero-canvas");
 
 let isAnimation = true;
-
-function getX(params) {
-  let distance = params.xTo - params.xFrom;
-  let steps = params.frames;
-  let currentProgress = params.frame;
-  return getEase(currentProgress, params.xFrom, distance, steps, params.type);
-}
-
-function getY(params) {
-  let distance = params.yTo - params.yFrom;
-  let steps = params.frames;
-  let currentProgress = params.frame;
-  return getEase(currentProgress, params.yFrom, distance, steps, params.type);
-}
 
 //########################
 
@@ -51,7 +36,6 @@ function render() {
   let startPosition = { x: 0, y: vh(80) };
 
   endPosition = {
-    //x: vw(30),
     x: getX({
       xTo: vw(50),
       xFrom: vw(40),
@@ -59,7 +43,6 @@ function render() {
       frames: 400,
       type: "exponential",
     }),
-    //vh(80) - vw(15),
     y: getY({
       yTo: vh(80) - vw(30),
       yFrom: vh(40) - vw(0),
@@ -96,11 +79,6 @@ function render() {
       { position: 0.0, color: "lightblue" },
       { position: 1, color: "red" },
     ],
-
-    /*
-    length: 100,
-    angle: 0,
-    */
   });
 
   newBackground.drawLinear();
