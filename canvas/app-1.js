@@ -1,3 +1,5 @@
+import pointCordinates from "./functions/utility/pointCordinates";
+
 import CanvasSize from "./class/CanvasSize";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
@@ -41,14 +43,14 @@ function render() {
       xFrom: vw(40),
       frame: frame,
       frames: 400,
-      type: "exponential",
+      type: "linear",
     }),
     y: getY({
       yTo: vh(80) - vw(30),
       yFrom: vh(40) - vw(0),
       frame: frame,
       frames: 400,
-      type: "exponential",
+      type: "linear",
     }),
   };
 
@@ -94,6 +96,20 @@ function render() {
   });
   Node1.drawAll();
   Node1.debug();
+
+  //debug
+  pointCordinates(ctx, {
+    x: vw(50),
+    y: vh(80) - vw(30),
+    color: "#66ff99",
+  });
+
+  //debug
+  pointCordinates(ctx, {
+    x: vw(40),
+    y: vh(40) - vw(0),
+    color: "#66ff99",
+  });
 
   if (isAnimation) {
     window.requestAnimationFrame(render);
