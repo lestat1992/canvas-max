@@ -1,9 +1,15 @@
 import pointCordinates from "./functions/utility/pointCordinates";
 
-import CanvasSize from "./class/CanvasSize";
+import circle from "./functions/circle";
+
+import CanvasInfo from "./class/CanvasInfo";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
 import { getX, getY } from "./functions/animation/valueAnimated";
+
+///////
+let t = [];
+//////
 
 //ELEMENTO CANVAS
 const canvas = document.querySelector("#hero-canvas");
@@ -16,7 +22,7 @@ let endPosition;
 
 //RENDER ##################
 let frame = 0;
-
+let CInfo = new CanvasInfo(canvas);
 window.requestAnimationFrame(render);
 
 function render() {
@@ -24,14 +30,18 @@ function render() {
   frame++;
 
   //responsive units #################
-  let CSizes = new CanvasSize(canvas);
+
   function vw(percentage) {
-    return CSizes.vw(percentage);
+    return CInfo.vw(percentage);
   }
   function vh(percentage) {
-    return CSizes.vh(percentage);
+    return CInfo.vh(percentage);
   }
-  let client = CSizes.client;
+  function toF(s) {
+    return CInfo.toF(s);
+  }
+
+  let client = CInfo.client;
 
   //###################################
   //ANIMATABLE ########################
@@ -42,22 +52,24 @@ function render() {
       xTo: vw(50),
       xFrom: vw(40),
       frame: frame,
-      frames: 400,
+      frames: toF(10),
       type: "linear",
     }),
     y: getY({
       yTo: vh(80) - vw(30),
       yFrom: vh(40) - vw(0),
       frame: frame,
-      frames: 400,
+      frames: toF(10),
       type: "linear",
     }),
   };
 
-  console.log(frame + " == " + 400);
-  if (frame >= 400) {
+  console.log(frame + " == " + toF(10));
+  if (frame >= toF(10)) {
     isAnimation = false;
   }
+
+  console.log();
 
   //###################################
 
@@ -84,6 +96,31 @@ function render() {
   });
 
   newBackground.drawLinear();
+
+  //circle bg .......................
+  let rowPointN = 60;
+  let encumbrancePoints = vw(100) / rowPointN;
+
+  for (let iX = 0; iX < rowPointN; iX++) {
+    for (let iY = 0; iY < rowPointN; iY++) {
+      let radious = vw(0.05);
+      if (iX % 2 == 0 && iY % 2 == 0) {
+        radious = vw(0.1);
+      }
+      if (iX % 4 == 0 && iY % 4 == 0) {
+        radious = vw(0.15);
+      }
+      let args1 = {
+        x: iX * encumbrancePoints,
+        y: iY * encumbrancePoints,
+        radious: radious,
+        color: "white",
+      };
+      circle(ctx, args1);
+    }
+  }
+
+  //.................................
 
   let Node1 = new Node(ctx, {
     stroke: vw(0.5),

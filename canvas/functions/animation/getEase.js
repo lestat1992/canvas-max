@@ -1,34 +1,8 @@
 function getEase(currentProgress, start, distance, steps, animationFunction) {
   function linear() {
-    /*
-    -frame totali animazione
-    steps
-
-    -frame correnti
-    currentProgress
-
-    -dove ho iniziato
-    start
-
-    -la distanza che manca
-    distance
-    */
-
     currentProgress--;
-
-    console.log(start + (distance / steps) * currentProgress);
 
     return start + (distance / steps) * currentProgress;
-
-    /*
-
-    currentProgress /= steps / 2;
-    currentProgress--;
-    console.log(currentProgress);
-
-    return start + distance * (currentProgress / 2);
-
-*/
   }
 
   function getQuadraticEase(currentProgress, start, distance, steps) {
