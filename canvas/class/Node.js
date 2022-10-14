@@ -20,6 +20,7 @@ class Node {
       case 1:
         this.ratio = 0.56;
         this.headHeight = this.headWidth * this.ratio; //16/9
+        this.placeHolders = [{ hasPoint: true }, { hasPoint: true }];
         break;
 
       default:
@@ -54,6 +55,10 @@ class Node {
       },
       false
     );
+
+    let heightTabLabel =
+      this.endPosition.y - this.headHeight + this.pointSize * 3;
+
     let grd2 = createGradient(this.ctx, {
       startPosition: {
         x: this.endPosition.x,
@@ -61,7 +66,7 @@ class Node {
       },
       endPosition: {
         x: this.endPosition.x,
-        y: this.endPosition.y - this.headHeight + this.pointSize * 3,
+        y: heightTabLabel,
       },
 
       colorStep: [
@@ -73,6 +78,27 @@ class Node {
     });
     this.ctx.fillStyle = grd2;
     this.ctx.fill();
+
+    //PALCEHOLDER INTERNI ##################################
+    let getTabInnerBody = this.endPosition.y - heightTabLabel;
+    let paddingVerical = 5;
+    let paddingHorizontal = 20;
+    let module =
+      (getTabInnerBody - paddingVerical * 2) / this.placeHolders.length;
+    console.log("LOOK MA!");
+    console.log(getTabInnerBody);
+
+    this.placeHolders.forEach((el, index) => {
+      let offsetY = 0;
+
+      if (index === 0) {
+        offsetY = paddingVerical;
+      }
+      this.drawPlaceHolder({
+        hasPoint: el.hasPoint,
+        module: module * (index + 1) + offsetY,
+      });
+    });
   }
 
   entryPoint() {
@@ -91,6 +117,19 @@ class Node {
       color: "white",
       radious: this.pointSize,
     });
+  }
+
+  drawPlaceHolder(argsPlaceholder) {
+    if (argsPlaceholder.hasPoint) {
+      circle(this.ctx, {
+        x: this.endPosition.x,
+        y:
+          argsPlaceholder.module +
+          (this.endPosition.y - this.headHeight + this.pointSize * 3),
+        color: "green",
+        radious: this.pointSize,
+      });
+    }
   }
 
   drawAll() {
@@ -125,6 +164,13 @@ class Node {
       y: this.endPosition.y - this.headHeight + this.pointSize * 3,
       color: "#d00ccf",
     });
+
+    pointCordinates(this.ctx, {
+      x: this.endPosition.x,
+      y: this.endPosition.y - this.headHeight + this.pointSize * 3,
+      color: "#0014ff",
+    });
+
     //--------------------------
   }
 }
