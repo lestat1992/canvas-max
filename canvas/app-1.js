@@ -130,6 +130,12 @@ function render() {
     headWidth: vw(15),
     headType: 1,
     borderRadious: vw(0.5),
+
+    heightTabHeader: vw(1.5),
+    paddingVerical: vw(1),
+    paddingHorizontal: vw(1),
+
+    placeholderSize: vw(1),
   });
   Node1.drawAll();
   Node1.debug();

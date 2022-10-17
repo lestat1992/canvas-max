@@ -16,9 +16,12 @@ class Node {
     this.pointSize = attr.pointSize;
     this.borderRadious = attr.borderRadious;
     this.ratio = false;
-    this.heightTabHeader = 40; //metti su
-    this.paddingVerical = 20; //metti su
-    this.paddingHorizontal = 20; //metti su
+
+    this.heightTabHeader = attr.heightTabHeader; //metti su
+    this.paddingVerical = attr.paddingVerical; //metti su
+    this.paddingHorizontal = attr.paddingHorizontal; //metti su
+
+    this.placeholderSize = attr.placeholderSize;
     switch (attr.headType) {
       case 1:
         this.ratio = 0.56;
@@ -137,26 +140,28 @@ class Node {
       this.endPosition.x - this.headWidth / 2 + this.paddingHorizontal;
     let lineWidth = this.headWidth - this.paddingHorizontal * 2;
 
+    let radiousCircle = this.placeholderSize / 2;
+
     if (argsPlaceholder.hasPoint) {
       circle(this.ctx, {
         x:
           this.endPosition.x -
           this.headWidth / 2 +
           this.paddingHorizontal +
-          this.pointSize,
+          radiousCircle,
         y:
           argsPlaceholder.moduleAbs -
           argsPlaceholder.module / 2 +
           (this.endPosition.y - this.headHeight + this.heightTabHeader),
         color: "green",
-        radious: this.pointSize,
+        radious: radiousCircle,
       });
       offsetXAbs =
         this.endPosition.x -
         this.headWidth / 2 +
         this.paddingHorizontal +
-        this.pointSize * 3;
-      lineWidth = lineWidth - this.pointSize * 3;
+        radiousCircle * 3;
+      lineWidth = lineWidth - radiousCircle * 3;
     }
 
     roundRect(
@@ -167,9 +172,9 @@ class Node {
           argsPlaceholder.moduleAbs -
           argsPlaceholder.module / 2 +
           (this.endPosition.y - this.headHeight + this.heightTabHeader) -
-          ((argsPlaceholder.module / 5) * 3) / 2,
+          this.placeholderSize / 2,
         width: lineWidth,
-        height: (argsPlaceholder.module / 5) * 3, //metti su
+        height: this.placeholderSize, //metti su
         borderRadious: this.borderRadious,
       },
       false
