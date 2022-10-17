@@ -16,11 +16,14 @@ class Node {
     this.pointSize = attr.pointSize;
     this.borderRadious = attr.borderRadious;
     this.ratio = false;
+    this.heightTabHeader = 40; //metti su
+    this.paddingVerical = 20; //metti su
+    this.paddingHorizontal = 20; //metti su
     switch (attr.headType) {
       case 1:
         this.ratio = 0.56;
         this.headHeight = this.headWidth * this.ratio; //16/9
-        this.placeHolders = [{ hasPoint: true }, { hasPoint: true }];
+        this.placeHolders = [{ hasPoint: true }, { hasPoint: false }];
         break;
 
       default:
@@ -57,7 +60,7 @@ class Node {
     );
 
     let heightTabLabel =
-      this.endPosition.y - this.headHeight + this.pointSize * 3;
+      this.endPosition.y - this.headHeight + this.heightTabHeader;
 
     let grd2 = createGradient(this.ctx, {
       startPosition: {
@@ -80,23 +83,24 @@ class Node {
     this.ctx.fill();
 
     //PALCEHOLDER INTERNI ##################################
-    let getTabInnerBody = this.endPosition.y - heightTabLabel;
-    let paddingVerical = 5;
-    let paddingHorizontal = 20;
+    let getTabInnerBody = this.headHeight - this.heightTabHeader;
+
     let module =
-      (getTabInnerBody - paddingVerical * 2) / this.placeHolders.length;
+      (getTabInnerBody - this.paddingVerical * 2) / this.placeHolders.length;
     console.log("LOOK MA!");
     console.log(getTabInnerBody);
 
     this.placeHolders.forEach((el, index) => {
       let offsetY = 0;
 
-      if (index === 0) {
-        offsetY = paddingVerical;
-      }
+      //if (index === 0) {
+      offsetY = this.paddingVerical;
+      //}
+
       this.drawPlaceHolder({
         hasPoint: el.hasPoint,
-        module: module * (index + 1) + offsetY,
+        moduleAbs: module * (index + 1) + offsetY,
+        module: module,
       });
     });
   }
@@ -120,16 +124,59 @@ class Node {
   }
 
   drawPlaceHolder(argsPlaceholder) {
+    /*
+    pointCordinates(this.ctx, {
+      x: this.endPosition.x,
+      y:
+        argsPlaceholder.module +
+        (this.endPosition.y - this.headHeight + this.heightTabHeader),
+      color: "#FF3456",
+    });
+    */
+    let offsetXAbs =
+      this.endPosition.x - this.headWidth / 2 + this.paddingHorizontal;
+    let lineWidth = this.headWidth - this.paddingHorizontal * 2;
+
     if (argsPlaceholder.hasPoint) {
       circle(this.ctx, {
-        x: this.endPosition.x,
+        x:
+          this.endPosition.x -
+          this.headWidth / 2 +
+          this.paddingHorizontal +
+          this.pointSize,
         y:
-          argsPlaceholder.module +
-          (this.endPosition.y - this.headHeight + this.pointSize * 3),
+          argsPlaceholder.moduleAbs -
+          argsPlaceholder.module / 2 +
+          (this.endPosition.y - this.headHeight + this.heightTabHeader),
         color: "green",
         radious: this.pointSize,
       });
+      offsetXAbs =
+        this.endPosition.x -
+        this.headWidth / 2 +
+        this.paddingHorizontal +
+        this.pointSize * 3;
+      lineWidth = lineWidth - this.pointSize * 3;
     }
+
+    roundRect(
+      this.ctx,
+      {
+        x: offsetXAbs,
+        y:
+          argsPlaceholder.moduleAbs -
+          argsPlaceholder.module / 2 +
+          (this.endPosition.y - this.headHeight + this.heightTabHeader) -
+          ((argsPlaceholder.module / 5) * 3) / 2,
+        width: lineWidth,
+        height: (argsPlaceholder.module / 5) * 3, //metti su
+        borderRadious: this.borderRadious,
+      },
+      false
+    );
+
+    this.ctx.fillStyle = "red";
+    this.ctx.fill();
   }
 
   drawAll() {
@@ -161,13 +208,13 @@ class Node {
     });
     pointCordinates(this.ctx, {
       x: this.endPosition.x,
-      y: this.endPosition.y - this.headHeight + this.pointSize * 3,
+      y: this.endPosition.y - this.headHeight + this.heightTabHeader,
       color: "#d00ccf",
     });
 
     pointCordinates(this.ctx, {
       x: this.endPosition.x,
-      y: this.endPosition.y - this.headHeight + this.pointSize * 3,
+      y: this.endPosition.y - this.headHeight + this.heightTabHeader,
       color: "#0014ff",
     });
 
