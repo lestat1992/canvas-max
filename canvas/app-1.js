@@ -136,6 +136,7 @@ function render() {
     paddingHorizontal: vw(1),
 
     placeholderSize: vw(1),
+    placeHoldersColor: "white",
   });
   Node1.drawAll();
   Node1.debug();

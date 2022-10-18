@@ -22,8 +22,31 @@ class Node {
     this.paddingHorizontal = attr.paddingHorizontal; //metti su
 
     this.placeholderSize = attr.placeholderSize;
+    this.placeHoldersColor = attr.placeHoldersColor;
+
     switch (attr.headType) {
       case 1:
+        this.ratio = 0.45;
+        this.headHeight = this.headWidth * this.ratio; 
+        this.placeHolders = [{ hasPoint: false }];
+        break;
+
+      case 2:
+        this.ratio = 0.8;
+        this.headHeight = this.headWidth * this.ratio; 
+        this.placeHolders = [
+          { hasPoint: false },
+          { hasPoint: false },
+          { hasPoint: false },
+        ];
+        break;
+      case 3:
+        this.ratio = 0.4;
+        this.headHeight = this.headWidth * this.ratio; 
+        this.placeHolders = [{ hasPoint: true }];
+        break;
+
+      case 4:
         this.ratio = 0.56;
         this.headHeight = this.headWidth * this.ratio; //16/9
         this.placeHolders = [{ hasPoint: true }, { hasPoint: false }];
@@ -127,15 +150,6 @@ class Node {
   }
 
   drawPlaceHolder(argsPlaceholder) {
-    /*
-    pointCordinates(this.ctx, {
-      x: this.endPosition.x,
-      y:
-        argsPlaceholder.module +
-        (this.endPosition.y - this.headHeight + this.heightTabHeader),
-      color: "#FF3456",
-    });
-    */
     let offsetXAbs =
       this.endPosition.x - this.headWidth / 2 + this.paddingHorizontal;
     let lineWidth = this.headWidth - this.paddingHorizontal * 2;
@@ -153,7 +167,7 @@ class Node {
           argsPlaceholder.moduleAbs -
           argsPlaceholder.module / 2 +
           (this.endPosition.y - this.headHeight + this.heightTabHeader),
-        color: "green",
+        color: this.placeHoldersColor,
         radious: radiousCircle,
       });
       offsetXAbs =
@@ -180,7 +194,7 @@ class Node {
       false
     );
 
-    this.ctx.fillStyle = "red";
+    this.ctx.fillStyle = this.placeHoldersColor;
     this.ctx.fill();
   }
 
