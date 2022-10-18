@@ -123,6 +123,8 @@ function render() {
   //.................................
 
   let Node1 = new Node(ctx, {
+    name: "node1",
+
     stroke: vw(0.5),
     pointSize: vw(1),
     startPosition: startPosition,

@@ -8,6 +8,7 @@ import roundRect from "../functions/roundRect";
 class Node {
   constructor(ctx, attr) {
     this.ctx = ctx;
+    this.name = attr.name;
     this.stroke = attr.stroke;
     this.startPosition = attr.startPosition;
     this.endPosition = attr.endPosition;
@@ -27,13 +28,13 @@ class Node {
     switch (attr.headType) {
       case 1:
         this.ratio = 0.45;
-        this.headHeight = this.headWidth * this.ratio; 
+        this.headHeight = this.headWidth * this.ratio;
         this.placeHolders = [{ hasPoint: false }];
         break;
 
       case 2:
         this.ratio = 0.8;
-        this.headHeight = this.headWidth * this.ratio; 
+        this.headHeight = this.headWidth * this.ratio;
         this.placeHolders = [
           { hasPoint: false },
           { hasPoint: false },
@@ -42,7 +43,7 @@ class Node {
         break;
       case 3:
         this.ratio = 0.4;
-        this.headHeight = this.headWidth * this.ratio; 
+        this.headHeight = this.headWidth * this.ratio;
         this.placeHolders = [{ hasPoint: true }];
         break;
 
@@ -236,6 +237,14 @@ class Node {
       y: this.endPosition.y - this.headHeight + this.heightTabHeader,
       color: "#0014ff",
     });
+
+    this.ctx.font = "15px Arial";
+    this.ctx.fillStyle = "black";
+    this.ctx.fillText(
+      this.name,
+      this.endPosition.x + this.pointSize + 20,
+      this.endPosition.y + 20
+    );
 
     //--------------------------
   }
