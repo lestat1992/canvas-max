@@ -38,8 +38,8 @@ let timelineArray = [
     type: "x",
     items: [
       {
-        from: vw(50),
-        to: vw(40),
+        from: vw(40),
+        to: vw(50),
         time: toF(10),
         type: "linear",
       },
@@ -102,7 +102,7 @@ function render() {
     y: Timelines1.getValueFromSlug("endPOsitionY"),
   };
 
-  if (frame >= toF(10)) {
+  if (frame > toF(10)) {
     isAnimation = false;
   }
 
@@ -204,7 +204,7 @@ function render() {
   pointCordinates(ctx, {
     x: vw(40),
     y: vh(40) - vw(0),
-    color: "#66ff99",
+    color: "#66ffff",
   });
 
   if (isAnimation) {
