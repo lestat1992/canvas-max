@@ -5,7 +5,7 @@ import circle from "./functions/circle";
 import CanvasInfo from "./class/CanvasInfo";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
-import { getX, getY } from "./functions/animation/valueAnimated";
+//import { getX, getY } from "./functions/animation/valueAnimated";
 
 import Timelines from "./class/Timelines";
 import Palette from "./class/Palette";
@@ -14,24 +14,13 @@ import Palette from "./class/Palette";
 let t = [];
 //////
 
-//ELEMENTO CANVAS
+//PRE-RENDER ##################
 const canvas = document.querySelector("#hero-canvas");
 
+let frame = 0;
 let isAnimation = true;
 
-//########################
-
-let endPosition;
-let timelineArray;
-
-//RENDER ##################
-let frame = 0;
-
-let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 let CInfo = new CanvasInfo(canvas);
-//let Timelines1 = new Timelines({ timelineArray: timelineArray });
-
-//SHORTHAND ###############
 function vw(percentage) {
   return CInfo.vw(percentage);
 }
@@ -42,25 +31,34 @@ function toF(s) {
   return CInfo.toF(s);
 }
 
-window.requestAnimationFrame(render);
-
-function render() {
-  //INITIAL SETTINGS
-  CInfo.getSize();
-  frame++;
-
-  //responsive units #################
-
-  let client = CInfo.client;
-
-  //###################################
-  //ANIMATABLE ########################
-  let startPosition = { x: 0, y: vh(80) };
-
-  endPosition = {
-    //getValueFromSlug,
-
-    x: getX({
+let endPosition;
+let timelineArray = [
+  {
+    name: "endPOsitionX",
+    type: "x",
+    items: [
+      {
+        from: vw(50),
+        to: vw(40),
+        time: toF(10),
+        type: "linear",
+      },
+    ],
+  },
+  {
+    name: "endPOsitionY",
+    type: "y",
+    items: [
+      {
+        from: vh(40) - vw(0),
+        to: vh(80) - vw(30),
+        time: toF(10),
+        type: "linear",
+      },
+    ],
+  },
+  /*
+      x: getX({
       xTo: vw(50),
       xFrom: vw(40),
       frame: frame,
@@ -74,6 +72,34 @@ function render() {
       frames: toF(10),
       type: "linear",
     }),
+    */
+];
+
+let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
+
+let Timelines1 = new Timelines({ timelineArray: timelineArray });
+
+window.requestAnimationFrame(render);
+
+function render() {
+  //INITIAL SETTINGS
+  CInfo.getSize();
+  frame++;
+  Timelines1.updateFrame(frame);
+
+  //responsive units #################
+
+  let client = CInfo.client;
+
+  //###################################
+  //ANIMATABLE ########################
+  let startPosition = { x: 0, y: vh(80) };
+
+  endPosition = {
+    //getValueFromSlug,
+
+    x: Timelines1.getValueFromSlug("endPOsitionX"),
+    y: Timelines1.getValueFromSlug("endPOsitionY"),
   };
 
   if (frame >= toF(10)) {
