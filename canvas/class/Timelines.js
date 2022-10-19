@@ -1,8 +1,7 @@
-import { getX, getY } from "./functions/animation/valueAnimated";
+import { getX, getY } from "../functions/animation/valueAnimated";
 
 class Timelines {
-  constructor(ctx, attr) {
-    this.ctx = ctx;
+  constructor(attr) {
     this.frame = 0;
     this.MaxTime = 0;
 

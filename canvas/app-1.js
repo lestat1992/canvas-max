@@ -7,6 +7,7 @@ import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
 import { getX, getY } from "./functions/animation/valueAnimated";
 
+import Timelines from "./class/Timelines";
 import Palette from "./class/Palette";
 
 ///////
@@ -21,30 +22,34 @@ let isAnimation = true;
 //########################
 
 let endPosition;
+let timelineArray;
 
 //RENDER ##################
 let frame = 0;
 
 let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 let CInfo = new CanvasInfo(canvas);
+//let Timelines1 = new Timelines({ timelineArray: timelineArray });
+
+//SHORTHAND ###############
+function vw(percentage) {
+  return CInfo.vw(percentage);
+}
+function vh(percentage) {
+  return CInfo.vh(percentage);
+}
+function toF(s) {
+  return CInfo.toF(s);
+}
 
 window.requestAnimationFrame(render);
 
 function render() {
   //INITIAL SETTINGS
+  CInfo.getSize();
   frame++;
 
   //responsive units #################
-
-  function vw(percentage) {
-    return CInfo.vw(percentage);
-  }
-  function vh(percentage) {
-    return CInfo.vh(percentage);
-  }
-  function toF(s) {
-    return CInfo.toF(s);
-  }
 
   let client = CInfo.client;
 
@@ -53,6 +58,8 @@ function render() {
   let startPosition = { x: 0, y: vh(80) };
 
   endPosition = {
+    //getValueFromSlug,
+
     x: getX({
       xTo: vw(50),
       xFrom: vw(40),
