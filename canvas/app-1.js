@@ -124,7 +124,15 @@ function render() {
 
   //.................................
 
-  Palette1.setSelectedColor("#00ffc4");
+  Palette1.setSelectedColor("#663399");
+  let paletteNode1 = Palette1.monocromathic([
+    "#C0C0C0",
+    "whitesmoke",
+    "#E5E4E2",
+    "#808080",
+    "#646464",
+  ]);
+
   let Node1 = new Node(ctx, {
     name: "node1",
 
@@ -142,11 +150,12 @@ function render() {
 
     placeholderSize: vw(1),
 
-    lineColor: "pink",
-    placeHoldersColor: "white",
-    hancorColor: "white",
-    tabHeaderColor: "grey",
-    tabBodyColor: "black"
+    //
+    lineColor: paletteNode1[0].new,
+    placeHoldersColor: paletteNode1[1].new,
+    hancorColor: paletteNode1[2].new,
+    tabHeaderColor: paletteNode1[3].new,
+    tabBodyColor: paletteNode1[4].new,
   });
   Node1.drawAll();
   Node1.debug();

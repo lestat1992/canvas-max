@@ -23,7 +23,12 @@ class Node {
     this.paddingHorizontal = attr.paddingHorizontal; //metti su
 
     this.placeholderSize = attr.placeholderSize;
+
+    this.lineColor = attr.lineColor;
     this.placeHoldersColor = attr.placeHoldersColor;
+    this.hancorColor = attr.hancorColor;
+    this.tabHeaderColor = attr.tabHeaderColor;
+    this.tabBodyColor = attr.tabBodyColor;
 
     switch (attr.headType) {
       case 1:
@@ -69,7 +74,7 @@ class Node {
         y: this.endPosition.y,
       },
       stroke: this.stroke,
-      fill: "black",
+      strokeColor: this.lineColor,
     });
   }
 
@@ -100,9 +105,9 @@ class Node {
       },
 
       colorStep: [
-        { position: 0, color: "grey" },
-        { position: 1, color: "grey" },
-        { position: 1, color: "black" },
+        { position: 0, color: this.tabHeaderColor },
+        { position: 1, color: this.tabHeaderColor },
+        { position: 1, color: this.tabBodyColor },
       ],
       type: "linear",
     });
@@ -134,7 +139,7 @@ class Node {
     circle(this.ctx, {
       x: this.endPosition.x,
       y: this.endPosition.y,
-      color: "white",
+      color: this.hancorColor,
       radious: this.pointSize,
     });
   }
@@ -143,7 +148,7 @@ class Node {
     circle(this.ctx, {
       x: this.endPosition.x,
       y: this.endPosition.y - this.headHeight,
-      color: "white",
+      color: this.hancorColor,
       radious: this.pointSize,
     });
   }

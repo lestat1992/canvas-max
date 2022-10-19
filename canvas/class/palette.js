@@ -30,9 +30,10 @@ class Palette {
     if (this.selectedColor) {
       arrayColor.forEach((el) => {
         let colorFixed = convertColor(el, "hsl");
+
         let lightOriginal = colorFixed
           .split(",")
-          [colorFixed.split(",").lenght - 1].split(")")[0];
+          [colorFixed.split(",").length - 1].split(")")[0];
 
         if (protectPaletteColors) {
           this.paletteArray.find(
@@ -48,7 +49,6 @@ class Palette {
             "," +
             this.selectedColor.split(",")[1] +
             "," +
-            this.selectedColor.split(",")[2] +
             lightOriginal +
             ")";
         }
