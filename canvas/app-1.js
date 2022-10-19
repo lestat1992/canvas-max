@@ -7,6 +7,8 @@ import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
 import { getX, getY } from "./functions/animation/valueAnimated";
 
+import Palette from "./class/Palette";
+
 ///////
 let t = [];
 //////
@@ -22,7 +24,10 @@ let endPosition;
 
 //RENDER ##################
 let frame = 0;
+
+let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 let CInfo = new CanvasInfo(canvas);
+
 window.requestAnimationFrame(render);
 
 function render() {
@@ -119,6 +124,7 @@ function render() {
 
   //.................................
 
+  Palette1.setSelectedColor("#00ffc4");
   let Node1 = new Node(ctx, {
     name: "node1",
 
@@ -135,7 +141,12 @@ function render() {
     paddingHorizontal: vw(1),
 
     placeholderSize: vw(1),
+
+    lineColor: "pink",
     placeHoldersColor: "white",
+    hancorColor: "white",
+    tabHeaderColor: "grey",
+    tabBodyColor: "black"
   });
   Node1.drawAll();
   Node1.debug();

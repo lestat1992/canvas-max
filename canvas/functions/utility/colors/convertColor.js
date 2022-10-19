@@ -852,28 +852,25 @@ function convertColor(color, newMethod, isPct = false) {
   }
   */
 
-  switch (color) {
-    case color.includes("rgb"):
-      oldColorMethod = "RGB";
-      break;
-    case color.includes("rgba"):
-      oldColorMethod = "RGBA";
-      break;
-    case color.includes("#"):
+  if (color.includes("rgba")) {
+    oldColorMethod = "RGBA";
+  } else if (color.includes("rgb")) {
+    oldColorMethod = "RGB";
+  } else if (color.includes("#")) {
+    if (color.length <= 7) {
       oldColorMethod = "HEX";
-      break;
-    case color.includes("hsl"):
-      oldColorMethod = "HSL";
-      break;
-    case color.includes("hsla"):
-      oldColorMethod = "HSLA";
-      break;
-    default:
-      oldColorMethod = "NAME";
-      break;
+    } else {
+      oldColorMethod = "HEXA";
+    }
+  } else if (color.includes("hsla")) {
+    oldColorMethod = "HSLA";
+  } else if (color.includes("hsl")) {
+    oldColorMethod = "HSL";
+  } else {
+    oldColorMethod = "NAME";
   }
 
-  return arrayColorFunc[oldColorMethod + "to" + newMethod.toUpperCase()](
+  return arrayColorFunc[oldColorMethod + "-" + newMethod.toUpperCase()](
     color,
     isPct
   );

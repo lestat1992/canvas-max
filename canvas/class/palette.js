@@ -1,17 +1,19 @@
 import convertColor from "../functions/utility/colors/convertColor";
 
 class Palette {
-  constructor(ctx, paletteArray) {
+  constructor(paletteArray) {
     let fixedPaletteArray = [];
     paletteArray.forEach((el) => {
       fixedPaletteArray.push(convertColor(el, "hsl"));
     });
     this.paletteArray = fixedPaletteArray;
+
+    /* colore selezionato per alcune elaborazioni */
     this.selectedColor = false;
   }
 
-  selectedColor(selectedColor) {
-    let colorConverted = convertColor(selectedColor, "hsl");
+  setSelectedColor(color) {
+    let colorConverted = convertColor(color, "hsl");
 
     if (this.paletteArray.find((el) => el == colorConverted)) {
       this.selectedColor = colorConverted;
