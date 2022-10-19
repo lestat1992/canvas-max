@@ -114,8 +114,6 @@ class Node {
 
     let module =
       (getTabInnerBody - this.paddingVerical * 2) / this.placeHolders.length;
-    console.log("LOOK MA!");
-    console.log(getTabInnerBody);
 
     this.placeHolders.forEach((el, index) => {
       let offsetY = 0;

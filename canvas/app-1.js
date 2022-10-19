@@ -64,12 +64,10 @@ function render() {
     }),
   };
 
-  console.log(frame + " == " + toF(10));
   if (frame >= toF(10)) {
     isAnimation = false;
   }
 
-  console.log();
 
   //###################################
 

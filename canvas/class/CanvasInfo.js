@@ -32,15 +32,10 @@ class CanvasInfo {
     var FPS = 0,
       err = calcFPS({ count: 100, callback: (fps) => (this.fps = fps) });
     if (err) {
-      console.log("ERRORE nel calcolo degli FPS");
       this.fps = 60;
     }
   }
   toF(seconds) {
-    console.log("i'm passing----------------");
-    console.log(this.fps);
-    console.log(seconds);
-    console.log("---------------------------");
     return this.fps * seconds;
   }
 }

@@ -6,7 +6,6 @@ function calcFPS(a) {
     else {
       var e = 3 * Math.round((1e3 * d) / 3 / (performance.now() - g));
       "function" === typeof a.callback && a.callback(e);
-      console.log("Calculated: " + e + " frames per second");
       return e;
     }
   }
