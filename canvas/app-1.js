@@ -68,7 +68,6 @@ function render() {
     isAnimation = false;
   }
 
-
   //###################################
 
   //Creating context###################
