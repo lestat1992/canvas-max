@@ -28,12 +28,13 @@ class CanvasInfo {
   }
   getDeviceFpS() {
     //count mumero di frame prima di dare risposta settato 100
-
+    /*
     var FPS = 0,
       err = calcFPS({ count: 100, callback: (fps) => (this.fps = fps) });
     if (err) {
       this.fps = 60;
     }
+    */
   }
   toF(seconds) {
     return this.fps * seconds;

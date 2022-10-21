@@ -36,27 +36,77 @@ let timelineArray = [
   {
     name: "endPOsitionX",
     type: "x",
-    items: [
+    showInDebug: true,
+    keyfranes: [
       {
+        value: vw(40),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: vw(50),
+        time: toF(15),
+        type: "linear",
+      },
+
+      /*
+      NON FUNZIONA
+      {
+        lobos: "YOLO1",
         from: vw(40),
         to: vw(50),
         time: toF(10),
         type: "linear",
       },
+      {
+        lobos: "YOLO2",
+        from: vw(50),
+        to: vw(80),
+        time: toF(30),
+        type: "linear",
+      },
+      */
     ],
   },
   {
     name: "endPOsitionY",
     type: "y",
-    items: [
+    showInDebug: true,
+    keyfranes: [
       {
+        value: vw(20),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: vw(60),
+        time: toF(15),
+        type: "linear",
+      },
+
+      /*
+      NON FUNZIONA
+      {
+        lobos: "LOLLO1",
         from: vh(40) - vw(0),
         to: vh(80) - vw(30),
         time: toF(10),
         type: "linear",
       },
+      {
+        lobos: "LOLLO2",
+        from: vh(80) - vw(30),
+        to: vh(30),
+        time: toF(30),
+        type: "linear",
+      },
+      */
     ],
   },
+
+  //OLD
   /*
       x: getX({
       xTo: vw(50),
@@ -77,7 +127,10 @@ let timelineArray = [
 
 let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 
-let Timelines1 = new Timelines({ timelineArray: timelineArray });
+let Timelines1 = new Timelines({
+  timelineArray: timelineArray,
+  showTimelineInDom: true,
+});
 
 window.requestAnimationFrame(render);
 
@@ -102,9 +155,11 @@ function render() {
     y: Timelines1.getValueFromSlug("endPOsitionY"),
   };
 
+  /*
   if (frame > toF(10)) {
     isAnimation = false;
   }
+  */
 
   //###################################
 
