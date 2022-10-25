@@ -5,7 +5,7 @@ import circle from "./functions/circle";
 import CanvasInfo from "./class/CanvasInfo";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
-//import { getX, getY } from "./functions/animation/valueAnimated";
+import { getX, getY } from "./functions/animation/valueAnimated";
 
 import Timelines from "./class/Timelines";
 import Palette from "./class/Palette";
@@ -37,16 +37,16 @@ let timelineArray = [
     name: "endPOsitionX",
     type: "x",
     showInDebug: true,
-    keyfranes: [
+    keyframes: [
       {
-        value: vw(40),
+        value: 500,
         time: toF(0),
         type: "linear",
       },
 
       {
-        value: vw(50),
-        time: toF(15),
+        value: 600, //vw(50)
+        time: toF(10),
         type: "linear",
       },
 
@@ -73,16 +73,16 @@ let timelineArray = [
     name: "endPOsitionY",
     type: "y",
     showInDebug: true,
-    keyfranes: [
+    keyframes: [
       {
-        value: vw(20),
+        value: 800,
         time: toF(0),
         type: "linear",
       },
 
       {
-        value: vw(60),
-        time: toF(15),
+        value: 500,
+        time: toF(10),
         type: "linear",
       },
 
@@ -135,6 +135,8 @@ let Timelines1 = new Timelines({
 window.requestAnimationFrame(render);
 
 function render() {
+  console.log("###################################");
+
   //INITIAL SETTINGS
   CInfo.getSize();
   frame++;
@@ -148,11 +150,34 @@ function render() {
   //ANIMATABLE ########################
   let startPosition = { x: 0, y: vh(80) };
 
+  console.log("DATI PASSATI --VECCHIO--");
+  console.log(500);
+  console.log(600);
+  console.log(frame);
+  console.log(toF(10));
+  console.log("linear");
+
   endPosition = {
     //getValueFromSlug,
-
     x: Timelines1.getValueFromSlug("endPOsitionX"),
     y: Timelines1.getValueFromSlug("endPOsitionY"),
+    //ONLY FOR TEST
+    /*
+    x: getX({
+      xTo: 600,
+      xFrom: 500,
+      frame: frame,
+      frames: toF(10),
+      type: "linear",
+    }),
+    y: getY({
+      yTo: 500,
+      yFrom: 800,
+      frame: frame,
+      frames: toF(10),
+      type: "linear",
+    }),
+    */
   };
 
   /*
@@ -250,20 +275,22 @@ function render() {
 
   //debug
   pointCordinates(ctx, {
-    x: vw(50),
-    y: vh(80) - vw(30),
+    x: 600,
+    y: 500,
     color: "#66ff99",
   });
 
   //debug
   pointCordinates(ctx, {
-    x: vw(40),
-    y: vh(40) - vw(0),
+    x: 500,
+    y: 800,
     color: "#66ffff",
   });
 
   if (isAnimation) {
     window.requestAnimationFrame(render);
   }
+
+  console.log("###################################");
 }
 //########################

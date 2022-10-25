@@ -8,7 +8,7 @@ class Timelines {
     //se passata solo così la timeline sarà statica
     this.seTtimelineArray(attr.timelineArray);
 
-    this.timelineResultValues = false;
+    this.timelineResultValues = [];
 
     if (attr.showTimelineInDom) {
       this.showTimelineInDom = attr.showTimelineInDom;
@@ -43,81 +43,86 @@ class Timelines {
 
   /* questo metodo crea timelineResultValues */
   processTimelines() {
+    this.timelineResultValues = [];
     let timelineResultValues = [];
 
     this.timelineArray.forEach((el1) => {
       //this.frame
+      /*
       let valueFrom;
       let valueTo;
-      el1.keyfranes.forEach((el2) => {
-        if (el2.time) {
-        }
-      });
-
-      /*
-
-      NON FUNZIONA
-
-      let time = 0;
-      let timesArray = [];
-      el1.items.forEach((el2) => {
-        time += el2.time;
-        timesArray.push(time);
-      });
-
-      let prevTime = 1;
-
-      timesArray.forEach((t, index) => {
-        //console.log(t >= this.frame && this.frame >= prevTime);
-
-        //console.log(prevTime);
-
-        if (t >= this.frame && this.frame >= prevTime) {
-          let part = {
-            name: el1.name,
-            value: this.processValue(el1, index, t),
-          };
-
-          if (el1.type == "x") {
-            console.log("---------");
-            console.log(this.frame + " == " + t + " or " + time);
-            console.log(index + " " + this.processValue(el1, index, t));
-            console.log(el1, index, t);
-          }
-
-          timelineResultValues.push(part);
-        }
-
-        prevTime = t;
-      });
-
-      this.MaxTime = time;
       */
+
+      let indexSelected = false;
+
+      el1.keyframes.forEach((el2, index) => {
+        /*
+        if (index == 0) {
+          valueFrom = el2.time;
+        }
+        */
+
+        if (indexSelected === false) {
+          /*
+          if (el2.time < this.frame) {
+            //inietro
+          }
+          */
+
+          if (el2.time >= this.frame) {
+            //superato
+            indexSelected = index;
+          }
+        }
+      });
+
+      //console.log("----------------------------------");
+      //console.log(this.processValue(el1, indexSelected));
+
+      let part = {
+        name: el1.name,
+        value: this.processValue(el1, indexSelected),
+      };
+
+      timelineResultValues.push(part);
     });
+
+    //console.log("----------------------------------");
 
     this.timelineResultValues = timelineResultValues;
     //Check part to ptocess
   }
 
   //da correggere
-  processValue(el, index, time) {
+  processValue(el, index) {
+    //console.log("RESULT");
+    //console.log(index);
+    //console.log("se false bisogna riavvolgere il nastro?");
+
     switch (el.type) {
       case "x":
+        console.log("DATI PASSATI --NUOVO--");
+        console.log(el.keyframes[index - 1].value);
+        console.log(el.keyframes[index].value);
+        console.log(this.frame);
+        console.log(el.keyframes[index].time); //tempo assoluto dell'animazione
+        console.log(el.keyframes[index].type);
+
         return getX({
-          xTo: el.items[index].to,
-          xFrom: el.items[index].from,
+          xTo: el.keyframes[index].value,
+          xFrom: el.keyframes[index - 1].value,
           frame: this.frame,
-          frames: time, //tempo assoluto dell'animazione
-          type: el.items[index].type,
+          frames: el.keyframes[index].time, //tempo assoluto dell'animazione
+          type: el.keyframes[index].type,
         });
         break;
       case "y":
         return getY({
-          yTo: el.items[index].to,
-          yFrom: el.items[index].from,
+          yTo: el.keyframes[index].value,
+          yFrom: el.keyframes[index - 1].value,
           frame: this.frame,
-          frames: time, //tempo assoluto dell'animazione
-          type: el.items[index].type,
+          frames: el.keyframes[index].time, //tempo assoluto dell'animazione
+          type: el.keyframes[index].type,
         });
         break;
       default:
@@ -126,7 +131,7 @@ class Timelines {
   }
 
   getValueFromSlug(slug) {
-    //return this.timelineResultValues.find((el) => el.name == slug).value;
+    return this.timelineResultValues.find((el) => el.name == slug).value;
     return false;
   }
 
@@ -150,7 +155,7 @@ class Timelines {
       part.append(label);
 
       //loop keyframe
-      el.keyfranes.forEach((el2) => {
+      el.keyframes.forEach((el2) => {
         let positionPercentage = (el2.time / this.MaxTime) * 100;
         let keyframe = document.createElement("div");
         keyframe.classList.add("keyframe");
