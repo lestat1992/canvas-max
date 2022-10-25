@@ -39,7 +39,7 @@ let timelineArray = [
     showInDebug: true,
     keyframes: [
       {
-        value: 500,
+        value: 100,
         time: toF(0),
         type: "linear",
       },
@@ -47,6 +47,12 @@ let timelineArray = [
       {
         value: 600, //vw(50)
         time: toF(10),
+        type: "linear",
+      },
+
+      {
+        value: 1200, //vw(50)
+        time: toF(20),
         type: "linear",
       },
 
@@ -75,14 +81,19 @@ let timelineArray = [
     showInDebug: true,
     keyframes: [
       {
-        value: 800,
+        value: 300,
         time: toF(0),
         type: "linear",
       },
 
       {
-        value: 500,
+        value: 300,
         time: toF(10),
+        type: "linear",
+      },
+      {
+        value: 300,
+        time: toF(20),
         type: "linear",
       },
 
@@ -135,7 +146,7 @@ let Timelines1 = new Timelines({
 window.requestAnimationFrame(render);
 
 function render() {
-  console.log("###################################");
+  //console.log("###################################");
 
   //INITIAL SETTINGS
   CInfo.getSize();
@@ -150,12 +161,12 @@ function render() {
   //ANIMATABLE ########################
   let startPosition = { x: 0, y: vh(80) };
 
-  console.log("DATI PASSATI --VECCHIO--");
-  console.log(500);
-  console.log(600);
-  console.log(frame);
-  console.log(toF(10));
-  console.log("linear");
+  //console.log("DATI PASSATI --VECCHIO--");
+  //console.log(500);
+  //console.log(600);
+  //console.log(frame);
+  //console.log(toF(10));
+  //console.log("linear");
 
   endPosition = {
     //getValueFromSlug,
@@ -291,6 +302,6 @@ function render() {
     window.requestAnimationFrame(render);
   }
 
-  console.log("###################################");
+  //console.log("###################################");
 }
 //########################
