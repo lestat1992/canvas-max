@@ -87,14 +87,14 @@ let timelineArray = [
       },
 
       {
-        value: 300,
+        value: 600,
         time: toF(10),
-        type: "linear",
+        type: "exponential",
       },
       {
         value: 300,
         time: toF(20),
-        type: "linear",
+        type: "quintic",
       },
 
       /*

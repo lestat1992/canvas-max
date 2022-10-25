@@ -99,6 +99,17 @@ class Timelines {
     ////console.log(index);
     ////console.log("se false bisogna riavvolgere il nastro?");
 
+    let sumPastKeyframe = 0;
+
+    console.log("CIAO ROBERTO " + index);
+
+    //for (let i = 0; i == index; i++) {
+    for (let i = 0; i != index; i++) {
+      console.log(i);
+      console.log(el.keyframes[i].time);
+      sumPastKeyframe += el.keyframes[i].time;
+    }
+
     switch (el.type) {
       case "x":
         //console.log("DATI PASSATI --NUOVO--");
@@ -113,7 +124,7 @@ class Timelines {
         return getX({
           xTo: el.keyframes[index].value,
           xFrom: el.keyframes[index - 1].value,
-          frame: this.frame - el.keyframes[index - 1].time,
+          frame: this.frame - sumPastKeyframe, //this.frame - el.keyframes[index - 1].time,
           frames: el.keyframes[index].time, //tempo assoluto dell'animazione
           type: el.keyframes[index].type,
         });
@@ -122,7 +133,7 @@ class Timelines {
         return getY({
           yTo: el.keyframes[index].value,
           yFrom: el.keyframes[index - 1].value,
-          frame: this.frame - el.keyframes[index - 1].time,
+          frame: this.frame - sumPastKeyframe,
           frames: el.keyframes[index].time, //tempo assoluto dell'animazione
           type: el.keyframes[index].type,
         });
@@ -177,7 +188,7 @@ class Timelines {
     let percentage = (this.frame / this.MaxTime) * 100;
     let pointer = document.querySelector(".pointer");
     pointer.style.left = percentage + "%";
-    pointer.innerHTML = this.getValueFromSlug("endPOsitionX");
+    //pointer.innerHTML = this.getValueFromSlug("endPOsitionX");
   }
 }
 
