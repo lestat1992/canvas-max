@@ -5,7 +5,6 @@ import circle from "./functions/circle";
 import CanvasInfo from "./class/CanvasInfo";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
-import { getX, getY } from "./functions/animation/valueAnimated";
 
 import Timelines from "./class/Timelines";
 import Palette from "./class/Palette";
@@ -55,24 +54,6 @@ let timelineArray = [
         time: toF(20),
         type: "linear",
       },
-
-      /*
-      NON FUNZIONA
-      {
-        lobos: "YOLO1",
-        from: vw(40),
-        to: vw(50),
-        time: toF(10),
-        type: "linear",
-      },
-      {
-        lobos: "YOLO2",
-        from: vw(50),
-        to: vw(80),
-        time: toF(30),
-        type: "linear",
-      },
-      */
     ],
   },
   {
@@ -96,44 +77,8 @@ let timelineArray = [
         time: toF(20),
         type: "quintic",
       },
-
-      /*
-      NON FUNZIONA
-      {
-        lobos: "LOLLO1",
-        from: vh(40) - vw(0),
-        to: vh(80) - vw(30),
-        time: toF(10),
-        type: "linear",
-      },
-      {
-        lobos: "LOLLO2",
-        from: vh(80) - vw(30),
-        to: vh(30),
-        time: toF(30),
-        type: "linear",
-      },
-      */
     ],
   },
-
-  //OLD
-  /*
-      x: getX({
-      xTo: vw(50),
-      xFrom: vw(40),
-      frame: frame,
-      frames: toF(10),
-      type: "linear",
-    }),
-    y: getY({
-      yTo: vh(80) - vw(30),
-      yFrom: vh(40) - vw(0),
-      frame: frame,
-      frames: toF(10),
-      type: "linear",
-    }),
-    */
 ];
 
 let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
@@ -146,8 +91,6 @@ let Timelines1 = new Timelines({
 window.requestAnimationFrame(render);
 
 function render() {
-  //console.log("###################################");
-
   //INITIAL SETTINGS
   CInfo.getSize();
   frame++;
@@ -161,41 +104,10 @@ function render() {
   //ANIMATABLE ########################
   let startPosition = { x: 0, y: vh(80) };
 
-  //console.log("DATI PASSATI --VECCHIO--");
-  //console.log(500);
-  //console.log(600);
-  //console.log(frame);
-  //console.log(toF(10));
-  //console.log("linear");
-
   endPosition = {
-    //getValueFromSlug,
     x: Timelines1.getValueFromSlug("endPOsitionX"),
     y: Timelines1.getValueFromSlug("endPOsitionY"),
-    //ONLY FOR TEST
-    /*
-    x: getX({
-      xTo: 600,
-      xFrom: 500,
-      frame: frame,
-      frames: toF(10),
-      type: "linear",
-    }),
-    y: getY({
-      yTo: 500,
-      yFrom: 800,
-      frame: frame,
-      frames: toF(10),
-      type: "linear",
-    }),
-    */
   };
-
-  /*
-  if (frame > toF(10)) {
-    isAnimation = false;
-  }
-  */
 
   //###################################
 
@@ -301,7 +213,5 @@ function render() {
   if (isAnimation) {
     window.requestAnimationFrame(render);
   }
-
-  //console.log("###################################");
 }
 //########################
