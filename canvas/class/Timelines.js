@@ -4,7 +4,7 @@ class Timelines {
   constructor(attr) {
     this.frame = 0;
     this.MaxTime = 6000;
-
+    this.loop = true;
     //se passata solo così la timeline sarà statica
     this.seTtimelineArray(attr.timelineArray);
 
@@ -25,7 +25,6 @@ class Timelines {
   seTtimelineArray(timelineArray) {
     this.timelineArray = this.reorderArray(timelineArray);
     this.calcMaxTime();
-
     let mapKeyframeTime = this.calcMaxTime();
   }
 
@@ -51,13 +50,45 @@ class Timelines {
   }
 
   /* calcolo il tempo massimo di tutte le animzioni */
-  calcMaxTime() {}
+  calcMaxTime() {
+    let allMaxTime = 0;
+    this.timelineArray.forEach((el) => {
+      let maxTime = 0;
+
+      el.keyframes.forEach((el2) => {
+        if (!maxTime) {
+          maxTime = el2.time;
+        } else {
+          if (el2.time > maxTime) {
+            maxTime = el2.time;
+          }
+        }
+      });
+
+      if (!allMaxTime) {
+        allMaxTime = maxTime;
+      } else {
+        if (allMaxTime > maxTime) {
+          allMaxTime = maxTime;
+        }
+      }
+    });
+
+    this.MaxTime = allMaxTime;
+  }
 
   /*
     all'aggiornamento del frame disegno 
   */
-  updateFrame(frame) {
-    this.frame = frame;
+  updateFrame() {
+    console.log(".");
+    console.log(this.frame + "   " + this.MaxTime);
+    console.log(this.loop && this.frame >= this.MaxTime);
+    if (this.loop && this.frame >= this.MaxTime) {
+      this.frame = 1;
+    } else {
+      this.frame++;
+    }
 
     this.processTimelines();
     this.updateTimeline();

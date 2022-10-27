@@ -94,7 +94,7 @@ function render() {
   //INITIAL SETTINGS
   CInfo.getSize();
   frame++;
-  Timelines1.updateFrame(frame);
+  Timelines1.updateFrame();
 
   //responsive units #################
 
