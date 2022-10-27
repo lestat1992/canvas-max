@@ -20,12 +20,34 @@ class Timelines {
 
   /*
     passo prorammaticamente una nuova timeline
-
     utile per passare valori dinamici
   */
   seTtimelineArray(timelineArray) {
-    this.timelineArray = timelineArray;
+    this.timelineArray = this.reorderArray(timelineArray);
     this.calcMaxTime();
+
+    let mapKeyframeTime = this.calcMaxTime();
+  }
+
+  reorderArray(timelineArray) {
+    let newArray = [];
+    timelineArray.forEach((el1) => {
+      let newTimeline = [];
+
+      let mappedTime = el1.keyframes.map((el2) => el2.time);
+      mappedTime.sort(function (a, b) {
+        return a - b;
+      });
+      mappedTime.forEach((el2) => {
+        let value = el1.keyframes.find((el3) => el3.time === el2);
+        newTimeline.push(value);
+      });
+
+      let part = JSON.parse(JSON.stringify(el1));
+      part.keyframes = newTimeline;
+      newArray.push(part);
+    });
+    return newArray;
   }
 
   /* calcolo il tempo massimo di tutte le animzioni */

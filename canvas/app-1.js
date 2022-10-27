@@ -70,12 +70,12 @@ let timelineArray = [
       {
         value: 600,
         time: toF(10),
-        type: "exponential",
+        type: "linear",
       },
       {
         value: 300,
         time: toF(20),
-        type: "quintic",
+        type: "linear",
       },
     ],
   },
