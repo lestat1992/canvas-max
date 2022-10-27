@@ -81,9 +81,6 @@ class Timelines {
     all'aggiornamento del frame disegno 
   */
   updateFrame() {
-    console.log(".");
-    console.log(this.frame + "   " + this.MaxTime);
-    console.log(this.loop && this.frame >= this.MaxTime);
     if (this.loop && this.frame >= this.MaxTime) {
       this.frame = 1;
     } else {
