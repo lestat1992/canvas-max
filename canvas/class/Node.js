@@ -209,6 +209,13 @@ class Node {
     this.exitPoint();
   }
 
+  getExitPoint() {
+    return {
+      x: this.endPosition.x,
+      y: this.endPosition.y - this.headHeight,
+    };
+  }
+
   debug() {
     //LINE -------------------------
     /*

@@ -16,7 +16,7 @@ let t = [];
 //PRE-RENDER ##################
 const canvas = document.querySelector("#hero-canvas");
 
-let isAnimation = true;
+let isAnimation = false;
 
 let CInfo = new CanvasInfo(canvas);
 function vw(percentage) {
@@ -30,14 +30,15 @@ function toF(s) {
 }
 
 let endPosition;
+let endPosition2;
+let endPosition3;
 let timelineArray = [
   {
     name: "endPOsitionX",
     type: "x",
-    showInDebug: true,
     keyframes: [
       {
-        value: 100,
+        value: vw(7),
         time: toF(0),
         type: "linear",
       },
@@ -45,12 +46,6 @@ let timelineArray = [
       {
         value: 600, //vw(50)
         time: toF(10),
-        type: "linear",
-      },
-
-      {
-        value: 1200, //vw(50)
-        time: toF(20),
         type: "linear",
       },
     ],
@@ -61,7 +56,7 @@ let timelineArray = [
     showInDebug: true,
     keyframes: [
       {
-        value: 300,
+        value: vw(30),
         time: toF(0),
         type: "linear",
       },
@@ -71,9 +66,78 @@ let timelineArray = [
         time: toF(10),
         type: "linear",
       },
+    ],
+  },
+  //------------------------
+  {
+    name: "endPOsitionX2",
+    type: "x",
+    showInDebug: true,
+    keyframes: [
       {
-        value: 300,
-        time: toF(20),
+        value: vw(9),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: 600, //vw(50)
+        time: toF(10),
+        type: "linear",
+      },
+    ],
+  },
+  {
+    name: "endPOsitionY2",
+    type: "y",
+    showInDebug: true,
+    keyframes: [
+      {
+        value: vw(15),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: 600,
+        time: toF(10),
+        type: "linear",
+      },
+    ],
+  },
+  //------------------------
+  {
+    name: "endPOsitionX3",
+    type: "x",
+    showInDebug: true,
+    keyframes: [
+      {
+        value: vw(25),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: 600, //vw(50)
+        time: toF(10),
+        type: "linear",
+      },
+    ],
+  },
+  {
+    name: "endPOsitionY3",
+    type: "y",
+    showInDebug: true,
+    keyframes: [
+      {
+        value: vw(15),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: 600,
+        time: toF(10),
         type: "linear",
       },
     ],
@@ -84,7 +148,7 @@ let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 
 let Timelines1 = new Timelines({
   timelineArray: timelineArray,
-  showTimelineInDom: true,
+  showTimelineInDom: false,
 });
 
 /*
@@ -101,11 +165,21 @@ function render() {
 
   //###################################
   //ANIMATABLE ########################
-  let startPosition = { x: 0, y: vh(80) };
+  let startPosition = { x: 0, y: vh(75) };
 
   endPosition = {
     x: Timelines1.getValueFromSlug("endPOsitionX"),
     y: Timelines1.getValueFromSlug("endPOsitionY"),
+  };
+
+  endPosition2 = {
+    x: Timelines1.getValueFromSlug("endPOsitionX2"),
+    y: Timelines1.getValueFromSlug("endPOsitionY2"),
+  };
+
+  endPosition3 = {
+    x: Timelines1.getValueFromSlug("endPOsitionX3"),
+    y: Timelines1.getValueFromSlug("endPOsitionY3"),
   };
 
   //###################################
@@ -158,7 +232,6 @@ function render() {
   }
 
   //.................................
-
   Palette1.setSelectedColor("#663399");
   let paletteNode1 = Palette1.monocromathic([
     "#C0C0C0",
@@ -168,32 +241,54 @@ function render() {
     "#646464",
   ]);
 
-  let Node1 = new Node(ctx, {
-    name: "node1",
-
+  let defaultPropsNode = {
     stroke: vw(0.5),
     pointSize: vw(1),
-    startPosition: startPosition,
-    endPosition: endPosition,
-    headWidth: vw(15),
-    headType: 1,
     borderRadious: vw(0.5),
-
     heightTabHeader: vw(1.5),
     paddingVerical: vw(1),
     paddingHorizontal: vw(1),
-
     placeholderSize: vw(1),
-
-    //
     lineColor: paletteNode1[0].new,
     placeHoldersColor: paletteNode1[1].new,
     hancorColor: paletteNode1[2].new,
     tabHeaderColor: paletteNode1[3].new,
     tabBodyColor: paletteNode1[4].new,
+  };
+
+  let Node1 = new Node(ctx, {
+    ...defaultPropsNode,
+    ...{
+      name: "node1",
+      startPosition: startPosition,
+      endPosition: endPosition,
+      headWidth: vw(15),
+      headType: 2,
+    },
   });
   Node1.drawAll();
-  Node1.debug();
+
+  let Node2 = new Node(ctx, {
+    ...defaultPropsNode,
+    ...{
+      name: "node2",
+      startPosition: Node1.getExitPoint(),
+      endPosition: endPosition2,
+      headWidth: vw(15),
+      headType: 3,
+    },
+  }).drawAll();
+
+  let Node3 = new Node(ctx, {
+    ...defaultPropsNode,
+    ...{
+      name: "node3",
+      startPosition: Node1.getExitPoint(),
+      endPosition: endPosition3,
+      headWidth: vw(15),
+      headType: 1,
+    },
+  }).drawAll();
 
   //debug
   pointCordinates(ctx, {

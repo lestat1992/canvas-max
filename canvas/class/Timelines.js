@@ -16,6 +16,7 @@ class Timelines {
       this.showTimelineInDom = attr.showTimelineInDom;
       this.showTimeline();
     } else {
+      console.log("è false john");
       this.showTimelineInDom = false;
     }
   }
@@ -90,7 +91,10 @@ class Timelines {
     }
 
     this.processTimelines();
-    this.updateTimeline();
+
+    if (this.showTimelineInDom) {
+      this.updateTimeline();
+    }
   }
 
   /* questo metodo crea timelineResultValues */
