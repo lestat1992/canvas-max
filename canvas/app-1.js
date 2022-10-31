@@ -16,7 +16,6 @@ let t = [];
 //PRE-RENDER ##################
 const canvas = document.querySelector("#hero-canvas");
 
-let frame = 0;
 let isAnimation = true;
 
 let CInfo = new CanvasInfo(canvas);
@@ -88,12 +87,12 @@ let Timelines1 = new Timelines({
   showTimelineInDom: true,
 });
 
-window.requestAnimationFrame(render);
-
+/*
+  render Function
+*/
 function render() {
   //INITIAL SETTINGS
   CInfo.getSize();
-  frame++;
   Timelines1.updateFrame();
 
   //responsive units #################
@@ -209,9 +208,19 @@ function render() {
     y: 800,
     color: "#66ffff",
   });
-
-  if (isAnimation) {
-    window.requestAnimationFrame(render);
-  }
 }
+
+if (isAnimation) {
+  function renderAnimated() {
+    setTimeout(function () {
+      requestAnimationFrame(renderAnimated);
+
+      render();
+    }, 1000 / CInfo.fps);
+  }
+  renderAnimated();
+} else {
+  render();
+}
+
 //########################

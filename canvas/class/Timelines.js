@@ -1,5 +1,7 @@
 import { getX, getY } from "../functions/animation/valueAnimated";
 
+//http://creativejs.com/resources/requestanimationframe/
+
 class Timelines {
   constructor(attr) {
     this.frame = 0;

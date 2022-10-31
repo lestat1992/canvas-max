@@ -1,5 +1,3 @@
-import calcFPS from "../functions/utility/calcFps";
-
 class CanvasInfo {
   constructor(canvas) {
     this.canvas = canvas;
@@ -10,7 +8,6 @@ class CanvasInfo {
     addEventListener("resize", (event) => {
       this.getSize();
     });
-    this.getDeviceFpS();
   }
   getSize() {
     this.client = {
@@ -25,16 +22,6 @@ class CanvasInfo {
   vh(percentage) {
     let result = (this.client.height * percentage) / 100;
     return result;
-  }
-  getDeviceFpS() {
-    //count mumero di frame prima di dare risposta settato 100
-    /*
-    var FPS = 0,
-      err = calcFPS({ count: 100, callback: (fps) => (this.fps = fps) });
-    if (err) {
-      this.fps = 60;
-    }
-    */
   }
   toF(seconds) {
     return this.fps * seconds;
