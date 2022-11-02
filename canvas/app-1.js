@@ -32,6 +32,7 @@ function toF(s) {
 let endPosition;
 let endPosition2;
 let endPosition3;
+let endPosition4;
 let timelineArray = [
   {
     name: "endPOsitionX",
@@ -142,6 +143,43 @@ let timelineArray = [
       },
     ],
   },
+  //------------------------
+  {
+    name: "endPOsitionX4",
+    type: "x",
+    showInDebug: true,
+    keyframes: [
+      {
+        value: vw(20),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: 600, //vw(50)
+        time: toF(10),
+        type: "linear",
+      },
+    ],
+  },
+  {
+    name: "endPOsitionY4",
+    type: "y",
+    showInDebug: true,
+    keyframes: [
+      {
+        value: vw(35),
+        time: toF(0),
+        type: "linear",
+      },
+
+      {
+        value: 600,
+        time: toF(10),
+        type: "linear",
+      },
+    ],
+  },
 ];
 
 let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
@@ -180,6 +218,11 @@ function render() {
   endPosition3 = {
     x: Timelines1.getValueFromSlug("endPOsitionX3"),
     y: Timelines1.getValueFromSlug("endPOsitionY3"),
+  };
+
+  endPosition4 = {
+    x: Timelines1.getValueFromSlug("endPOsitionX4"),
+    y: Timelines1.getValueFromSlug("endPOsitionY4"),
   };
 
   //###################################
@@ -287,6 +330,18 @@ function render() {
       endPosition: endPosition3,
       headWidth: vw(15),
       headType: 1,
+    },
+  }).drawAll();
+
+  let Node4 = new Node(ctx, {
+    ...defaultPropsNode,
+    ...{
+      name: "node4",
+      startPosition: endPosition,
+      endPosition: endPosition4,
+      headWidth: vw(15),
+      headType: 1,
+      reverseEntry: true,
     },
   }).drawAll();
 

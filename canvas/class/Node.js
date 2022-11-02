@@ -5,6 +5,10 @@ import circle from "../functions/circle";
 import line from "../functions/line";
 import roundRect from "../functions/roundRect";
 
+/*
+cambia this.endPosition.y con qualcos'altro per tutti tranne che per line
+*/
+
 class Node {
   constructor(ctx, attr) {
     this.ctx = ctx;
@@ -30,10 +34,10 @@ class Node {
     this.tabHeaderColor = attr.tabHeaderColor;
     this.tabBodyColor = attr.tabBodyColor;
 
-    let reverseEntry
+    let reverseEntry;
     if (attr.reverseEntry) {
       reverseEntry = true;
-    }else{
+    } else {
       reverseEntry = false;
     }
 
