@@ -30,6 +30,15 @@ class Node {
     this.tabHeaderColor = attr.tabHeaderColor;
     this.tabBodyColor = attr.tabBodyColor;
 
+    let reverseEntry
+    if (attr.reverseEntry) {
+      reverseEntry = true;
+    }else{
+      reverseEntry = false;
+    }
+
+    this.reverseEntry = reverseEntry;
+
     switch (attr.headType) {
       case 1:
         this.ratio = 0.45;
