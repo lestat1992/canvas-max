@@ -74,6 +74,12 @@ class Node {
       default:
         break;
     }
+
+    if (this.reverseEntry) {
+      this.startHead = this.endPosition.y + this.headHeight;
+    } else {
+      this.startHead = this.endPosition.y;
+    }
   }
 
   line() {
@@ -96,7 +102,7 @@ class Node {
       this.ctx,
       {
         x: this.endPosition.x - this.headWidth / 2,
-        y: this.endPosition.y - this.headHeight,
+        y: this.startHead - this.headHeight,
         width: this.headWidth,
         height: this.headHeight,
         borderRadious: this.borderRadious,
@@ -105,12 +111,12 @@ class Node {
     );
 
     let heightTabLabel =
-      this.endPosition.y - this.headHeight + this.heightTabHeader;
+      this.startHead - this.headHeight + this.heightTabHeader;
 
     let grd2 = createGradient(this.ctx, {
       startPosition: {
         x: this.endPosition.x,
-        y: this.endPosition.y - this.headHeight,
+        y: this.startHead - this.headHeight,
       },
       endPosition: {
         x: this.endPosition.x,
@@ -151,7 +157,7 @@ class Node {
   entryPoint() {
     circle(this.ctx, {
       x: this.endPosition.x,
-      y: this.endPosition.y,
+      y: this.startHead,
       color: this.hancorColor,
       radious: this.pointSize,
     });
@@ -160,7 +166,7 @@ class Node {
   exitPoint() {
     circle(this.ctx, {
       x: this.endPosition.x,
-      y: this.endPosition.y - this.headHeight,
+      y: this.startHead - this.headHeight,
       color: this.hancorColor,
       radious: this.pointSize,
     });
@@ -183,7 +189,7 @@ class Node {
         y:
           argsPlaceholder.moduleAbs -
           argsPlaceholder.module / 2 +
-          (this.endPosition.y - this.headHeight + this.heightTabHeader),
+          (this.startHead - this.headHeight + this.heightTabHeader),
         color: this.placeHoldersColor,
         radious: radiousCircle,
       });
@@ -202,7 +208,7 @@ class Node {
         y:
           argsPlaceholder.moduleAbs -
           argsPlaceholder.module / 2 +
-          (this.endPosition.y - this.headHeight + this.heightTabHeader) -
+          (this.startHead - this.headHeight + this.heightTabHeader) -
           this.placeholderSize / 2,
         width: lineWidth,
         height: this.placeholderSize, //metti su
@@ -215,17 +221,33 @@ class Node {
     this.ctx.fill();
   }
 
-  drawAll() {
-    this.line();
-    this.head();
-    this.entryPoint();
-    this.exitPoint();
+  drawAll(args) {
+    var defaults = {
+      line: true,
+      head: true,
+      entryPoint: true,
+      exitPoint: true,
+    };
+    args = args || {};
+    for (var key in defaults) {
+      if (!(key in args)) {
+        args[key] = defaults[key];
+      }
+    }
+
+    if (args.line) this.line();
+
+    if (args.head) this.head();
+
+    if (args.entryPoint) this.entryPoint();
+
+    if (args.exitPoint) this.exitPoint();
   }
 
   getExitPoint() {
     return {
       x: this.endPosition.x,
-      y: this.endPosition.y - this.headHeight,
+      y: this.startHead - this.headHeight,
     };
   }
 

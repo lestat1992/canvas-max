@@ -309,7 +309,6 @@ function render() {
       headType: 2,
     },
   });
-  Node1.drawAll();
 
   let Node2 = new Node(ctx, {
     ...defaultPropsNode,
@@ -320,7 +319,7 @@ function render() {
       headWidth: vw(15),
       headType: 3,
     },
-  }).drawAll();
+  });
 
   let Node3 = new Node(ctx, {
     ...defaultPropsNode,
@@ -331,7 +330,7 @@ function render() {
       headWidth: vw(15),
       headType: 1,
     },
-  }).drawAll();
+  });
 
   let Node4 = new Node(ctx, {
     ...defaultPropsNode,
@@ -343,7 +342,12 @@ function render() {
       headType: 1,
       reverseEntry: true,
     },
-  }).drawAll();
+  });
+
+  Node4.drawAll({ entryPoint: false });
+  Node3.drawAll({ exitPoint: false });
+  Node2.drawAll({ exitPoint: false });
+  Node1.drawAll();
 
   //debug
   pointCordinates(ctx, {
