@@ -131,27 +131,41 @@ class Timelines {
       sumPastKeyframe += el.keyframes[i].time;
     }
 
-    switch (el.type) {
-      case "x":
-        return getX({
-          xTo: el.keyframes[index].value,
-          xFrom: el.keyframes[index - 1].value,
-          frame: this.frame - sumPastKeyframe,
-          frames: el.keyframes[index].time,
-          type: el.keyframes[index].type,
-        });
-        break;
-      case "y":
-        return getY({
-          yTo: el.keyframes[index].value,
-          yFrom: el.keyframes[index - 1].value,
-          frame: this.frame - sumPastKeyframe,
-          frames: el.keyframes[index].time,
-          type: el.keyframes[index].type,
-        });
-        break;
-      default:
-        break;
+    console.log("ciao");
+    console.log(el, index);
+
+    if (el.keyframes[index - 1]) {
+      switch (el.type) {
+        case "x":
+          return getX({
+            xTo: el.keyframes[index].value,
+            xFrom: el.keyframes[index - 1].value,
+            frame: this.frame - sumPastKeyframe,
+            frames: el.keyframes[index].time,
+            type: el.keyframes[index].type,
+          });
+          break;
+        case "y":
+          return getY({
+            yTo: el.keyframes[index].value,
+            yFrom: el.keyframes[index - 1].value,
+            frame: this.frame - sumPastKeyframe,
+            frames: el.keyframes[index].time,
+            type: el.keyframes[index].type,
+          });
+          break;
+        default:
+          break;
+      }
+    } else {
+      let indexTogo;
+      if (index === false) {
+        indexTogo = 0;
+      } else {
+        indexTogo = index;
+      }
+
+      return el.keyframes[indexTogo].value;
     }
   }
 

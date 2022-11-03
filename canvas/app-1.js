@@ -16,7 +16,7 @@ let t = [];
 //PRE-RENDER ##################
 const canvas = document.querySelector("#hero-canvas");
 
-let isAnimation = false;
+let isAnimation = true;
 
 let CInfo = new CanvasInfo(canvas);
 function vw(percentage) {
@@ -28,6 +28,15 @@ function vh(percentage) {
 function toF(s) {
   return CInfo.toF(s);
 }
+
+//(ANIM01)###############
+
+let timerTime = toF(200);
+
+let timerLoops = 0;
+let timer = 0;
+
+//#######################
 
 let endPosition;
 let endPosition2;
@@ -43,12 +52,6 @@ let timelineArray = [
         time: toF(0),
         type: "linear",
       },
-
-      {
-        value: 600, //vw(50)
-        time: toF(10),
-        type: "linear",
-      },
     ],
   },
   {
@@ -59,12 +62,6 @@ let timelineArray = [
       {
         value: vw(30),
         time: toF(0),
-        type: "linear",
-      },
-
-      {
-        value: 600,
-        time: toF(10),
         type: "linear",
       },
     ],
@@ -80,12 +77,6 @@ let timelineArray = [
         time: toF(0),
         type: "linear",
       },
-
-      {
-        value: 600, //vw(50)
-        time: toF(10),
-        type: "linear",
-      },
     ],
   },
   {
@@ -96,12 +87,6 @@ let timelineArray = [
       {
         value: vw(15),
         time: toF(0),
-        type: "linear",
-      },
-
-      {
-        value: 600,
-        time: toF(10),
         type: "linear",
       },
     ],
@@ -117,12 +102,6 @@ let timelineArray = [
         time: toF(0),
         type: "linear",
       },
-
-      {
-        value: 600, //vw(50)
-        time: toF(10),
-        type: "linear",
-      },
     ],
   },
   {
@@ -133,12 +112,6 @@ let timelineArray = [
       {
         value: vw(15),
         time: toF(0),
-        type: "linear",
-      },
-
-      {
-        value: 600,
-        time: toF(10),
         type: "linear",
       },
     ],
@@ -154,12 +127,6 @@ let timelineArray = [
         time: toF(0),
         type: "linear",
       },
-
-      {
-        value: 600, //vw(50)
-        time: toF(10),
-        type: "linear",
-      },
     ],
   },
   {
@@ -170,12 +137,6 @@ let timelineArray = [
       {
         value: vw(35),
         time: toF(0),
-        type: "linear",
-      },
-
-      {
-        value: 600,
-        time: toF(10),
         type: "linear",
       },
     ],
@@ -202,6 +163,27 @@ function render() {
   let client = CInfo.client;
 
   //###################################
+
+  //ADD KEYFRAMES after 1 sec (ANIM01)////////
+  /*
+  if( Timelines1.frame / timerLoops  ){
+
+  }
+  */
+
+  //timer init
+  if (Timelines1.frame > timer) {
+    addKeyframesRandomly();
+    timer = timerTime;
+  }
+
+  function addKeyframesRandomly() {
+    let cloneOriginaArray = JSON.parse(
+      JSON.stringify(Timelines1.timelineArray)
+    );
+    cloneOriginaArray.forEach((el) => {});
+  }
+
   //ANIMATABLE ########################
   let startPosition = { x: 0, y: vh(75) };
 
