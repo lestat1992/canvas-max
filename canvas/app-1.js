@@ -9,6 +9,8 @@ import Node from "./class/Node";
 import Timelines from "./class/Timelines";
 import Palette from "./class/Palette";
 
+import randomNum from "./functions/utility/randomNumber";
+
 ///////
 let t = [];
 //////
@@ -171,17 +173,45 @@ function render() {
   }
   */
 
+  let schemeTimeRandom = [
+    [10, 40, 80],
+    [50, 90],
+    [10, 30, 40, 60, 90],
+  ];
+
   //timer init
-  if (Timelines1.frame > timer) {
+  if (Timelines1.frame >= timer) {
     addKeyframesRandomly();
     timer = timerTime;
+    timerLoops = 1;
+  } else {
+    alert("Oltre la sfera del tuono JOHN");
   }
 
   function addKeyframesRandomly() {
     let cloneOriginaArray = JSON.parse(
       JSON.stringify(Timelines1.timelineArray)
     );
-    cloneOriginaArray.forEach((el) => {});
+    cloneOriginaArray.forEach((el1) => {
+      let partToAdd = [];
+
+      let original = el1.keyframes[0];
+
+      //timerTime
+
+      schemeTimeRandom[randomNum(1, schemeTimeRandom.length)].forEach(
+        (randomElTime) => {
+          let newKeyframe = {
+            value: vw(20), //qui metto una bellissima funzione per fare cose ADD!!!
+            time: timerTime / (randomElTime / 10) + timerTime * timerLoops,
+            type: "linear", //qui randomizzo  type ADD!!!
+          };
+          partToAdd.push(newKeyframe);
+        }
+      );
+
+      //magica funzione per spedirle alla timeline
+    });
   }
 
   //ANIMATABLE ########################

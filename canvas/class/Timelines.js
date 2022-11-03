@@ -16,7 +16,6 @@ class Timelines {
       this.showTimelineInDom = attr.showTimelineInDom;
       this.showTimeline();
     } else {
-      console.log("è false john");
       this.showTimelineInDom = false;
     }
   }
@@ -130,9 +129,6 @@ class Timelines {
     for (let i = 0; i != index; i++) {
       sumPastKeyframe += el.keyframes[i].time;
     }
-
-    console.log("ciao");
-    console.log(el, index);
 
     if (el.keyframes[index - 1]) {
       switch (el.type) {
