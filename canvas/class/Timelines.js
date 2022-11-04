@@ -30,6 +30,20 @@ class Timelines {
     let mapKeyframeTime = this.calcMaxTime();
   }
 
+  pushNewKeyframes(name, keyframesArray) {
+    console.log("SEI QUI DENTRO --------------------------------");
+
+    let index = this.timelineArray.findIndex((el) => el.name == name);
+
+    //timelineUsed = [...timelineUsed, ...keyframesArray];
+
+    keyframesArray.reverse().forEach((el) => {
+      this.timelineArray[index].keyframes.push(el);
+    });
+
+    this.calcMaxTime();
+  }
+
   reorderArray(timelineArray) {
     let newArray = [];
     timelineArray.forEach((el1) => {

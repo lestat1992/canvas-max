@@ -33,7 +33,7 @@ function toF(s) {
 
 //(ANIM01)###############
 
-let timerTime = toF(200);
+let timerTime = toF(1);
 
 let timerLoops = 0;
 let timer = 0;
@@ -179,13 +179,14 @@ function render() {
     [10, 30, 40, 60, 90],
   ];
 
+  let offsetBase = vw(2);
+
   //timer init
   if (Timelines1.frame >= timer) {
+    // || Timelines1.frame == 1) {
+    timerLoops++;
+    timer = timerTime * timerLoops;
     addKeyframesRandomly();
-    timer = timerTime;
-    timerLoops = 1;
-  } else {
-    alert("Oltre la sfera del tuono JOHN");
   }
 
   function addKeyframesRandomly() {
@@ -202,7 +203,10 @@ function render() {
       schemeTimeRandom[randomNum(1, schemeTimeRandom.length)].forEach(
         (randomElTime) => {
           let newKeyframe = {
-            value: vw(20), //qui metto una bellissima funzione per fare cose ADD!!!
+            value: randomNum(
+              original.value - offsetBase,
+              original.value + offsetBase
+            ), //qui metto una bellissima funzione per fare cose ADD!!!
             time: timerTime / (randomElTime / 10) + timerTime * timerLoops,
             type: "linear", //qui randomizzo  type ADD!!!
           };
@@ -210,7 +214,7 @@ function render() {
         }
       );
 
-      //magica funzione per spedirle alla timeline
+      Timelines1.pushNewKeyframes(el1.name, partToAdd);
     });
   }
 
