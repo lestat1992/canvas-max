@@ -27,11 +27,10 @@ class Timelines {
   seTtimelineArray(timelineArray) {
     this.timelineArray = this.reorderArray(timelineArray);
     this.calcMaxTime();
-    let mapKeyframeTime = this.calcMaxTime();
+    //let mapKeyframeTime = this.calcMaxTime();
   }
 
   pushNewKeyframes(name, keyframesArray) {
-    console.log("SEI QUI DENTRO --------------------------------");
 
     let index = this.timelineArray.findIndex((el) => el.name == name);
 
@@ -42,6 +41,10 @@ class Timelines {
     });
 
     this.calcMaxTime();
+    if (this.showTimelineInDom) {
+      this.showTimeline();
+      this.updateTimeline();
+    }
   }
 
   reorderArray(timelineArray) {
@@ -187,6 +190,18 @@ class Timelines {
   //FOR TIMELINE RENDER #######################################
   //questa metodo crea la timeline in html
   showTimeline() {
+    //document.querySelector(".hero-bg").innerHTML = "";
+
+    //creo il wrapper se non è presente
+    let wrapper = document.querySelector(".time-main-wrapper");
+    if (!wrapper) {
+      let wrapperElement = document.createElement("div");
+      wrapperElement.classList.add("time-main-wrapper");
+      document.querySelector(".hero-bg").append(wrapperElement);
+    } else {
+      document.querySelector(".time-main-wrapper").innerHTML = "";
+    }
+
     let containerTimeline = document.createElement("div");
     containerTimeline.classList.add("timeline-box");
 
@@ -217,8 +232,10 @@ class Timelines {
       containerTimeline.append(part);
     });
 
-    document.querySelector(".hero-bg").append(containerTimeline);
+    //document.querySelector(".hero-bg").append(containerTimeline);
+    document.querySelector(".time-main-wrapper").append(containerTimeline);
   }
+
   //questa metodo sposta il cursore per far vedere il tempo
   updateTimeline() {
     let percentage = (this.frame / this.MaxTime) * 100;

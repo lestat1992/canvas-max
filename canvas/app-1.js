@@ -149,7 +149,7 @@ let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 
 let Timelines1 = new Timelines({
   timelineArray: timelineArray,
-  showTimelineInDom: false,
+  showTimelineInDom: true,
 });
 
 /*
