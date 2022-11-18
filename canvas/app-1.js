@@ -37,7 +37,7 @@ let timerTime = toF(1);
 
 let timerLoops = 0;
 let timer = 0;
-
+let offsetBase = vw(6);
 //#######################
 
 let endPosition;
@@ -147,8 +147,40 @@ let timelineArray = [
 
 let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 
+function addKeyframesRandomly() {
+  //rsultArray = [];
+  let cloneOriginaArray = timelineArray; //JSON.parse(JSON.stringify(timelineArray));
+  cloneOriginaArray.forEach((el1) => {
+    let partToAdd = [];
+
+    let original = el1.keyframes[0];
+
+    for (let index = 1; index <= 10; index++) {
+      let newKeyframe;
+      if (index == 10) {
+        newKeyframe = original;
+        newKeyframe["time"] = timerTime * index;
+      } else {
+        newKeyframe = {
+          value: randomNum(
+            original.value - offsetBase,
+            original.value + offsetBase
+          ), //qui metto una bellissima funzione per fare cose ADD!!!
+          time: timerTime * index, //timerTime / (randomElTime / 10) + timerTime * timerLoops,
+          type: "linear", //qui randomizzo  type ADD!!!
+        };
+      }
+      partToAdd.push(newKeyframe);
+    }
+    el1["keyframes"] = partToAdd;
+    //Timelines1.pushNewKeyframes(el1.name, partToAdd);
+  });
+
+  return cloneOriginaArray;
+}
+
 let Timelines1 = new Timelines({
-  timelineArray: timelineArray,
+  timelineArray: addKeyframesRandomly(),
   showTimelineInDom: true,
 });
 
@@ -173,50 +205,23 @@ function render() {
   }
   */
 
+  /*
   let schemeTimeRandom = [
     [10, 40, 80],
     [50, 90],
     [10, 30, 40, 60, 90],
   ];
-
-  let offsetBase = vw(2);
+  */
 
   //timer init
+  /*
   if (Timelines1.frame >= timer) {
     // || Timelines1.frame == 1) {
     timerLoops++;
     timer = timerTime * timerLoops;
     addKeyframesRandomly();
   }
-
-  function addKeyframesRandomly() {
-    let cloneOriginaArray = JSON.parse(
-      JSON.stringify(Timelines1.timelineArray)
-    );
-    cloneOriginaArray.forEach((el1) => {
-      let partToAdd = [];
-
-      let original = el1.keyframes[0];
-
-      //timerTime
-
-      schemeTimeRandom[randomNum(1, schemeTimeRandom.length)].forEach(
-        (randomElTime) => {
-          let newKeyframe = {
-            value: randomNum(
-              original.value - offsetBase,
-              original.value + offsetBase
-            ), //qui metto una bellissima funzione per fare cose ADD!!!
-            time: timerTime / (randomElTime / 10) + timerTime * timerLoops,
-            type: "linear", //qui randomizzo  type ADD!!!
-          };
-          partToAdd.push(newKeyframe);
-        }
-      );
-
-      Timelines1.pushNewKeyframes(el1.name, partToAdd);
-    });
-  }
+  */
 
   //ANIMATABLE ########################
   let startPosition = { x: 0, y: vh(75) };
@@ -378,8 +383,12 @@ function render() {
     y: 800,
     color: "#66ffff",
   });
+
+  requestAnimationFrame(render);
 }
 
+requestAnimationFrame(render);
+/*
 if (isAnimation) {
   function renderAnimated() {
     setTimeout(function () {
@@ -392,5 +401,6 @@ if (isAnimation) {
 } else {
   render();
 }
+*/
 
 //########################

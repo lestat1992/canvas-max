@@ -118,6 +118,12 @@ $keyFrameSize: 10px;
         height: 110%;
         background-color: rgb(83, 83, 83);
       }
+
+      &.active-keyframe {
+        &::before {
+          background-color: red !important;
+        }
+      }
     }
 
     &:last-child {

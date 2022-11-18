@@ -31,7 +31,6 @@ class Timelines {
   }
 
   pushNewKeyframes(name, keyframesArray) {
-
     let index = this.timelineArray.findIndex((el) => el.name == name);
 
     //timelineUsed = [...timelineUsed, ...keyframesArray];
@@ -129,6 +128,10 @@ class Timelines {
         }
       });
 
+      if (this.showTimelineInDom) {
+        this.showIndexSelected(el1, indexSelected);
+      }
+
       let part = {
         name: el1.name,
         value: this.processValue(el1, indexSelected),
@@ -143,28 +146,32 @@ class Timelines {
   processValue(el, index) {
     let sumPastKeyframe = 0;
 
-    for (let i = 0; i != index; i++) {
-      sumPastKeyframe += el.keyframes[i].time;
+    for (let i = 0; i < index - 1; i++) {
+      let e = el.keyframes[i].time;
+      let dif = e - sumPastKeyframe;
+      sumPastKeyframe = sumPastKeyframe + dif;
     }
 
     if (el.keyframes[index - 1]) {
       switch (el.type) {
         case "x":
+          console.log(el.name);
+          //console.log(this.frame, sumPastKeyframe);
           return getX({
             xTo: el.keyframes[index].value,
             xFrom: el.keyframes[index - 1].value,
-            frame: this.frame - sumPastKeyframe,
-            frames: el.keyframes[index].time,
-            type: el.keyframes[index].type,
+            frame: this.frame - sumPastKeyframe, //current frame
+            frames: el.keyframes[index].time - el.keyframes[index - 1].time, //next kyframe position
+            //type: el.keyframes[index].type,
           });
           break;
         case "y":
           return getY({
             yTo: el.keyframes[index].value,
             yFrom: el.keyframes[index - 1].value,
-            frame: this.frame - sumPastKeyframe,
-            frames: el.keyframes[index].time,
-            type: el.keyframes[index].type,
+            frame: this.frame - sumPastKeyframe, //current frame
+            frames: el.keyframes[index].time - el.keyframes[index - 1].time, //next kyframe position
+            //type: el.keyframes[index].type,
           });
           break;
         default:
@@ -212,6 +219,7 @@ class Timelines {
     this.timelineArray.forEach((el) => {
       let part = document.createElement("div");
       part.classList.add("timeline-part");
+      part.setAttribute("name", el.name);
 
       let label = document.createElement("div");
       label.classList.add("label-part");
@@ -219,11 +227,12 @@ class Timelines {
       part.append(label);
 
       //loop keyframe
-      el.keyframes.forEach((el2) => {
+      el.keyframes.forEach((el2, index2) => {
         let positionPercentage = (el2.time / this.MaxTime) * 100;
         let keyframe = document.createElement("div");
         keyframe.classList.add("keyframe");
         keyframe.setAttribute("data-value", el2.value);
+        keyframe.setAttribute("data-index", index2);
         keyframe.style.left = positionPercentage + "%";
 
         part.append(keyframe);
@@ -241,6 +250,21 @@ class Timelines {
     let percentage = (this.frame / this.MaxTime) * 100;
     let pointer = document.querySelector(".pointer");
     pointer.style.left = percentage + "%";
+  }
+
+  //mostro il keyframe in eleborazione
+  showIndexSelected(timeline, indexKeyframe) {
+    let allKeyframe = document.querySelectorAll(
+      '[name="' + timeline.name + '"] [data-index]'
+    );
+
+    allKeyframe.forEach((el) => {
+      if (el.getAttribute("data-index") == indexKeyframe) {
+        el.classList.add("active-keyframe");
+      } else {
+        el.classList.remove("active-keyframe");
+      }
+    });
   }
 }
 
