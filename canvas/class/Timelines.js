@@ -155,7 +155,7 @@ class Timelines {
     if (el.keyframes[index - 1]) {
       switch (el.type) {
         case "x":
-          console.log(el.name);
+          //console.log(el.name, this.frame, sumPastKeyframe);
           //console.log(this.frame, sumPastKeyframe);
           return getX({
             xTo: el.keyframes[index].value,

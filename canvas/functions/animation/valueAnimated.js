@@ -11,12 +11,16 @@ import getEase from "./getEase";
 */
 
 function getX(params) {
-  const { frame, frames, xFrom, xTo } = params;
+  const { xTo, xFrom, frame, frames } = params;
   //console.log(frame, frames);
   let percentagePocede = (frames / frame) * 100;
   let distance = xTo - xFrom;
+  let result = xTo + (distance / percentagePocede) * percentagePocede;
+  console.log(frame, frames, percentagePocede);
+  return result;
 
-  return xTo + (distance / percentagePocede) * percentagePocede;
+  //FRAME é SBAGLIATO A OGNI NUOVO KEYFRAME DEVE PERTIRE DA 0
+
   /*
   let distance = params.xTo - params.xFrom;
   let steps = params.frames;
@@ -26,11 +30,11 @@ function getX(params) {
 }
 
 function getY(params) {
-  const { frame, frames, yFrom, yTo } = params;
+  const { yTo, yFrom, frame, frames } = params;
   let percentagePocede = (frames / frame) * 100;
   let distance = yTo - yFrom;
-
-  return yTo + (distance / percentagePocede) * percentagePocede;
+  let result = yTo + (distance / percentagePocede) * percentagePocede;
+  return result;
 
   /*
   
