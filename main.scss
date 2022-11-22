@@ -18,20 +18,22 @@ https://stackoverflow.com/questions/52128997/how-to-create-canvas-class-with-jav
 
 
 */
-
+html {
+    opacity: 0;
+}
 .hero-bg {
-  width: 100%;
-  height: 56vw;
-  max-height: 100vh;
-  background-color: antiquewhite;
-  position: relative;
-  canvas {
     width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+    height: 56vw;
+    max-height: 100vh;
+    background-color: antiquewhite;
+    position: relative;
+    canvas {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
 
 $marginWrapper: 20px;
@@ -43,113 +45,113 @@ $saturationPalette: 50%;
 $keyFrameSize: 10px;
 
 .timeline-box {
-  position: fixed;
-  bottom: $marginWrapper;
-  right: $marginWrapper;
-  width: calc(100% - $marginWrapper * 2);
-  background-color: rgb(83, 83, 83);
+    position: fixed;
+    bottom: $marginWrapper;
+    right: $marginWrapper;
+    width: calc(100% - $marginWrapper * 2);
+    background-color: rgb(83, 83, 83);
 
-  .pointer {
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 2px;
-    background-color: rgb(29, 29, 29);
-    z-index: 1000;
-    transition: 0.01s left;
-    &:before {
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 0;
-      top: 0;
-      border-style: solid;
-      border-width: 5px 4px 0 4px;
-      border-color: #2e2e2e transparent transparent transparent;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 0 4px 5px 4px;
-      border-color: transparent transparent #2e2e2e transparent;
-    }
-    &::before,
-    &::after {
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
-
-  .timeline-part {
-    position: relative;
-    width: 100%;
-    height: $heightPart;
-    margin-bottom: 1px;
-    border-radius: 5px;
-
-    .label-part {
-      position: absolute;
-      top: 0;
-      left: 5px;
-      text-transform: uppercase;
-      font-size: 13px;
-      font-family: monospace;
-      text-shadow: 1px 1px 0 white;
-    }
-
-    .keyframe {
-      position: absolute;
-      top: 50%;
-      transform: translate(-$keyFrameSize/2, -$keyFrameSize/2);
-      width: $keyFrameSize;
-      height: $keyFrameSize;
-
-      &::before {
-        content: "";
+    .pointer {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%) rotate(-45deg);
-        width: 110%;
-        height: 110%;
-        background-color: rgb(83, 83, 83);
-      }
-
-      &.active-keyframe {
-        &::before {
-          background-color: red !important;
+        left: 0;
+        height: 100%;
+        width: 2px;
+        background-color: rgb(29, 29, 29);
+        z-index: 1000;
+        transition: 0.01s left;
+        &:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 0;
+            border-style: solid;
+            border-width: 5px 4px 0 4px;
+            border-color: #2e2e2e transparent transparent transparent;
         }
-      }
+        &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 4px 5px 4px;
+            border-color: transparent transparent #2e2e2e transparent;
+        }
+        &::before,
+        &::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 
-    &:last-child {
-      margin-bottom: 0;
-    }
+    .timeline-part {
+        position: relative;
+        width: 100%;
+        height: $heightPart;
+        margin-bottom: 1px;
+        border-radius: 5px;
 
-    &:nth-child(7n + 1) {
-      background-color: hsl(0, $saturationPalette, $lightPalette);
+        .label-part {
+            position: absolute;
+            top: 0;
+            left: 5px;
+            text-transform: uppercase;
+            font-size: 13px;
+            font-family: monospace;
+            text-shadow: 1px 1px 0 white;
+        }
+
+        .keyframe {
+            position: absolute;
+            top: 50%;
+            transform: translate(-$keyFrameSize/2, -$keyFrameSize/2);
+            width: $keyFrameSize;
+            height: $keyFrameSize;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+                width: 110%;
+                height: 110%;
+                background-color: rgb(83, 83, 83);
+            }
+
+            &.active-keyframe {
+                &::before {
+                    background-color: red !important;
+                }
+            }
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        &:nth-child(7n + 1) {
+            background-color: hsl(0, $saturationPalette, $lightPalette);
+        }
+        &:nth-child(7n + 2) {
+            background-color: hsl(39, $saturationPalette, $lightPalette);
+        }
+        &:nth-child(7n + 3) {
+            background-color: hsl(60, $saturationPalette, $lightPalette);
+        }
+        &:nth-child(7n + 4) {
+            background-color: hsl(120, $saturationPalette, $lightPalette);
+        }
+        &:nth-child(7n + 5) {
+            background-color: hsl(240, $saturationPalette, $lightPalette);
+        }
+        &:nth-child(7n + 6) {
+            background-color: hsl(275, $saturationPalette, $lightPalette);
+        }
+        &:nth-child(7n + 7) {
+            background-color: hsl(300, $saturationPalette, $lightPalette);
+        }
     }
-    &:nth-child(7n + 2) {
-      background-color: hsl(39, $saturationPalette, $lightPalette);
-    }
-    &:nth-child(7n + 3) {
-      background-color: hsl(60, $saturationPalette, $lightPalette);
-    }
-    &:nth-child(7n + 4) {
-      background-color: hsl(120, $saturationPalette, $lightPalette);
-    }
-    &:nth-child(7n + 5) {
-      background-color: hsl(240, $saturationPalette, $lightPalette);
-    }
-    &:nth-child(7n + 6) {
-      background-color: hsl(275, $saturationPalette, $lightPalette);
-    }
-    &:nth-child(7n + 7) {
-      background-color: hsl(300, $saturationPalette, $lightPalette);
-    }
-  }
 }
