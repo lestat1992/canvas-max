@@ -33,9 +33,9 @@ function getX(params) {
 
 function getY(params) {
   const { yTo, yFrom, frame, frames } = params;
-  let percentagePocede = (frames / frame) * 100;
+  let percentagePocede = (frame / frames) * 100;
   let distance = yTo - yFrom;
-  let result = yTo + (distance / percentagePocede) * percentagePocede;
+  let result = yFrom + (percentagePocede * distance) / 100;
   return result;
 
   /*
