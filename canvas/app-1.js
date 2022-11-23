@@ -37,7 +37,20 @@ let timerTime = toF(1);
 
 let timerLoops = 0;
 let timer = 0;
-let offsetBase = vw(6);
+let offsetBase = vw(0.5);
+
+let easinArray = [
+  "static",
+  "cubic",
+  "quartic",
+  "quintic",
+  "sinusoidal",
+  "exponential",
+  "none",
+];
+let schemeTimeRandom = [0, 0.2, 0.3, 0.5, 0.4, 1, 3, 4];
+let variationValue = [0, 0.2, 0.5, 0.8, 0.4];
+
 //#######################
 
 let endPosition;
@@ -149,27 +162,33 @@ let Palette1 = new Palette(["#00ffc4", "#663399", "#ffc0cb"]);
 
 function addKeyframesRandomly() {
   //rsultArray = [];
-  let cloneOriginaArray = timelineArray; //JSON.parse(JSON.stringify(timelineArray));
-  cloneOriginaArray.forEach((el1) => {
+  let cloneOriginaArray = JSON.parse(JSON.stringify(timelineArray)); //JSON.parse(JSON.stringify(timelineArray));
+  cloneOriginaArray.forEach((el1, index) => {
     let partToAdd = [];
 
-    let original = el1.keyframes[0];
+    let original = timelineArray[index].keyframes[0];
+    partToAdd.push(original);
 
     for (let index = 1; index <= 10; index++) {
       let newKeyframe;
       if (index == 10) {
-        newKeyframe = original;
+        newKeyframe = JSON.parse(JSON.stringify(original));
         newKeyframe["time"] = timerTime * index;
       } else {
         newKeyframe = {
           value: randomNum(
             original.value - offsetBase,
-            original.value + offsetBase
+            original.value +
+              offsetBase +
+              vw(variationValue[randomNum(0, variationValue.length)])
           ), //qui metto una bellissima funzione per fare cose ADD!!!
-          time: timerTime * index, //timerTime / (randomElTime / 10) + timerTime * timerLoops,
-          type: "linear", //qui randomizzo  type ADD!!!
+          time:
+            timerTime * index -
+            toF(schemeTimeRandom[randomNum(0, schemeTimeRandom.length)]), //timerTime / (randomElTime / 10) + timerTime * timerLoops,
+          type: easinArray[randomNum(0, easinArray.length)], //qui randomizzo  type ADD!!! easinArray
         };
       }
+      //are you choking?
       partToAdd.push(newKeyframe);
     }
     el1["keyframes"] = partToAdd;
@@ -179,9 +198,11 @@ function addKeyframesRandomly() {
   return cloneOriginaArray;
 }
 
+console.log(addKeyframesRandomly());
+
 let Timelines1 = new Timelines({
   timelineArray: addKeyframesRandomly(),
-  showTimelineInDom: true,
+  showTimelineInDom: false,
 });
 
 /*
@@ -369,20 +390,6 @@ function render() {
   Node3.drawAll({ exitPoint: false });
   Node2.drawAll({ exitPoint: false });
   Node1.drawAll();
-
-  //debug
-  pointCordinates(ctx, {
-    x: 600,
-    y: 500,
-    color: "#66ff99",
-  });
-
-  //debug
-  pointCordinates(ctx, {
-    x: 500,
-    y: 800,
-    color: "#66ffff",
-  });
 
   requestAnimationFrame(render);
 }
