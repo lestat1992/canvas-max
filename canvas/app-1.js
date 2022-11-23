@@ -198,12 +198,12 @@ function addKeyframesRandomly() {
   return cloneOriginaArray;
 }
 
-console.log(addKeyframesRandomly());
-
 let Timelines1 = new Timelines({
   timelineArray: addKeyframesRandomly(),
-  showTimelineInDom: false,
+  showTimelineInDom: true,
 });
+
+console.log(Timelines1.timelineArray);
 
 /*
   render Function
@@ -243,6 +243,10 @@ function render() {
     addKeyframesRandomly();
   }
   */
+
+  if (Timelines1.frame == 1) {
+    Timelines1.seTtimelineArray(addKeyframesRandomly());
+  }
 
   //ANIMATABLE ########################
   let startPosition = { x: 0, y: vh(75) };
