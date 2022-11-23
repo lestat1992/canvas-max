@@ -1,15 +1,5 @@
 import getEase from "./getEase";
 
-/*
-
-  IL CALCOLO MAGGICO
-
- percenturaleDiAvanzamentoAnimazione =  tempoTotaleAnimazione / tempo * 100;
-
- distance = params.xTo - params.xFrom
- result  = params.xTo + ( distance / tempoTotaleAnimazione ) * percenturaleDiAvanzamentoAnimazione
-*/
-
 function getX(params) {
   let distance = params.xTo - params.xFrom;
   let steps = params.frames;

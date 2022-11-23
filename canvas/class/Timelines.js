@@ -28,13 +28,10 @@ class Timelines {
     this.timelineArray = this.reorderArray(timelineArray);
     this.calcMaxTime();
     this.showTimeline();
-    //let mapKeyframeTime = this.calcMaxTime();
   }
 
   pushNewKeyframes(name, keyframesArray) {
     let index = this.timelineArray.findIndex((el) => el.name == name);
-
-    //timelineUsed = [...timelineUsed, ...keyframesArray];
 
     keyframesArray.reverse().forEach((el) => {
       this.timelineArray[index].keyframes.push(el);
@@ -156,9 +153,6 @@ class Timelines {
     if (el.keyframes[index - 1]) {
       switch (el.type) {
         case "x":
-          //console.log(el.name, this.frame, sumPastKeyframe);
-          //console.log(this.frame - sumPastKeyframe);
-          //console.log(sumPastKeyframe);
           let i = false;
 
           if (el.name == "endPOsitionX") {
@@ -170,7 +164,6 @@ class Timelines {
             frame: this.frame - sumPastKeyframe, //current frame
             frames: el.keyframes[index].time - el.keyframes[index - 1].time, //next kyframe position
             i: i,
-            //type: el.keyframes[index].type,
           });
 
           break;
@@ -180,7 +173,6 @@ class Timelines {
             yFrom: el.keyframes[index - 1].value,
             frame: this.frame - sumPastKeyframe, //current frame
             frames: el.keyframes[index].time - el.keyframes[index - 1].time, //next kyframe position
-            //type: el.keyframes[index].type,
           });
           break;
         default:
@@ -206,8 +198,6 @@ class Timelines {
   //FOR TIMELINE RENDER #######################################
   //questa metodo crea la timeline in html
   showTimeline() {
-    //document.querySelector(".hero-bg").innerHTML = "";
-
     //creo il wrapper se non è presente
     let wrapper = document.querySelector(".time-main-wrapper");
     if (!wrapper) {
@@ -250,7 +240,6 @@ class Timelines {
       containerTimeline.append(part);
     });
 
-    //document.querySelector(".hero-bg").append(containerTimeline);
     document.querySelector(".time-main-wrapper").append(containerTimeline);
   }
 

@@ -219,31 +219,6 @@ function render() {
 
   //###################################
 
-  //ADD KEYFRAMES after 1 sec (ANIM01)////////
-  /*
-  if( Timelines1.frame / timerLoops  ){
-
-  }
-  */
-
-  /*
-  let schemeTimeRandom = [
-    [10, 40, 80],
-    [50, 90],
-    [10, 30, 40, 60, 90],
-  ];
-  */
-
-  //timer init
-  /*
-  if (Timelines1.frame >= timer) {
-    // || Timelines1.frame == 1) {
-    timerLoops++;
-    timer = timerTime * timerLoops;
-    addKeyframesRandomly();
-  }
-  */
-
   if (Timelines1.frame == 1) {
     Timelines1.seTtimelineArray(addKeyframesRandomly());
   }
