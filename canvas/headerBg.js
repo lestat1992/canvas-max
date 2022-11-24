@@ -60,7 +60,8 @@ function headerBg(params) {
   }
 
   render();
-  //aggiungi discorso resize
+
+  //aggiungi discorso resize TO DO
 }
 
 export default headerBg;

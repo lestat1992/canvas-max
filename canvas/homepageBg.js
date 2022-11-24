@@ -367,6 +367,8 @@ function homepageBg(params) {
   }
 
   //########################
+
+  //aggiungi discorso resize TO DO
 }
 
 export default homepageBg;
