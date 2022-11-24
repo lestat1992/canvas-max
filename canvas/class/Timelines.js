@@ -27,7 +27,9 @@ class Timelines {
   seTtimelineArray(timelineArray) {
     this.timelineArray = this.reorderArray(timelineArray);
     this.calcMaxTime();
-    this.showTimeline();
+    if (this.showTimelineInDom) {
+      this.showTimeline();
+    }
   }
 
   pushNewKeyframes(name, keyframesArray) {

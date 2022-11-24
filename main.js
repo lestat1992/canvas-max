@@ -1,6 +1,15 @@
 import "./main.scss";
 
-import "./canvas/app-1";
+import homepageBg from "./canvas/homepageBg";
+
+let params1 = {
+  target: "#hero-canvas",
+  palette: ["#00ffc4", "#663399", "#ffc0cb"],
+  bgColors: ["lightblue", "red"],
+  pointColors: "white"
+};
+
+homepageBg(params1);
 
 //import javascriptLogo from "./javascript.svg";
 //import { setupCounter } from "./counter.js";
