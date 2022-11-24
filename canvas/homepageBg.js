@@ -1,7 +1,6 @@
 import pointCordinates from "./functions/utility/pointCordinates";
 
-import circle from "./functions/circle";
-
+import CircleBg from "./class/CircleBg";
 import CanvasInfo from "./class/CanvasInfo";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
@@ -269,28 +268,15 @@ function homepageBg(params) {
     newBackground.drawLinear();
 
     //circle bg .......................
-    let rowPointN = 60;
-    let encumbrancePoints = vw(100) / rowPointN;
-
-    for (let iX = 0; iX < rowPointN; iX++) {
-      for (let iY = 0; iY < rowPointN; iY++) {
-        let radious = vw(0.05);
-        if (iX % 2 == 0 && iY % 2 == 0) {
-          radious = vw(0.1);
-        }
-        if (iX % 4 == 0 && iY % 4 == 0) {
-          radious = vw(0.15);
-        }
-        let args1 = {
-          x: iX * encumbrancePoints,
-          y: iY * encumbrancePoints,
-          radious: radious,
-          color: "white",
-        };
-        circle(ctx, args1);
-      }
-    }
-
+    let CircleBg1 = new CircleBg(ctx, {
+      widthBg: vw(100),
+      rowPointN: 60,
+      radious1: vw(0.15),
+      radious2: vw(0.1),
+      radious3: vw(0.05),
+      colorFill: "white",
+    });
+    CircleBg1.circleBgRect();
     //.................................
     Palette1.setSelectedColor("#663399");
     let paletteNode1 = Palette1.monocromathic([
