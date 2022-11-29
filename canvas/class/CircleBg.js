@@ -13,7 +13,8 @@ class CircleBg {
   circleBgRect() {
     let encumbrancePoints = this.widthBg / this.rowPointN;
     for (let iX = 0; iX < this.rowPointN; iX++) {
-      for (let iY = 0; iY < this.rowPointN; iY++) {
+      // * 2 fo aditional point for potrati device
+      for (let iY = 0; iY < this.rowPointN * 2; iY++) {
         let radious = this.radious3;
         if (iX % 2 == 0 && iY % 2 == 0) {
           radious = this.radious2;
