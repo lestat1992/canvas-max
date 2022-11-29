@@ -61,6 +61,7 @@ function halfScreenBg(params) {
     let endPosition3;
     let endPosition4;
     let endPosition5;
+    let endPosition6;
     let timelineArray = [
       {
         name: "endPOsitionX",
@@ -185,6 +186,31 @@ function halfScreenBg(params) {
           },
         ],
       },
+      //------------------------
+      {
+        name: "endPOsitionX6",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(100),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY6",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(20),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
     ];
 
     let Palette1 = new Palette(params.palette);
@@ -276,6 +302,11 @@ function halfScreenBg(params) {
       endPosition5 = {
         x: Timelines1.getValueFromSlug("endPOsitionX5"),
         y: Timelines1.getValueFromSlug("endPOsitionY5"),
+      };
+
+      endPosition6 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX6"),
+        y: Timelines1.getValueFromSlug("endPOsitionY6"),
       };
 
       //###################################
@@ -396,6 +427,19 @@ function halfScreenBg(params) {
         },
       });
 
+      let Node6 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node6",
+          startPosition: Node5.getExitPoint(),
+          endPosition: endPosition6,
+          headWidth: vw(30),
+          headType: 1,
+          reverseEntry: false,
+        },
+      });
+
+      Node6.drawAll({ exitPoint: false });
       Node5.drawAll();
       Node4.drawAll({ entryPoint: false });
       Node3.drawAll();
