@@ -61,7 +61,11 @@ function headerBg(params) {
 
   render();
 
-  //aggiungi discorso resize TO DO
+  ["orientationchange", "resize"].forEach((handler) => {
+    window.addEventListener(handler, () => {
+      render();
+    });
+  });
 }
 
 export default headerBg;
