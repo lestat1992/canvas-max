@@ -242,6 +242,8 @@ class Node {
     if (args.entryPoint) this.entryPoint();
 
     if (args.exitPoint) this.exitPoint();
+
+    this.debug();
   }
 
   getExitPoint() {
