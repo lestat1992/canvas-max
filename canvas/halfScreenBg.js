@@ -24,7 +24,7 @@ function halfScreenBg(params) {
     //PRE-RENDER ##################
     const canvas = document.querySelector(params.target);
 
-    let isAnimation = false;
+    let isAnimation = true;
 
     let CInfo = new CanvasInfo(canvas);
     function vw(percentage) {
@@ -62,13 +62,17 @@ function halfScreenBg(params) {
     let endPosition4;
     let endPosition5;
     let endPosition6;
+    let endPosition7;
+    let endPosition8;
+    let endPosition9; //fake non togliere
+    let endPosition10; //fake non togliere
     let timelineArray = [
       {
         name: "endPOsitionX",
         type: "x",
         keyframes: [
           {
-            value: vw(55),
+            value: vw(65),
             time: toF(0),
             type: "linear",
           },
@@ -180,7 +184,7 @@ function halfScreenBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(25),
+            value: vw(50),
             time: toF(0),
             type: "linear",
           },
@@ -206,6 +210,108 @@ function halfScreenBg(params) {
         keyframes: [
           {
             value: vw(20),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      {
+        name: "endPOsitionX7",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(60),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY7",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(20),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      {
+        name: "endPOsitionX8",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(25),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY8",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(50),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      //FAKE
+      {
+        name: "endPOsitionX9",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(20),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY9",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(10),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      //FAKE
+      {
+        name: "endPOsitionX10",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(-20),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY10",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(-20),
             time: toF(0),
             type: "linear",
           },
@@ -307,6 +413,26 @@ function halfScreenBg(params) {
       endPosition6 = {
         x: Timelines1.getValueFromSlug("endPOsitionX6"),
         y: Timelines1.getValueFromSlug("endPOsitionY6"),
+      };
+
+      endPosition7 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX7"),
+        y: Timelines1.getValueFromSlug("endPOsitionY7"),
+      };
+
+      endPosition8 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX8"),
+        y: Timelines1.getValueFromSlug("endPOsitionY8"),
+      };
+
+      endPosition9 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX9"),
+        y: Timelines1.getValueFromSlug("endPOsitionY9"),
+      };
+
+      endPosition10 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX10"),
+        y: Timelines1.getValueFromSlug("endPOsitionY10"),
       };
 
       //###################################
@@ -423,7 +549,7 @@ function halfScreenBg(params) {
           endPosition: endPosition5,
           headWidth: vw(30),
           headType: 2,
-          reverseEntry: true,
+          reverseEntry: false,
         },
       });
 
@@ -439,6 +565,60 @@ function halfScreenBg(params) {
         },
       });
 
+      let Node7 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node7",
+          startPosition: Node5.getExitPoint(),
+          endPosition: endPosition7,
+          headWidth: vw(30),
+          headType: 1,
+          reverseEntry: false,
+        },
+      });
+
+      let Node8 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node8",
+          startPosition: Node2.getExitPoint(),
+          endPosition: endPosition8,
+          headWidth: vw(30),
+          headType: 2,
+          reverseEntry: false,
+        },
+      });
+
+      //ONLY LINE
+      let Node9 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node9",
+          startPosition: Node8.getExitPoint(),
+          endPosition: endPosition7,
+          headWidth: vw(30),
+          headType: 2,
+          reverseEntry: false,
+        },
+      });
+
+      //ONLY LINE
+      let Node10 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node10",
+          startPosition: Node8.getExitPoint(),
+          endPosition: endPosition10,
+          headWidth: vw(30),
+          headType: 2,
+          reverseEntry: false,
+        },
+      });
+
+      Node10.line();
+      Node9.line();
+      Node8.drawAll();
+      Node7.drawAll({ exitPoint: false });
       Node6.drawAll({ exitPoint: false });
       Node5.drawAll();
       Node4.drawAll({ entryPoint: false });
