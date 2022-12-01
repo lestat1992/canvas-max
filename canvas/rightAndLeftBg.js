@@ -80,7 +80,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(30),
+            value: vw(25),
             time: toF(0),
             type: "linear",
           },
@@ -105,7 +105,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(15),
+            value: vw(10),
             time: toF(0),
             type: "linear",
           },
@@ -130,7 +130,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(15),
+            value: vw(10),
             time: toF(0),
             type: "linear",
           },
@@ -155,7 +155,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(35),
+            value: vw(30),
             time: toF(0),
             type: "linear",
           },
@@ -179,7 +179,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(30),
+            value: vw(25),
             time: toF(0),
             type: "linear",
           },
@@ -204,7 +204,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(15),
+            value: vw(10),
             time: toF(0),
             type: "linear",
           },
@@ -217,7 +217,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(70),
+            value: vw(75),
             time: toF(0),
             type: "linear",
           },
@@ -229,7 +229,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(15),
+            value: vw(10),
             time: toF(0),
             type: "linear",
           },
@@ -254,7 +254,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(35),
+            value: vw(30),
             time: toF(0),
             type: "linear",
           },
@@ -329,7 +329,7 @@ function rightAndLeftBg(params) {
       let startPosition = { x: 0, y: vh(75) };
 
       let startPosition_r = { x: vw(150), y: vh(90) };
-      let startPosition2_r = { x: vw(150), y: vh(180) };
+      let startPosition2_r = { x: vw(50), y: vh(180) };
 
       //L ################################################
       endPosition = {
