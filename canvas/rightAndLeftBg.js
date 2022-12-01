@@ -55,11 +55,17 @@ function rightAndLeftBg(params) {
     let endPosition2;
     let endPosition3;
     let endPosition4;
+    let endPosition5; //
+    let endPosition6;
+    let endPosition7;
 
     let endPosition_r;
     let endPosition2_r;
     let endPosition3_r;
     let endPosition4_r;
+    let endPosition5_r; //
+    let endPosition6_r;
+    let endPosition7_r;
 
     let timelineArray = [
       //L ####################################
@@ -93,7 +99,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(9),
+            value: vw(8),
             time: toF(0),
             type: "linear",
           },
@@ -105,7 +111,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(10),
+            value: vw(15),
             time: toF(0),
             type: "linear",
           },
@@ -161,6 +167,82 @@ function rightAndLeftBg(params) {
           },
         ],
       },
+      //------------------------/////##
+      {
+        name: "endPOsitionX5",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(10),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY5",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(40),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      {
+        name: "endPOsitionX6",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(20),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY6",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(20),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      {
+        name: "endPOsitionX7",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(5),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY7",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(8),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+
       //R ####################################
       {
         name: "endPOsitionX_r",
@@ -204,7 +286,7 @@ function rightAndLeftBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(10),
+            value: vw(5),
             time: toF(0),
             type: "linear",
           },
@@ -255,6 +337,82 @@ function rightAndLeftBg(params) {
         keyframes: [
           {
             value: vw(30),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+
+      //------------------------//###
+      {
+        name: "endPOsitionX5_r",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(65),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY5_r",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(41),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      {
+        name: "endPOsitionX6_r",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(95),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY6_r",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(40),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
+      {
+        name: "endPOsitionX7_r",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(85),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY7_r",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(12),
             time: toF(0),
             type: "linear",
           },
@@ -352,6 +510,20 @@ function rightAndLeftBg(params) {
         y: Timelines1.getValueFromSlug("endPOsitionY4"),
       };
 
+      endPosition5 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX5"),
+        y: Timelines1.getValueFromSlug("endPOsitionY5"),
+      };
+
+      endPosition6 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX6"),
+        y: Timelines1.getValueFromSlug("endPOsitionY6"),
+      };
+
+      endPosition7 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX7"),
+        y: Timelines1.getValueFromSlug("endPOsitionY7"),
+      };
       //R ################################################
 
       endPosition_r = {
@@ -374,6 +546,20 @@ function rightAndLeftBg(params) {
         y: Timelines1.getValueFromSlug("endPOsitionY4_r"),
       };
 
+      endPosition5_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX5_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY5_r"),
+      };
+
+      endPosition6_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX6_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY6_r"),
+      };
+
+      endPosition7_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX7_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY7_r"),
+      };
       //###################################
 
       //Creating context###################
@@ -421,13 +607,13 @@ function rightAndLeftBg(params) {
       ]);
 
       let defaultPropsNode = {
-        stroke: vw(0.5),
-        pointSize: vw(1),
-        borderRadious: vw(0.5),
-        heightTabHeader: vw(1.5),
-        paddingVerical: vw(1),
-        paddingHorizontal: vw(1),
-        placeholderSize: vw(1),
+        stroke: vw(0.25),
+        pointSize: vw(0.5),
+        borderRadious: vw(0.25),
+        heightTabHeader: vw(0.75),
+        paddingVerical: vw(0.5),
+        paddingHorizontal: vw(0.5),
+        placeholderSize: vw(0.5),
         lineColor: paletteNode1[0].new,
         placeHoldersColor: paletteNode1[1].new,
         hancorColor: paletteNode1[2].new,
@@ -442,7 +628,7 @@ function rightAndLeftBg(params) {
           name: "node1",
           startPosition: startPosition,
           endPosition: endPosition,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 4,
         },
       });
@@ -453,7 +639,7 @@ function rightAndLeftBg(params) {
           name: "node2",
           startPosition: Node1.getExitPoint(),
           endPosition: endPosition2,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 3,
         },
       });
@@ -464,7 +650,7 @@ function rightAndLeftBg(params) {
           name: "node3",
           startPosition: Node1.getExitPoint(),
           endPosition: endPosition3,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 1,
         },
       });
@@ -475,9 +661,43 @@ function rightAndLeftBg(params) {
           name: "node4",
           startPosition: endPosition,
           endPosition: endPosition4,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 2,
           reverseEntry: true,
+        },
+      });
+
+      let Node5 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node5",
+          startPosition: startPosition2_r,
+          endPosition: endPosition5,
+          headWidth: vw(7.7),
+          headType: 4,
+        },
+      });
+
+      let Node6 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node6",
+          startPosition: endPosition4,
+          endPosition: endPosition6,
+          headWidth: vw(7.7),
+          headType: 1,
+          reverseEntry: true,
+        },
+      });
+
+      let Node7 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node7",
+          startPosition: Node2.getExitPoint(),
+          endPosition: endPosition7,
+          headWidth: vw(7.7),
+          headType: 4,
         },
       });
 
@@ -490,7 +710,18 @@ function rightAndLeftBg(params) {
             x: endPosition4.x,
             y: Node4.headHeight + endPosition4.y,
           },
-          headWidth: vw(15),
+          headWidth: vw(7.7),
+          headType: 2,
+        },
+      });
+
+      let line2 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line",
+          startPosition: Node5.getExitPoint(),
+          endPosition: endPosition,
+          headWidth: vw(7.7),
           headType: 2,
         },
       });
@@ -502,7 +733,7 @@ function rightAndLeftBg(params) {
           name: "node1_r",
           startPosition: startPosition_r,
           endPosition: endPosition_r,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 4,
         },
       });
@@ -513,7 +744,7 @@ function rightAndLeftBg(params) {
           name: "node2_r",
           startPosition: Node1_r.getExitPoint(),
           endPosition: endPosition2_r,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 3,
         },
       });
@@ -524,7 +755,7 @@ function rightAndLeftBg(params) {
           name: "node4_r",
           startPosition: endPosition_r,
           endPosition: endPosition4_r,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 2,
           reverseEntry: true,
         },
@@ -536,8 +767,47 @@ function rightAndLeftBg(params) {
           name: "node3_r",
           startPosition: Node4_r.getExitPoint(),
           endPosition: endPosition3_r,
-          headWidth: vw(15),
+          headWidth: vw(7.7),
           headType: 1,
+        },
+      });
+
+      let Node5_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node5_r",
+          startPosition: {
+            x: endPosition4_r.x,
+            y: endPosition4_r.y + Node4_r.headHeight,
+          },
+          endPosition: endPosition5_r,
+          headWidth: vw(7.7),
+          headType: 1,
+          reverseEntry: true,
+        },
+      });
+
+      let Node6_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node6_r",
+          startPosition: endPosition_r,
+          endPosition: endPosition6_r,
+          headWidth: vw(7.7),
+          headType: 1,
+          reverseEntry: true,
+        },
+      });
+
+      let Node7_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node7_r",
+          startPosition: endPosition2_r,
+          endPosition: endPosition7_r,
+          headWidth: vw(7.7),
+          headType: 3,
+          reverseEntry: true,
         },
       });
 
@@ -551,21 +821,41 @@ function rightAndLeftBg(params) {
             x: endPosition4_r.x,
             y: Node4_r.headHeight + endPosition4_r.y,
           },
-          headWidth: vw(15),
+          headWidth: vw(7.7),
+          headType: 2,
+        },
+      });
+
+      let line_r2 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line_r",
+          startPosition: endPosition7_r,
+          endPosition: endPosition3_r,
+          headWidth: vw(7.7),
           headType: 2,
         },
       });
 
       line.line();
+      line2.line();
       line_r.line();
+      line_r2.line();
 
+      Node7.drawAll({ exitPoint: false });
+      Node6.drawAll({ exitPoint: false });
+
+      Node5.drawAll();
       Node4.drawAll();
       Node3.drawAll({ exitPoint: false });
-      Node2.drawAll({ exitPoint: false });
+      Node2.drawAll();
       Node1.drawAll();
 
-      Node2_r.drawAll({ exitPoint: false });
+      Node7_r.drawAll({ entryPoint: false });
+      Node6_r.drawAll({ entryPoint: false });
+      Node5_r.drawAll({ entryPoint: false });
 
+      Node2_r.drawAll({ exitPoint: false });
       Node3_r.drawAll({ exitPoint: false });
       Node4_r.drawAll();
       Node1_r.drawAll();
