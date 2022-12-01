@@ -21,6 +21,14 @@ https://stackoverflow.com/questions/52128997/how-to-create-canvas-class-with-jav
 .half {
   width: 50% !important;
 }
+
+.square {
+  max-width: 100vmin;
+  max-height: 100vmin;
+  left: 50%;
+  transform: translateX(50%);
+}
+
 .hero-bg {
   width: 100%;
 
