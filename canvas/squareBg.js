@@ -47,7 +47,7 @@ function squareBg(params) {
       "none",
     ];
     let schemeTimeRandom = [0, 0.2, 0.3, 0.5, 0.4, 1, 3, 4]; //variazion time su offset
-    let variationValue = [0, 0.2, 0.5, 0.8, 0.4]; //variazion value su offset
+    let variationValue = [0, 0.4, 1, 1.6, 0.8]; //variazion value su offset
 
     //#######################
 
@@ -74,7 +74,7 @@ function squareBg(params) {
         type: "x",
         keyframes: [
           {
-            value: vw(7),
+            value: vw(75),
             time: toF(0),
             type: "linear",
           },
@@ -86,7 +86,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(25),
+            value: vw(80),
             time: toF(0),
             type: "linear",
           },
@@ -99,7 +99,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(8),
+            value: vw(90),
             time: toF(0),
             type: "linear",
           },
@@ -111,7 +111,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(15),
+            value: vw(65),
             time: toF(0),
             type: "linear",
           },
@@ -124,7 +124,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(25),
+            value: vw(65),
             time: toF(0),
             type: "linear",
           },
@@ -136,7 +136,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(10),
+            value: vw(65),
             time: toF(0),
             type: "linear",
           },
@@ -149,7 +149,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(20),
+            value: vw(75),
             time: toF(0),
             type: "linear",
           },
@@ -161,7 +161,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(30),
+            value: vw(90),
             time: toF(0),
             type: "linear",
           },
@@ -186,7 +186,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(40),
+            value: vw(95),
             time: toF(0),
             type: "linear",
           },
@@ -199,7 +199,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(20),
+            value: vw(45),
             time: toF(0),
             type: "linear",
           },
@@ -211,7 +211,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(20),
+            value: vw(80),
             time: toF(0),
             type: "linear",
           },
@@ -224,7 +224,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(5),
+            value: vw(25),
             time: toF(0),
             type: "linear",
           },
@@ -236,7 +236,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(8),
+            value: vw(70),
             time: toF(0),
             type: "linear",
           },
@@ -249,7 +249,7 @@ function squareBg(params) {
         type: "x",
         keyframes: [
           {
-            value: vw(93),
+            value: vw(85),
             time: toF(0),
             type: "linear",
           },
@@ -261,7 +261,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(25),
+            value: vw(45),
             time: toF(0),
             type: "linear",
           },
@@ -274,7 +274,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(91),
+            value: vw(75),
             time: toF(0),
             type: "linear",
           },
@@ -286,7 +286,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(5),
+            value: vw(15),
             time: toF(0),
             type: "linear",
           },
@@ -299,7 +299,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(75),
+            value: vw(20),
             time: toF(0),
             type: "linear",
           },
@@ -311,7 +311,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(10),
+            value: vw(35),
             time: toF(0),
             type: "linear",
           },
@@ -324,7 +324,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(80),
+            value: vw(40),
             time: toF(0),
             type: "linear",
           },
@@ -336,7 +336,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(30),
+            value: vw(55),
             time: toF(0),
             type: "linear",
           },
@@ -350,7 +350,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(65),
+            value: vw(40),
             time: toF(0),
             type: "linear",
           },
@@ -362,7 +362,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(41),
+            value: vw(15),
             time: toF(0),
             type: "linear",
           },
@@ -375,7 +375,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(95),
+            value: vw(60),
             time: toF(0),
             type: "linear",
           },
@@ -387,7 +387,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(40),
+            value: vw(30),
             time: toF(0),
             type: "linear",
           },
@@ -400,7 +400,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(85),
+            value: vw(40),
             time: toF(0),
             type: "linear",
           },
@@ -412,7 +412,7 @@ function squareBg(params) {
         showInDebug: true,
         keyframes: [
           {
-            value: vw(12),
+            value: vw(35),
             time: toF(0),
             type: "linear",
           },
@@ -484,7 +484,7 @@ function squareBg(params) {
       }
 
       //ANIMATABLE ########################
-      let startPosition = { x: 0, y: vh(75) };
+      let startPosition = { x: vw(300), y: vh(300) };
 
       let startPosition_r = { x: vw(150), y: vh(90) };
       let startPosition2_r = { x: vw(50), y: vh(180) };
@@ -589,10 +589,10 @@ function squareBg(params) {
       //circle bg .......................
       let CircleBg1 = new CircleBg(ctx, {
         widthBg: vw(100),
-        rowPointN: 60,
-        radious1: vw(0.15),
-        radious2: vw(0.1),
-        radious3: vw(0.05),
+        rowPointN: 30,
+        radious1: vw(0.3),
+        radious2: vw(0.2),
+        radious3: vw(0.1),
         colorFill: "white",
       });
       CircleBg1.circleBgRect();
@@ -607,13 +607,13 @@ function squareBg(params) {
       ]);
 
       let defaultPropsNode = {
-        stroke: vw(0.25),
-        pointSize: vw(0.5),
-        borderRadious: vw(0.25),
-        heightTabHeader: vw(0.75),
-        paddingVerical: vw(0.5),
-        paddingHorizontal: vw(0.5),
-        placeholderSize: vw(0.5),
+        stroke: vw(0.5),
+        pointSize: vw(1),
+        borderRadious: vw(0.5),
+        heightTabHeader: vw(1.25),
+        paddingVerical: vw(1),
+        paddingHorizontal: vw(1),
+        placeholderSize: vw(1),
         lineColor: paletteNode1[0].new,
         placeHoldersColor: paletteNode1[1].new,
         hancorColor: paletteNode1[2].new,
@@ -628,7 +628,7 @@ function squareBg(params) {
           name: "node1",
           startPosition: startPosition,
           endPosition: endPosition,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 4,
         },
       });
@@ -639,7 +639,7 @@ function squareBg(params) {
           name: "node2",
           startPosition: Node1.getExitPoint(),
           endPosition: endPosition2,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 3,
         },
       });
@@ -650,7 +650,7 @@ function squareBg(params) {
           name: "node3",
           startPosition: Node1.getExitPoint(),
           endPosition: endPosition3,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 1,
         },
       });
@@ -661,7 +661,7 @@ function squareBg(params) {
           name: "node4",
           startPosition: endPosition,
           endPosition: endPosition4,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 2,
           reverseEntry: true,
         },
@@ -673,7 +673,7 @@ function squareBg(params) {
           name: "node5",
           startPosition: startPosition2_r,
           endPosition: endPosition5,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 4,
         },
       });
@@ -684,9 +684,8 @@ function squareBg(params) {
           name: "node6",
           startPosition: endPosition4,
           endPosition: endPosition6,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 1,
-          reverseEntry: true,
         },
       });
 
@@ -694,9 +693,9 @@ function squareBg(params) {
         ...defaultPropsNode,
         ...{
           name: "node7",
-          startPosition: Node2.getExitPoint(),
+          startPosition: Node6.getExitPoint(),
           endPosition: endPosition7,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 4,
         },
       });
@@ -710,7 +709,7 @@ function squareBg(params) {
             x: endPosition4.x,
             y: Node4.headHeight + endPosition4.y,
           },
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 2,
         },
       });
@@ -720,8 +719,22 @@ function squareBg(params) {
         ...{
           name: "line",
           startPosition: Node5.getExitPoint(),
-          endPosition: endPosition,
-          headWidth: vw(7.7),
+          endPosition: endPosition6,
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+
+      let line3 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line",
+          startPosition: {
+            x: vw(-100),
+            y: vw(80),
+          },
+          endPosition: endPosition7,
+          headWidth: vw(15),
           headType: 2,
         },
       });
@@ -731,9 +744,9 @@ function squareBg(params) {
         ...defaultPropsNode,
         ...{
           name: "node1_r",
-          startPosition: startPosition_r,
+          startPosition: Node1.getExitPoint(),
           endPosition: endPosition_r,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 4,
         },
       });
@@ -744,8 +757,8 @@ function squareBg(params) {
           name: "node2_r",
           startPosition: Node1_r.getExitPoint(),
           endPosition: endPosition2_r,
-          headWidth: vw(7.7),
-          headType: 3,
+          headWidth: vw(15),
+          headType: 2,
         },
       });
 
@@ -753,11 +766,10 @@ function squareBg(params) {
         ...defaultPropsNode,
         ...{
           name: "node4_r",
-          startPosition: endPosition_r,
+          startPosition: Node6.getExitPoint(),
           endPosition: endPosition4_r,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 2,
-          reverseEntry: true,
         },
       });
 
@@ -767,23 +779,8 @@ function squareBg(params) {
           name: "node3_r",
           startPosition: Node4_r.getExitPoint(),
           endPosition: endPosition3_r,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 1,
-        },
-      });
-
-      let Node5_r = new Node(ctx, {
-        ...defaultPropsNode,
-        ...{
-          name: "node5_r",
-          startPosition: {
-            x: endPosition4_r.x,
-            y: endPosition4_r.y + Node4_r.headHeight,
-          },
-          endPosition: endPosition5_r,
-          headWidth: vw(7.7),
-          headType: 1,
-          reverseEntry: true,
         },
       });
 
@@ -791,11 +788,10 @@ function squareBg(params) {
         ...defaultPropsNode,
         ...{
           name: "node6_r",
-          startPosition: endPosition_r,
+          startPosition: Node1_r.getExitPoint(),
           endPosition: endPosition6_r,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 1,
-          reverseEntry: true,
         },
       });
 
@@ -803,11 +799,10 @@ function squareBg(params) {
         ...defaultPropsNode,
         ...{
           name: "node7_r",
-          startPosition: endPosition2_r,
+          startPosition: endPosition4_r,
           endPosition: endPosition7_r,
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 3,
-          reverseEntry: true,
         },
       });
 
@@ -818,10 +813,10 @@ function squareBg(params) {
           name: "line_r",
           startPosition: startPosition2_r,
           endPosition: {
-            x: endPosition4_r.x,
-            y: Node4_r.headHeight + endPosition4_r.y,
+            x: endPosition6.x,
+            y: endPosition6.y,
           },
-          headWidth: vw(7.7),
+          headWidth: vw(15),
           headType: 2,
         },
       });
@@ -830,20 +825,55 @@ function squareBg(params) {
         ...defaultPropsNode,
         ...{
           name: "line_r",
-          startPosition: endPosition7_r,
-          endPosition: endPosition3_r,
-          headWidth: vw(7.7),
+          startPosition: endPosition3_r,
+          endPosition: Node5.getExitPoint(),
+          headWidth: vw(15),
           headType: 2,
         },
       });
 
+      let line4 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line",
+          startPosition: Node7.getExitPoint(),
+          endPosition: endPosition4_r,
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+
+      let line5 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line",
+          startPosition: Node4_r.getExitPoint(),
+          endPosition: endPosition6_r,
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+      let Node5_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node5_r",
+          startPosition: Node7_r.getExitPoint(),
+          endPosition: endPosition5_r,
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+      line3.line();
+      line4.line();
+      line5.line();
+      /* */
       line.line();
       line2.line();
       line_r.line();
       line_r2.line();
 
-      Node7.drawAll({ exitPoint: false });
-      Node6.drawAll({ exitPoint: false });
+      Node7.drawAll({ line: false });
+      Node6.drawAll();
 
       Node5.drawAll();
       Node4.drawAll();
@@ -851,12 +881,13 @@ function squareBg(params) {
       Node2.drawAll();
       Node1.drawAll();
 
-      Node7_r.drawAll({ entryPoint: false });
+      Node7_r.drawAll();
       Node6_r.drawAll({ entryPoint: false });
       Node5_r.drawAll({ entryPoint: false });
 
-      Node2_r.drawAll({ exitPoint: false });
+      Node2_r.drawAll({ exitPoint: false });   
       Node3_r.drawAll({ exitPoint: false });
+
       Node4_r.drawAll();
       Node1_r.drawAll();
     }
