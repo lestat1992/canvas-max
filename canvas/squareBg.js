@@ -58,6 +58,7 @@ function squareBg(params) {
     let endPosition5; //
     let endPosition6;
     let endPosition7;
+    let endPosition8;
 
     let endPosition_r;
     let endPosition2_r;
@@ -418,6 +419,33 @@ function squareBg(params) {
           },
         ],
       },
+
+      //------------------------
+      {
+        name: "endPOsitionX8",
+        type: "x",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(15),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      {
+        name: "endPOsitionY8",
+        type: "y",
+        showInDebug: true,
+        keyframes: [
+          {
+            value: vw(15),
+            time: toF(0),
+            type: "linear",
+          },
+        ],
+      },
+      //------------------------
     ];
 
     let Palette1 = new Palette(params.palette);
@@ -524,6 +552,12 @@ function squareBg(params) {
         x: Timelines1.getValueFromSlug("endPOsitionX7"),
         y: Timelines1.getValueFromSlug("endPOsitionY7"),
       };
+
+      endPosition8 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX8"),
+        y: Timelines1.getValueFromSlug("endPOsitionY8"),
+      };
+
       //R ################################################
 
       endPosition_r = {
@@ -739,6 +773,20 @@ function squareBg(params) {
         },
       });
 
+      let line5 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line",
+          startPosition: {
+            x: vw(-100),
+            y: vw(80),
+          },
+          endPosition: endPosition7,
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+
       //R ########################################
       let Node1_r = new Node(ctx, {
         ...defaultPropsNode,
@@ -799,7 +847,7 @@ function squareBg(params) {
         ...defaultPropsNode,
         ...{
           name: "node7_r",
-          startPosition: endPosition4_r,
+          startPosition: Node4_r.getExitPoint(),
           endPosition: endPosition7_r,
           headWidth: vw(15),
           headType: 3,
@@ -843,16 +891,6 @@ function squareBg(params) {
         },
       });
 
-      let line5 = new Node(ctx, {
-        ...defaultPropsNode,
-        ...{
-          name: "line",
-          startPosition: Node4_r.getExitPoint(),
-          endPosition: endPosition6_r,
-          headWidth: vw(15),
-          headType: 2,
-        },
-      });
       let Node5_r = new Node(ctx, {
         ...defaultPropsNode,
         ...{
@@ -863,6 +901,49 @@ function squareBg(params) {
           headType: 2,
         },
       });
+
+      let Node8 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node8",
+          startPosition: Node3_r.getExitPoint(),
+          endPosition: endPosition8,
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+
+      let line6 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line6",
+          startPosition: Node8.getExitPoint(),
+          endPosition: {
+            x: vw(-100),
+            y: vw(-100),
+          },
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+
+      let line7 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line7",
+          startPosition: Node2_r.getExitPoint(),
+          endPosition: {
+            x: vw(-100),
+            y: vw(-100),
+          },
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+
+      line7.line();
+      line6.line();
+
       line3.line();
       line4.line();
       line5.line();
@@ -873,23 +954,26 @@ function squareBg(params) {
       line_r2.line();
 
       Node7.drawAll({ line: false });
-      Node6.drawAll();
 
       Node5.drawAll();
-      Node4.drawAll();
+
       Node3.drawAll({ exitPoint: false });
-      Node2.drawAll();
-      Node1.drawAll();
+      Node2.drawAll({ exitPoint: false });
 
-      Node7_r.drawAll();
-      Node6_r.drawAll({ entryPoint: false });
-      Node5_r.drawAll({ entryPoint: false });
+      Node6_r.drawAll({ exitPoint: false });
+      Node5_r.drawAll({ exitPoint: false });
 
-      Node2_r.drawAll({ exitPoint: false });   
-      Node3_r.drawAll({ exitPoint: false });
+      Node2_r.drawAll();
 
-      Node4_r.drawAll();
       Node1_r.drawAll();
+
+      Node8.drawAll();
+      Node7_r.drawAll();
+      Node3_r.drawAll();
+      Node4_r.drawAll();
+      Node6.drawAll();
+      Node4.drawAll();
+      Node1.drawAll();
     }
 
     if (isAnimation) {
