@@ -99,7 +99,7 @@ function homepageBg(params) {
                     showInDebug: true,
                     keyframes: [
                         {
-                            value: vw(15),
+                            value: vw(10),
                             time: toF(0),
                             type: "linear",
                         },
@@ -124,7 +124,7 @@ function homepageBg(params) {
                     showInDebug: true,
                     keyframes: [
                         {
-                            value: vw(15),
+                            value: vw(10),
                             time: toF(0),
                             type: "linear",
                         },

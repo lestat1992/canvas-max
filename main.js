@@ -15,15 +15,15 @@ let params1 = {
 
 homepageBg(params1);
 
-/*
 let params2 = {
-  target: "#hero-canvas",
-  bgColors: ["lightblue", "red"],
-  pointColors: "white",
+    target: "#hero-canvas",
+    bgColors: ["lightblue", "red"],
+    pointColors: "white",
 };
 
-headerBg(params2);
-*/
+//headerBg(params2);
+/*
+ */
 
 /*
 document.querySelector("#hero-canvas").classList.add("half");
