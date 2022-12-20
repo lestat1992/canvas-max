@@ -12,6 +12,14 @@ import randomNum from "./functions/utility/randomNum";
 
 function homepageBg(params) {
     if (document.querySelector(params.target)) {
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
+
+        console.log("ok stiamo iniziando");
+        console.log(windowWidth);
+        console.log(windowHeight);
+        console.log("-----------------------------");
+
         function runCanvas() {
             ///////
             let t = [];
@@ -388,18 +396,41 @@ function homepageBg(params) {
 
             if (isAnimation) {
                 function renderAnimated() {
-                    const timeout = setTimeout(function () {
+                    let timeout = setTimeout(function () {
                         requestAnimationFrame(renderAnimated);
 
                         render();
                     }, 1000 / CInfo.fps);
 
+                    //checking window width & height ################
+                    let testWindowWidth = window.innerWidth;
+                    let testWindowHeight = window.innerHeight;
+
+                    console.log(testWindowWidth + " == " + windowWidth);
+                    console.log(testWindowHeight + " == " + windowHeight);
+
+                    if (
+                        testWindowWidth != windowWidth &&
+                        testWindowHeight != windowHeight
+                    ) {
+                        console.log(
+                            "HAI ROTTO LE PALLE -------------------------"
+                        );
+
+                        windowWidth = testWindowWidth;
+                        windowHeight = testWindowHeight;
+                        clearTimeout(timeout);
+                        runCanvas();
+                    }
+
+                    /*
                     ["orientationchange", "resize"].forEach((handler) => {
                         window.addEventListener(handler, () => {
                             console.log("eo");
                             clearTimeout(timeout);
                         });
                     });
+                    */
                 }
                 renderAnimated();
             } else {
@@ -408,18 +439,6 @@ function homepageBg(params) {
         }
 
         runCanvas();
-
-        function resizedw() {
-            console.log("APOLLO JONSON");
-            runCanvas();
-        }
-        var doit;
-        ["orientationchange", "resize"].forEach((handler) => {
-            window.addEventListener(handler, () => {
-                clearTimeout(doit);
-                doit = setTimeout(resizedw, 100);
-            });
-        });
     }
 }
 
