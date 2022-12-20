@@ -55,7 +55,7 @@ function headerBg(params) {
                 radious1: vw(0.15),
                 radious2: vw(0.1),
                 radious3: vw(0.05),
-                colorFill: "white",
+                colorFill: params.pointColors,
             });
             CircleBg1.circleBgRect();
         }

@@ -8,22 +8,22 @@ import squareBg from "./canvas/squareBg";
 
 let params1 = {
     target: "#hero-canvas",
-    palette: ["#00ffc4", "#663399", "#ffc0cb"],
-    bgColors: ["lightblue", "red"],
-    pointColors: "white",
+    palette: ["#00ffc4"], //["#00ffc4", "#663399", "#ffc0cb"],
+    bgColors: ["green", "blue"], //,
+    pointColors: "orange",
+    fillNodes: true,
 };
 
 homepageBg(params1);
-
+/*
 let params2 = {
     target: "#hero-canvas",
     bgColors: ["lightblue", "red"],
     pointColors: "white",
 };
 
-//headerBg(params2);
-/*
  */
+//headerBg(params2);
 
 /*
 document.querySelector("#hero-canvas").classList.add("half");

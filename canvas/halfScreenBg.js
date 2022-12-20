@@ -487,18 +487,31 @@ function halfScreenBg(params) {
                     radious1: vw(0.3),
                     radious2: vw(0.2),
                     radious3: vw(0.1),
-                    colorFill: "white",
+                    colorFill: params.pointColors,
                 });
                 CircleBg1.circleBgRect();
                 //.................................
-                Palette1.setSelectedColor("#663399");
-                let paletteNode1 = Palette1.monocromathic([
-                    "#C0C0C0",
-                    "whitesmoke",
-                    "#E5E4E2",
-                    "#808080",
-                    "#646464",
-                ]);
+                Palette1.setSelectedColor(params.palette[0]);
+
+                let paletteNode1;
+
+                if (params.fillNodes) {
+                    paletteNode1 = [
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                    ];
+                } else {
+                    paletteNode1 = Palette1.monocromathic([
+                        "#C0C0C0",
+                        "whitesmoke",
+                        "#E5E4E2",
+                        "#808080",
+                        "#646464",
+                    ]);
+                }
 
                 let defaultPropsNode = {
                     stroke: vw(1),
