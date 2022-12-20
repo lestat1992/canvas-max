@@ -12,6 +12,9 @@ import randomNum from "./functions/utility/randomNum";
 
 function squareBg(params) {
     if (document.querySelector(params.target)) {
+        let windowWidth = window.innerWidth;
+        let windowHeight = window.innerHeight;
+
         function runCanvas() {
             ///////
             let t = [];
@@ -1010,32 +1013,32 @@ function squareBg(params) {
 
             if (isAnimation) {
                 function renderAnimated() {
-                    const timeout = setTimeout(function () {
+                    let timeout = setTimeout(function () {
                         requestAnimationFrame(renderAnimated);
 
                         render();
                     }, 1000 / CInfo.fps);
 
-                    ["orientationchange", "resize"].forEach((handler) => {
-                        window.addEventListener(handler, () => {
-                            console.log("eo");
-                            clearTimeout(timeout);
-                        });
-                    });
+                    //checking window width & height ################
+                    let testWindowWidth = window.innerWidth;
+                    let testWindowHeight = window.innerHeight;
+
+                    if (
+                        testWindowWidth != windowWidth &&
+                        testWindowHeight != windowHeight
+                    ) {
+                        windowWidth = testWindowWidth;
+                        windowHeight = testWindowHeight;
+                        clearTimeout(timeout);
+                        runCanvas();
+                    }
                 }
                 renderAnimated();
             } else {
                 render();
             }
         }
-
         runCanvas();
-
-        ["orientationchange", "resize"].forEach((handler) => {
-            window.addEventListener(handler, () => {
-                runCanvas();
-            });
-        });
     }
 }
 
