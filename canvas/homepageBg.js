@@ -413,11 +413,24 @@ function homepageBg(params) {
                         testWindowWidth != windowWidth &&
                         testWindowHeight != windowHeight
                     ) {
+                        console.log(
+                            "HAI ROTTO LE PALLE -------------------------"
+                        );
+
                         windowWidth = testWindowWidth;
                         windowHeight = testWindowHeight;
                         clearTimeout(timeout);
                         runCanvas();
                     }
+
+                    /*
+                    ["orientationchange", "resize"].forEach((handler) => {
+                        window.addEventListener(handler, () => {
+                            console.log("eo");
+                            clearTimeout(timeout);
+                        });
+                    });
+                    */
                 }
                 renderAnimated();
             } else {
