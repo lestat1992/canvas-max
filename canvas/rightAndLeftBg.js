@@ -482,8 +482,6 @@ function rightAndLeftBg(params) {
                 showTimelineInDom: false,
             });
 
-            console.log(Timelines1.timelineArray);
-
             /*
   render Function
 */
@@ -903,7 +901,6 @@ function rightAndLeftBg(params) {
 
                     ["orientationchange", "resize"].forEach((handler) => {
                         window.addEventListener(handler, () => {
-                            console.log("eo");
                             clearTimeout(timeout);
                         });
                     });
@@ -915,15 +912,19 @@ function rightAndLeftBg(params) {
         }
         runCanvas();
 
+        let doit;
+
         function resizedw() {
-            console.log("APOLLO JONSON");
-            runCanvas();
+            // Haven't resized in 100ms!
+            setTimeout(function () {
+                runCanvas();
+            }, 100);
         }
-        var doit;
+
         ["orientationchange", "resize"].forEach((handler) => {
             window.addEventListener(handler, () => {
                 clearTimeout(doit);
-                doit = setTimeout(resizedw, 100);
+                doit = setTimeout(resizedw, 200);
             });
         });
     }
