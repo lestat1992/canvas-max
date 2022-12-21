@@ -8,10 +8,10 @@ import squareBg from "./canvas/squareBg";
 /*
 let params1 = {
     target: "#hero-canvas",
-    palette: ["purple"], //["#00ffc4", "#663399", "#ffc0cb"],
+    palette: ["#00ffc4"], //["#00ffc4", "#663399", "#ffc0cb"],
     bgColors: ["green", "blue"], //,
     pointColors: "orange",
-    fillNodes: false,
+    fillNodes: true,
 };
 
 homepageBg(params1);*/
