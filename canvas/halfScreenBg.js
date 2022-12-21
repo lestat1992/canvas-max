@@ -25,7 +25,12 @@ function halfScreenBg(params) {
             //PRE-RENDER ##################
             const canvas = document.querySelector(params.target);
 
-            let isAnimation = true;
+            let isAnimation;
+            if (params.isAnimated === false) {
+                isAnimation = params.isAnimated;
+            } else {
+                isAnimation = true;
+            }
 
             let CInfo = new CanvasInfo(canvas);
             function vw(percentage) {
@@ -665,11 +670,13 @@ function halfScreenBg(params) {
                         render();
                     }, 1000 / CInfo.fps);
 
-                    ["orientationchange", "resize"].forEach((handler) => {
-                        window.addEventListener(handler, () => {
-                            clearTimeout(timeout);
-                        });
-                    });
+                    ["orientationchange", "resize", "fullscreenchange"].forEach(
+                        (handler) => {
+                            window.addEventListener(handler, () => {
+                                clearTimeout(timeout);
+                            });
+                        }
+                    );
                 }
                 renderAnimated();
             } else {
@@ -688,12 +695,14 @@ function halfScreenBg(params) {
             }, 100);
         }
 
-        ["orientationchange", "resize"].forEach((handler) => {
-            window.addEventListener(handler, () => {
-                clearTimeout(doit);
-                doit = setTimeout(resizedw, 200);
-            });
-        });
+        ["orientationchange", "resize", "fullscreenchange"].forEach(
+            (handler) => {
+                window.addEventListener(handler, () => {
+                    clearTimeout(doit);
+                    doit = setTimeout(resizedw, 200);
+                });
+            }
+        );
     }
 }
 

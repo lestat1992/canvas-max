@@ -52,5 +52,6 @@ let params4 = {
     palette: ["#00ffc4", "#663399", "#ffc0cb"],
     bgColors: ["lightblue", "red"],
     pointColors: "white",
+    isAnimated: false,
 };
 squareBg(params4);

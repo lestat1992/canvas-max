@@ -62,11 +62,13 @@ function headerBg(params) {
 
         render();
 
-        ["orientationchange", "resize"].forEach((handler) => {
-            window.addEventListener(handler, () => {
-                render();
-            });
-        });
+        ["orientationchange", "resize", "fullscreenchange"].forEach(
+            (handler) => {
+                window.addEventListener(handler, () => {
+                    render();
+                });
+            }
+        );
     }
 }
 
