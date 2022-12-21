@@ -13,6 +13,7 @@ import randomNum from "./functions/utility/randomNum";
 function squareBg(params) {
     if (document.querySelector(params.target)) {
         function runCanvas() {
+            console.log("CREATING DATA");
             ///////
             let t = [];
             //////
@@ -516,6 +517,7 @@ function squareBg(params) {
   render Function
 */
             function render() {
+                console.log(".");
                 //INITIAL SETTINGS
                 CInfo.getSize();
                 Timelines1.updateFrame();
@@ -1018,7 +1020,6 @@ function squareBg(params) {
 
                     ["orientationchange", "resize"].forEach((handler) => {
                         window.addEventListener(handler, () => {
-                            console.log("eo");
                             clearTimeout(timeout);
                         });
                     });
@@ -1031,9 +1032,20 @@ function squareBg(params) {
 
         runCanvas();
 
+        let doit;
+
+        function resizedw() {
+            // Haven't resized in 100ms!
+            console.log("stop");
+            setTimeout(function () {
+                runCanvas();
+            }, 100);
+        }
+
         ["orientationchange", "resize"].forEach((handler) => {
             window.addEventListener(handler, () => {
-                runCanvas();
+                clearTimeout(doit);
+                doit = setTimeout(resizedw, 200);
             });
         });
     }
