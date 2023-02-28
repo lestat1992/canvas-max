@@ -16,7 +16,7 @@ function TheNewExample(params) {
   //////
 
   //PRE-RENDER ##################
-  const canvas = document.querySelector(params.target);
+  let canvas = document.querySelector(params.target);
 
   let isAnimation = true;
 
@@ -198,8 +198,6 @@ function TheNewExample(params) {
     showTimelineInDom: false,
   });
 
-  console.log(Timelines1.timelineArray);
-
   /*
   render Function ################################################################################
 */
@@ -212,155 +210,153 @@ function TheNewExample(params) {
 
     let client = CInfo.client;
 
-    //###################################
-
-    if (Timelines1.frame == 1) {
-      Timelines1.seTtimelineArray(addKeyframesRandomly());
-    }
-
-    //ANIMATABLE ########################
-    let startPosition = { x: 0, y: vh(75) };
-
-    endPosition = {
-      x: Timelines1.getValueFromSlug("endPOsitionX"),
-      y: Timelines1.getValueFromSlug("endPOsitionY"),
-    };
-
-    endPosition2 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX2"),
-      y: Timelines1.getValueFromSlug("endPOsitionY2"),
-    };
-
-    endPosition3 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX3"),
-      y: Timelines1.getValueFromSlug("endPOsitionY3"),
-    };
-
-    endPosition4 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX4"),
-      y: Timelines1.getValueFromSlug("endPOsitionY4"),
-    };
-
-    //###################################
-
     //Creating context###################
-    const ctx = canvas.getContext("2d");
-    ctx.canvas.width = client.width;
-    ctx.canvas.height = client.height;
-    //###################################
+    if (document.querySelector(params.target)) {
+      canvas = document.querySelector(params.target);
 
-    let newBackground = new GradientFullPage(ctx, {
-      type: "linear",
-      startPosition: {
-        x: 0,
-        y: 0,
-      },
-      endPosition: {
-        x: vw(100),
-        y: 0,
-      },
-      colorStep: [
-        { position: 0.0, color: params.bgColors[0] },
-        { position: 1, color: params.bgColors[1] },
-      ],
-    });
+      const ctx = canvas.getContext("2d");
+      ctx.canvas.width = client.width;
+      ctx.canvas.height = client.height;
+      //###################################
 
-    newBackground.drawLinear();
+      //###################################
 
-    //circle bg .......................
-    let CircleBg1 = new CircleBg(ctx, {
-      widthBg: vw(100),
-      rowPointN: 60,
-      radious1: vw(0.15),
-      radious2: vw(0.1),
-      radious3: vw(0.05),
-      colorFill: "white",
-    });
-    CircleBg1.circleBgRect();
-    //.................................
-    Palette1.setSelectedColor("#663399");
-    let paletteNode1 = Palette1.monocromathic([
-      "#C0C0C0",
-      "whitesmoke",
-      "#E5E4E2",
-      "#808080",
-      "#646464",
-    ]);
+      if (Timelines1.frame == 1) {
+        Timelines1.seTtimelineArray(addKeyframesRandomly());
+      }
 
-    let defaultPropsNode = {
-      stroke: vw(0.5),
-      pointSize: vw(1),
-      borderRadious: vw(0.5),
-      heightTabHeader: vw(1.5),
-      paddingVerical: vw(1),
-      paddingHorizontal: vw(1),
-      placeholderSize: vw(1),
-      lineColor: paletteNode1[0].new,
-      placeHoldersColor: paletteNode1[1].new,
-      hancorColor: paletteNode1[2].new,
-      tabHeaderColor: paletteNode1[3].new,
-      tabBodyColor: paletteNode1[4].new,
-    };
+      //ANIMATABLE ########################
+      let startPosition = { x: 0, y: vh(75) };
 
-    let Node1 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node1",
-        startPosition: startPosition,
-        endPosition: endPosition,
-        headWidth: vw(15),
-        headType: 2,
-      },
-    });
+      endPosition = {
+        x: Timelines1.getValueFromSlug("endPOsitionX"),
+        y: Timelines1.getValueFromSlug("endPOsitionY"),
+      };
 
-    let Node2 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node2",
-        startPosition: Node1.getExitPoint(),
-        endPosition: endPosition2,
-        headWidth: vw(15),
-        headType: 3,
-      },
-    });
+      endPosition2 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX2"),
+        y: Timelines1.getValueFromSlug("endPOsitionY2"),
+      };
 
-    let Node3 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node3",
-        startPosition: Node1.getExitPoint(),
-        endPosition: endPosition3,
-        headWidth: vw(15),
-        headType: 1,
-      },
-    });
+      endPosition3 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX3"),
+        y: Timelines1.getValueFromSlug("endPOsitionY3"),
+      };
 
-    let Node4 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node4",
-        startPosition: endPosition,
-        endPosition: endPosition4,
-        headWidth: vw(15),
-        headType: 1,
-        reverseEntry: true,
-      },
-    });
+      endPosition4 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX4"),
+        y: Timelines1.getValueFromSlug("endPOsitionY4"),
+      };
 
-    Node4.drawAll({ entryPoint: false });
-    Node3.drawAll({ exitPoint: false });
-    Node2.drawAll({ exitPoint: false });
-    Node1.drawAll();
+      //###################################
 
-    window.requestAnimationFrame(render);
+      let newBackground = new GradientFullPage(ctx, {
+        type: "linear",
+        startPosition: {
+          x: 0,
+          y: 0,
+        },
+        endPosition: {
+          x: vw(100),
+          y: 0,
+        },
+        colorStep: [
+          { position: 0.0, color: params.bgColors[0] },
+          { position: 1, color: params.bgColors[1] },
+        ],
+      });
+
+      newBackground.drawLinear();
+
+      //circle bg .......................
+      let CircleBg1 = new CircleBg(ctx, {
+        widthBg: vw(100),
+        rowPointN: 60,
+        radious1: vw(0.15),
+        radious2: vw(0.1),
+        radious3: vw(0.05),
+        colorFill: "white",
+      });
+      CircleBg1.circleBgRect();
+      //.................................
+      Palette1.setSelectedColor("#663399");
+      let paletteNode1 = Palette1.monocromathic([
+        "#C0C0C0",
+        "whitesmoke",
+        "#E5E4E2",
+        "#808080",
+        "#646464",
+      ]);
+
+      let defaultPropsNode = {
+        stroke: vw(0.5),
+        pointSize: vw(1),
+        borderRadious: vw(0.5),
+        heightTabHeader: vw(1.5),
+        paddingVerical: vw(1),
+        paddingHorizontal: vw(1),
+        placeholderSize: vw(1),
+        lineColor: paletteNode1[0].new,
+        placeHoldersColor: paletteNode1[1].new,
+        hancorColor: paletteNode1[2].new,
+        tabHeaderColor: paletteNode1[3].new,
+        tabBodyColor: paletteNode1[4].new,
+      };
+
+      let Node1 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node1",
+          startPosition: startPosition,
+          endPosition: endPosition,
+          headWidth: vw(15),
+          headType: 2,
+        },
+      });
+
+      let Node2 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node2",
+          startPosition: Node1.getExitPoint(),
+          endPosition: endPosition2,
+          headWidth: vw(15),
+          headType: 3,
+        },
+      });
+
+      let Node3 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node3",
+          startPosition: Node1.getExitPoint(),
+          endPosition: endPosition3,
+          headWidth: vw(15),
+          headType: 1,
+        },
+      });
+
+      let Node4 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node4",
+          startPosition: endPosition,
+          endPosition: endPosition4,
+          headWidth: vw(15),
+          headType: 1,
+          reverseEntry: true,
+        },
+      });
+
+      Node4.drawAll({ entryPoint: false });
+      Node3.drawAll({ exitPoint: false });
+      Node2.drawAll({ exitPoint: false });
+      Node1.drawAll();
+
+      window.requestAnimationFrame(render);
+    }
   }
 
-  /*
-  if (isAnimation) {
-  } else {
-    render();
-  }
-  */
   // ################################################################################
 
   window.requestAnimationFrame(render);
