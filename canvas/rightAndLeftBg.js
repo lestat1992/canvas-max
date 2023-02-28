@@ -16,7 +16,7 @@ function rightAndLeftBg(params) {
   //////
 
   //PRE-RENDER ##################
-  const canvas = document.querySelector(params.target);
+  let canvas = document.querySelector(params.target);
 
   let isAnimation = true;
 
@@ -476,390 +476,391 @@ function rightAndLeftBg(params) {
 
     let client = CInfo.client;
 
-    //###################################
-
-    if (Timelines1.frame == 1) {
-      Timelines1.seTtimelineArray(addKeyframesRandomly());
-    }
-
-    //ANIMATABLE ########################
-    let startPosition = { x: 0, y: vh(75) };
-
-    let startPosition_r = { x: vw(150), y: vh(90) };
-    let startPosition2_r = { x: vw(50), y: vh(180) };
-
-    //L ################################################
-    endPosition = {
-      x: Timelines1.getValueFromSlug("endPOsitionX"),
-      y: Timelines1.getValueFromSlug("endPOsitionY"),
-    };
-
-    endPosition2 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX2"),
-      y: Timelines1.getValueFromSlug("endPOsitionY2"),
-    };
-
-    endPosition3 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX3"),
-      y: Timelines1.getValueFromSlug("endPOsitionY3"),
-    };
-
-    endPosition4 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX4"),
-      y: Timelines1.getValueFromSlug("endPOsitionY4"),
-    };
-
-    endPosition5 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX5"),
-      y: Timelines1.getValueFromSlug("endPOsitionY5"),
-    };
-
-    endPosition6 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX6"),
-      y: Timelines1.getValueFromSlug("endPOsitionY6"),
-    };
-
-    endPosition7 = {
-      x: Timelines1.getValueFromSlug("endPOsitionX7"),
-      y: Timelines1.getValueFromSlug("endPOsitionY7"),
-    };
-    //R ################################################
-
-    endPosition_r = {
-      x: Timelines1.getValueFromSlug("endPOsitionX_r"),
-      y: Timelines1.getValueFromSlug("endPOsitionY_r"),
-    };
-
-    endPosition2_r = {
-      x: Timelines1.getValueFromSlug("endPOsitionX2_r"),
-      y: Timelines1.getValueFromSlug("endPOsitionY2_r"),
-    };
-
-    endPosition3_r = {
-      x: Timelines1.getValueFromSlug("endPOsitionX3_r"),
-      y: Timelines1.getValueFromSlug("endPOsitionY3_r"),
-    };
-
-    endPosition4_r = {
-      x: Timelines1.getValueFromSlug("endPOsitionX4_r"),
-      y: Timelines1.getValueFromSlug("endPOsitionY4_r"),
-    };
-
-    endPosition5_r = {
-      x: Timelines1.getValueFromSlug("endPOsitionX5_r"),
-      y: Timelines1.getValueFromSlug("endPOsitionY5_r"),
-    };
-
-    endPosition6_r = {
-      x: Timelines1.getValueFromSlug("endPOsitionX6_r"),
-      y: Timelines1.getValueFromSlug("endPOsitionY6_r"),
-    };
-
-    endPosition7_r = {
-      x: Timelines1.getValueFromSlug("endPOsitionX7_r"),
-      y: Timelines1.getValueFromSlug("endPOsitionY7_r"),
-    };
-    //###################################
-
     //Creating context###################
-    const ctx = canvas.getContext("2d");
-    ctx.canvas.width = client.width;
-    ctx.canvas.height = client.height;
-    //###################################
+    if (document.querySelector(params.target)) {
+      const ctx = canvas.getContext("2d");
+      ctx.canvas.width = client.width;
+      ctx.canvas.height = client.height;
+      //###################################
+      //###################################
 
-    let newBackground = new GradientFullPage(ctx, {
-      type: "linear",
-      startPosition: {
-        x: 0,
-        y: 0,
-      },
-      endPosition: {
-        x: vw(100),
-        y: 0,
-      },
-      colorStep: [
-        { position: 0.0, color: params.bgColors[0] },
-        { position: 1, color: params.bgColors[1] },
-      ],
-    });
+      if (Timelines1.frame == 1) {
+        Timelines1.seTtimelineArray(addKeyframesRandomly());
+      }
 
-    newBackground.drawLinear();
+      //ANIMATABLE ########################
+      let startPosition = { x: 0, y: vh(75) };
 
-    //circle bg .......................
-    let CircleBg1 = new CircleBg(ctx, {
-      widthBg: vw(100),
-      rowPointN: 60,
-      radious1: vw(0.15),
-      radious2: vw(0.1),
-      radious3: vw(0.05),
-      colorFill: "white",
-    });
-    CircleBg1.circleBgRect();
-    //.................................
-    Palette1.setSelectedColor("#663399");
-    let paletteNode1 = Palette1.monocromathic([
-      "#C0C0C0",
-      "whitesmoke",
-      "#E5E4E2",
-      "#808080",
-      "#646464",
-    ]);
+      let startPosition_r = { x: vw(150), y: vh(90) };
+      let startPosition2_r = { x: vw(50), y: vh(180) };
 
-    let defaultPropsNode = {
-      stroke: vw(0.25),
-      pointSize: vw(0.5),
-      borderRadious: vw(0.25),
-      heightTabHeader: vw(0.75),
-      paddingVerical: vw(0.5),
-      paddingHorizontal: vw(0.5),
-      placeholderSize: vw(0.5),
-      lineColor: paletteNode1[0].new,
-      placeHoldersColor: paletteNode1[1].new,
-      hancorColor: paletteNode1[2].new,
-      tabHeaderColor: paletteNode1[3].new,
-      tabBodyColor: paletteNode1[4].new,
-    };
+      //L ################################################
+      endPosition = {
+        x: Timelines1.getValueFromSlug("endPOsitionX"),
+        y: Timelines1.getValueFromSlug("endPOsitionY"),
+      };
 
-    //L ########################################
-    let Node1 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node1",
-        startPosition: startPosition,
-        endPosition: endPosition,
-        headWidth: vw(7.7),
-        headType: 4,
-      },
-    });
+      endPosition2 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX2"),
+        y: Timelines1.getValueFromSlug("endPOsitionY2"),
+      };
 
-    let Node2 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node2",
-        startPosition: Node1.getExitPoint(),
-        endPosition: endPosition2,
-        headWidth: vw(7.7),
-        headType: 3,
-      },
-    });
+      endPosition3 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX3"),
+        y: Timelines1.getValueFromSlug("endPOsitionY3"),
+      };
 
-    let Node3 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node3",
-        startPosition: Node1.getExitPoint(),
-        endPosition: endPosition3,
-        headWidth: vw(7.7),
-        headType: 1,
-      },
-    });
+      endPosition4 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX4"),
+        y: Timelines1.getValueFromSlug("endPOsitionY4"),
+      };
 
-    let Node4 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node4",
-        startPosition: endPosition,
-        endPosition: endPosition4,
-        headWidth: vw(7.7),
-        headType: 2,
-        reverseEntry: true,
-      },
-    });
+      endPosition5 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX5"),
+        y: Timelines1.getValueFromSlug("endPOsitionY5"),
+      };
 
-    let Node5 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node5",
-        startPosition: startPosition2_r,
-        endPosition: endPosition5,
-        headWidth: vw(7.7),
-        headType: 4,
-      },
-    });
+      endPosition6 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX6"),
+        y: Timelines1.getValueFromSlug("endPOsitionY6"),
+      };
 
-    let Node6 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node6",
-        startPosition: endPosition4,
-        endPosition: endPosition6,
-        headWidth: vw(7.7),
-        headType: 1,
-        reverseEntry: true,
-      },
-    });
+      endPosition7 = {
+        x: Timelines1.getValueFromSlug("endPOsitionX7"),
+        y: Timelines1.getValueFromSlug("endPOsitionY7"),
+      };
+      //R ################################################
 
-    let Node7 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node7",
-        startPosition: Node2.getExitPoint(),
-        endPosition: endPosition7,
-        headWidth: vw(7.7),
-        headType: 4,
-      },
-    });
+      endPosition_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY_r"),
+      };
 
-    let line = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "line",
-        startPosition: startPosition2_r,
-        endPosition: {
-          x: endPosition4.x,
-          y: Node4.headHeight + endPosition4.y,
-        },
-        headWidth: vw(7.7),
-        headType: 2,
-      },
-    });
+      endPosition2_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX2_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY2_r"),
+      };
 
-    let line2 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "line",
-        startPosition: Node5.getExitPoint(),
-        endPosition: endPosition,
-        headWidth: vw(7.7),
-        headType: 2,
-      },
-    });
+      endPosition3_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX3_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY3_r"),
+      };
 
-    //R ########################################
-    let Node1_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node1_r",
-        startPosition: startPosition_r,
-        endPosition: endPosition_r,
-        headWidth: vw(7.7),
-        headType: 4,
-      },
-    });
+      endPosition4_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX4_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY4_r"),
+      };
 
-    let Node2_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node2_r",
-        startPosition: Node1_r.getExitPoint(),
-        endPosition: endPosition2_r,
-        headWidth: vw(7.7),
-        headType: 3,
-      },
-    });
+      endPosition5_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX5_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY5_r"),
+      };
 
-    let Node4_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node4_r",
-        startPosition: endPosition_r,
-        endPosition: endPosition4_r,
-        headWidth: vw(7.7),
-        headType: 2,
-        reverseEntry: true,
-      },
-    });
+      endPosition6_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX6_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY6_r"),
+      };
 
-    let Node3_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node3_r",
-        startPosition: Node4_r.getExitPoint(),
-        endPosition: endPosition3_r,
-        headWidth: vw(7.7),
-        headType: 1,
-      },
-    });
+      endPosition7_r = {
+        x: Timelines1.getValueFromSlug("endPOsitionX7_r"),
+        y: Timelines1.getValueFromSlug("endPOsitionY7_r"),
+      };
+      //###################################
 
-    let Node5_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node5_r",
+      let newBackground = new GradientFullPage(ctx, {
+        type: "linear",
         startPosition: {
-          x: endPosition4_r.x,
-          y: endPosition4_r.y + Node4_r.headHeight,
+          x: 0,
+          y: 0,
         },
-        endPosition: endPosition5_r,
-        headWidth: vw(7.7),
-        headType: 1,
-        reverseEntry: true,
-      },
-    });
-
-    let Node6_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node6_r",
-        startPosition: endPosition_r,
-        endPosition: endPosition6_r,
-        headWidth: vw(7.7),
-        headType: 1,
-        reverseEntry: true,
-      },
-    });
-
-    let Node7_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "node7_r",
-        startPosition: endPosition2_r,
-        endPosition: endPosition7_r,
-        headWidth: vw(7.7),
-        headType: 3,
-        reverseEntry: true,
-      },
-    });
-
-    //line
-    let line_r = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "line_r",
-        startPosition: startPosition2_r,
         endPosition: {
-          x: endPosition4_r.x,
-          y: Node4_r.headHeight + endPosition4_r.y,
+          x: vw(100),
+          y: 0,
         },
-        headWidth: vw(7.7),
-        headType: 2,
-      },
-    });
+        colorStep: [
+          { position: 0.0, color: params.bgColors[0] },
+          { position: 1, color: params.bgColors[1] },
+        ],
+      });
 
-    let line_r2 = new Node(ctx, {
-      ...defaultPropsNode,
-      ...{
-        name: "line_r",
-        startPosition: endPosition7_r,
-        endPosition: endPosition3_r,
-        headWidth: vw(7.7),
-        headType: 2,
-      },
-    });
+      newBackground.drawLinear();
 
-    line.line();
-    line2.line();
-    line_r.line();
-    line_r2.line();
+      //circle bg .......................
+      let CircleBg1 = new CircleBg(ctx, {
+        widthBg: vw(100),
+        rowPointN: 60,
+        radious1: vw(0.15),
+        radious2: vw(0.1),
+        radious3: vw(0.05),
+        colorFill: "white",
+      });
+      CircleBg1.circleBgRect();
+      //.................................
+      Palette1.setSelectedColor("#663399");
+      let paletteNode1 = Palette1.monocromathic([
+        "#C0C0C0",
+        "whitesmoke",
+        "#E5E4E2",
+        "#808080",
+        "#646464",
+      ]);
 
-    Node7.drawAll({ exitPoint: false });
-    Node6.drawAll({ exitPoint: false });
+      let defaultPropsNode = {
+        stroke: vw(0.25),
+        pointSize: vw(0.5),
+        borderRadious: vw(0.25),
+        heightTabHeader: vw(0.75),
+        paddingVerical: vw(0.5),
+        paddingHorizontal: vw(0.5),
+        placeholderSize: vw(0.5),
+        lineColor: paletteNode1[0].new,
+        placeHoldersColor: paletteNode1[1].new,
+        hancorColor: paletteNode1[2].new,
+        tabHeaderColor: paletteNode1[3].new,
+        tabBodyColor: paletteNode1[4].new,
+      };
 
-    Node5.drawAll();
-    Node4.drawAll();
-    Node3.drawAll({ exitPoint: false });
-    Node2.drawAll();
-    Node1.drawAll();
+      //L ########################################
+      let Node1 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node1",
+          startPosition: startPosition,
+          endPosition: endPosition,
+          headWidth: vw(7.7),
+          headType: 4,
+        },
+      });
 
-    Node7_r.drawAll({ entryPoint: false });
-    Node6_r.drawAll({ entryPoint: false });
-    Node5_r.drawAll({ entryPoint: false });
+      let Node2 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node2",
+          startPosition: Node1.getExitPoint(),
+          endPosition: endPosition2,
+          headWidth: vw(7.7),
+          headType: 3,
+        },
+      });
 
-    Node2_r.drawAll({ exitPoint: false });
-    Node3_r.drawAll({ exitPoint: false });
-    Node4_r.drawAll();
-    Node1_r.drawAll();
+      let Node3 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node3",
+          startPosition: Node1.getExitPoint(),
+          endPosition: endPosition3,
+          headWidth: vw(7.7),
+          headType: 1,
+        },
+      });
 
-    window.requestAnimationFrame(render);
+      let Node4 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node4",
+          startPosition: endPosition,
+          endPosition: endPosition4,
+          headWidth: vw(7.7),
+          headType: 2,
+          reverseEntry: true,
+        },
+      });
+
+      let Node5 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node5",
+          startPosition: startPosition2_r,
+          endPosition: endPosition5,
+          headWidth: vw(7.7),
+          headType: 4,
+        },
+      });
+
+      let Node6 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node6",
+          startPosition: endPosition4,
+          endPosition: endPosition6,
+          headWidth: vw(7.7),
+          headType: 1,
+          reverseEntry: true,
+        },
+      });
+
+      let Node7 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node7",
+          startPosition: Node2.getExitPoint(),
+          endPosition: endPosition7,
+          headWidth: vw(7.7),
+          headType: 4,
+        },
+      });
+
+      let line = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line",
+          startPosition: startPosition2_r,
+          endPosition: {
+            x: endPosition4.x,
+            y: Node4.headHeight + endPosition4.y,
+          },
+          headWidth: vw(7.7),
+          headType: 2,
+        },
+      });
+
+      let line2 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line",
+          startPosition: Node5.getExitPoint(),
+          endPosition: endPosition,
+          headWidth: vw(7.7),
+          headType: 2,
+        },
+      });
+
+      //R ########################################
+      let Node1_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node1_r",
+          startPosition: startPosition_r,
+          endPosition: endPosition_r,
+          headWidth: vw(7.7),
+          headType: 4,
+        },
+      });
+
+      let Node2_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node2_r",
+          startPosition: Node1_r.getExitPoint(),
+          endPosition: endPosition2_r,
+          headWidth: vw(7.7),
+          headType: 3,
+        },
+      });
+
+      let Node4_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node4_r",
+          startPosition: endPosition_r,
+          endPosition: endPosition4_r,
+          headWidth: vw(7.7),
+          headType: 2,
+          reverseEntry: true,
+        },
+      });
+
+      let Node3_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node3_r",
+          startPosition: Node4_r.getExitPoint(),
+          endPosition: endPosition3_r,
+          headWidth: vw(7.7),
+          headType: 1,
+        },
+      });
+
+      let Node5_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node5_r",
+          startPosition: {
+            x: endPosition4_r.x,
+            y: endPosition4_r.y + Node4_r.headHeight,
+          },
+          endPosition: endPosition5_r,
+          headWidth: vw(7.7),
+          headType: 1,
+          reverseEntry: true,
+        },
+      });
+
+      let Node6_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node6_r",
+          startPosition: endPosition_r,
+          endPosition: endPosition6_r,
+          headWidth: vw(7.7),
+          headType: 1,
+          reverseEntry: true,
+        },
+      });
+
+      let Node7_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "node7_r",
+          startPosition: endPosition2_r,
+          endPosition: endPosition7_r,
+          headWidth: vw(7.7),
+          headType: 3,
+          reverseEntry: true,
+        },
+      });
+
+      //line
+      let line_r = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line_r",
+          startPosition: startPosition2_r,
+          endPosition: {
+            x: endPosition4_r.x,
+            y: Node4_r.headHeight + endPosition4_r.y,
+          },
+          headWidth: vw(7.7),
+          headType: 2,
+        },
+      });
+
+      let line_r2 = new Node(ctx, {
+        ...defaultPropsNode,
+        ...{
+          name: "line_r",
+          startPosition: endPosition7_r,
+          endPosition: endPosition3_r,
+          headWidth: vw(7.7),
+          headType: 2,
+        },
+      });
+
+      line.line();
+      line2.line();
+      line_r.line();
+      line_r2.line();
+
+      Node7.drawAll({ exitPoint: false });
+      Node6.drawAll({ exitPoint: false });
+
+      Node5.drawAll();
+      Node4.drawAll();
+      Node3.drawAll({ exitPoint: false });
+      Node2.drawAll();
+      Node1.drawAll();
+
+      Node7_r.drawAll({ entryPoint: false });
+      Node6_r.drawAll({ entryPoint: false });
+      Node5_r.drawAll({ entryPoint: false });
+
+      Node2_r.drawAll({ exitPoint: false });
+      Node3_r.drawAll({ exitPoint: false });
+      Node4_r.drawAll();
+      Node1_r.drawAll();
+
+      window.requestAnimationFrame(render);
+    }
   }
 
   window.requestAnimationFrame(render);
