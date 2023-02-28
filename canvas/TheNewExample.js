@@ -10,6 +10,8 @@ import Palette from "./class/Palette";
 
 import randomNum from "./functions/utility/randomNumber";
 
+import computation1 from "./functions/utility/computation1";
+
 function TheNewExample(params) {
   ///////
   let t = [];
@@ -21,12 +23,14 @@ function TheNewExample(params) {
   let isAnimation = true;
 
   let CInfo = new CanvasInfo(canvas);
+
   function vw(percentage) {
     return CInfo.vw(percentage);
   }
   function vh(percentage) {
     return CInfo.vh(percentage);
   }
+
   function toF(s) {
     return CInfo.toF(s);
   }
@@ -34,7 +38,7 @@ function TheNewExample(params) {
   //(ANIM01)###############
 
   let timerTime = toF(0.8); //offset time
-  let offsetBase = vw(0.5); //offset value
+  let offsetBase = "[[vw0.5]]"; //offset value
 
   let easinArray = [
     "static",
@@ -60,7 +64,7 @@ function TheNewExample(params) {
       type: "x",
       keyframes: [
         {
-          value: vw(7),
+          value: "[[vw7]]",
           time: toF(0),
           type: "linear",
         },
@@ -72,7 +76,7 @@ function TheNewExample(params) {
       showInDebug: true,
       keyframes: [
         {
-          value: vw(30),
+          value: "[[vw30]]",
           time: toF(0),
           type: "linear",
         },
@@ -85,7 +89,7 @@ function TheNewExample(params) {
       showInDebug: true,
       keyframes: [
         {
-          value: vw(9),
+          value: "[[vw9]]",
           time: toF(0),
           type: "linear",
         },
@@ -97,7 +101,7 @@ function TheNewExample(params) {
       showInDebug: true,
       keyframes: [
         {
-          value: vw(15),
+          value: "[[vw15]]",
           time: toF(0),
           type: "linear",
         },
@@ -110,7 +114,7 @@ function TheNewExample(params) {
       showInDebug: true,
       keyframes: [
         {
-          value: vw(25),
+          value: "[[vw25]]",
           time: toF(0),
           type: "linear",
         },
@@ -122,7 +126,7 @@ function TheNewExample(params) {
       showInDebug: true,
       keyframes: [
         {
-          value: vw(15),
+          value: "[[vw15]]",
           time: toF(0),
           type: "linear",
         },
@@ -135,7 +139,7 @@ function TheNewExample(params) {
       showInDebug: true,
       keyframes: [
         {
-          value: vw(20),
+          value: "[[vw20]]",
           time: toF(0),
           type: "linear",
         },
@@ -147,7 +151,7 @@ function TheNewExample(params) {
       showInDebug: true,
       keyframes: [
         {
-          value: vw(35),
+          value: "[[vw35]]",
           time: toF(0),
           type: "linear",
         },
@@ -173,12 +177,16 @@ function TheNewExample(params) {
           newKeyframe["time"] = timerTime * index;
         } else {
           newKeyframe = {
+            /* funzione per calcolare stringa corretta da risolvere */
+            value: computation1(original, offsetBase, variationValue),
+            /*
             value: randomNum(
               original.value - offsetBase,
               original.value +
                 offsetBase +
                 vw(variationValue[randomNum(0, variationValue.length)])
             ),
+*/
             time:
               timerTime * index -
               toF(schemeTimeRandom[randomNum(0, schemeTimeRandom.length)]),
