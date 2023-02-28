@@ -27,7 +27,6 @@ let params2 = {
 
 headerBg(params2);
 */
-
 /*
 document.querySelector("#hero-canvas").classList.add("half");
 let params3 = {
@@ -49,7 +48,7 @@ let params4 = {
 rightAndLeftBg(params4);
 */
 
-/*
+
 document.querySelector("#hero-canvas").classList.add("square");
 let params4 = {
   target: "#hero-canvas",
@@ -58,9 +57,11 @@ let params4 = {
   pointColors: "white",
 };
 squareBg(params4);
-*/
 
-//NEW MARVELOUS EXAMPLE
+
+//NEW MARVELOUS EXAMPLE ######################################
+
+/*
 let params1 = {
   target: "#hero-canvas",
   palette: ["#00ffc4", "#663399", "#ffc0cb"],
@@ -69,3 +70,4 @@ let params1 = {
 };
 
 TheNewExample(params1);
+*/
