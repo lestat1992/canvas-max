@@ -197,6 +197,13 @@ class Timelines {
     return false;
   }
 
+  //###########################################################
+
+  translateInfo() {
+    console.log("EHI");
+    console.log(this.timelineResultValues);
+  }
+
   //FOR TIMELINE RENDER #######################################
   //questa metodo crea la timeline in html
   showTimeline() {

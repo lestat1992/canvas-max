@@ -1,6 +1,8 @@
 function createGradient(ctx, args) {
   let grd;
   if (args.type == "linear") {
+    console.log(ctx, args);
+
     grd = ctx.createLinearGradient(
       args.startPosition.x,
       args.startPosition.y,

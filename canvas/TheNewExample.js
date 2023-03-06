@@ -25,10 +25,10 @@ function TheNewExample(params) {
   let CInfo = new CanvasInfo(canvas);
 
   function vw(percentage) {
-    return CInfo.vw(percentage);
+    return canvas.offsetWidth / percentage;
   }
   function vh(percentage) {
-    return CInfo.vh(percentage);
+    return canvas.offsetHeight / percentage;
   }
 
   function toF(s) {
@@ -159,6 +159,9 @@ function TheNewExample(params) {
     },
   ];
 
+  console.log("--");
+  console.log(timelineArray);
+  console.log("--");
   let Palette1 = new Palette(params.palette);
 
   function addKeyframesRandomly() {
@@ -178,7 +181,13 @@ function TheNewExample(params) {
         } else {
           newKeyframe = {
             /* funzione per calcolare stringa corretta da risolvere */
-            value: computation1(original, offsetBase, variationValue),
+            value:
+              original +
+              "||" +
+              offsetBase +
+              "||[[vw-" +
+              variationValue[randomNum(0, variationValue.length)] +
+              "]]",
             /*
             value: randomNum(
               original.value - offsetBase,
@@ -212,6 +221,7 @@ function TheNewExample(params) {
   function render() {
     //INITIAL SETTINGS
     CInfo.getSize();
+
     Timelines1.updateFrame();
 
     //responsive units #################
@@ -232,7 +242,7 @@ function TheNewExample(params) {
       if (Timelines1.frame == 1) {
         Timelines1.seTtimelineArray(addKeyframesRandomly());
       }
-
+      Timelines1.translateInfo();
       //ANIMATABLE ########################
       let startPosition = { x: 0, y: vh(75) };
 
