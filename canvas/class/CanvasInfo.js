@@ -5,14 +5,25 @@ class CanvasInfo {
     this.getSize();
     this.fps = 60;
     this.testFpsArray = [];
-    addEventListener("resize", (event) => {
-      this.getSize();
+    /*
+    ["resize", "fullscreenchange"].forEach(function (evt) {
+      addEventListener("resize", (event) => {
+        this.getSize();
+      });
     });
+    */
   }
   getSize() {
+    if (!this.canvas.getAttribute("canvas-width")) {
+      this.canvas.setAttribute("canvas-width", this.canvas.offsetWidth);
+    }
+    if (!this.canvas.getAttribute("canvas-height")) {
+      this.canvas.setAttribute("canvas-height", this.canvas.offsetHeight);
+    }
+
     this.client = {
-      width: this.canvas.offsetWidth,
-      height: this.canvas.offsetHeight,
+      width: this.canvas.getAttribute("canvas-width"),
+      height: this.canvas.getAttribute("canvas-height"),
     };
   }
   vw(percentage) {
