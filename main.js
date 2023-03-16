@@ -8,16 +8,29 @@ import squareBg from "./canvas/squareBg";
 
 import TheNewExample from "./canvas/TheNewExample";
 
-/*
 let params1 = {
-  target: "#hero-canvas",
-  palette: ["#00ffc4", "#663399", "#ffc0cb"],
-  bgColors: ["lightblue", "red"],
-  pointColors: "white",
+    target: "#hero-canvas",
+    palette: ["#d589be"],
+    bgColors: ["#5d42ad", "#c969ad"],
+    pointColors: "#c969ad",
 };
 
-homepageBg(params1);
+/*
+//NEW BUT TRASH
+    palette: ["#d589be"],
+    bgColors: ["#5d42ad", "#c969ad"],
+    pointColors: "#c969ad",
 */
+
+/*
+//OLD but gold
+palette: ["#00ffc4", "#663399", "#ffc0cb"],
+bgColors: ["lightblue", "red"],
+pointColors: "white",
+*/
+
+homepageBg(params1);
+
 /*
 let params2 = {
   target: "#hero-canvas",
@@ -60,7 +73,7 @@ squareBg(params4);
 */
 
 //NEW MARVELOUS EXAMPLE ######################################
-
+/*
 let params1 = {
   target: "#hero-canvas",
   palette: ["#00ffc4", "#663399", "#ffc0cb"],
@@ -69,4 +82,4 @@ let params1 = {
 };
 
 TheNewExample(params1);
-
+*/
