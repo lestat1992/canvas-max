@@ -1,78 +1,78 @@
 import convertColor from "../functions/utility/colors/convertColor";
 
 class Palette {
-  constructor(paletteArray) {
-    let fixedPaletteArray = [];
-    paletteArray.forEach((el) => {
-      fixedPaletteArray.push(convertColor(el, "hsl"));
-    });
-    this.paletteArray = fixedPaletteArray;
+    constructor(paletteArray) {
+        let fixedPaletteArray = [];
+        paletteArray.forEach((el) => {
+            fixedPaletteArray.push(convertColor(el, "hsl"));
+        });
+        this.paletteArray = fixedPaletteArray;
 
-    /* colore selezionato per alcune elaborazioni */
-    this.selectedColor = false;
-  }
-
-  setSelectedColor(color) {
-    let colorConverted = convertColor(color, "hsl");
-
-    if (this.paletteArray.find((el) => el == colorConverted)) {
-      this.selectedColor = colorConverted;
-    } else {
-      this.selectedColor = false;
+        /* colore selezionato per alcune elaborazioni */
+        this.selectedColor = false;
     }
-  }
 
-  monocromathic(arrayColor, protectPaletteColors = true) {
-    let replaceScheme = [];
-    let isProtected = false;
-    let newColor;
+    setSelectedColor(color) {
+        let colorConverted = convertColor(color, "hsl");
 
-    if (this.selectedColor) {
-      arrayColor.forEach((el) => {
-        let colorFixed = convertColor(el, "hsl");
-
-        let lightOriginal = colorFixed
-          .split(",")
-          [colorFixed.split(",").length - 1].split(")")[0];
-
-        if (protectPaletteColors) {
-          this.paletteArray.find(
-            (el2) => el2 == colorFixed && el2 != this.selectedColor
-          );
-        }
-
-        if (isProtected) {
-          newColor = el;
+        if (this.paletteArray.find((el) => el == colorConverted)) {
+            this.selectedColor = colorConverted;
         } else {
-          newColor =
-            this.selectedColor.split(",")[0] +
-            "," +
-            this.selectedColor.split(",")[1] +
-            "," +
-            lightOriginal +
-            ")";
+            this.selectedColor = this.paletteArray;
         }
+    }
 
-        let part = {
-          original: el,
-          new: newColor,
-        };
+    monocromathic(arrayColor, protectPaletteColors = true) {
+        let replaceScheme = [];
+        let isProtected = false;
+        let newColor;
 
-        replaceScheme.push(part);
-      });
+        if (this.selectedColor) {
+            arrayColor.forEach((el) => {
+                let colorFixed = convertColor(el, "hsl");
 
-      return replaceScheme;
-    } else {
-      /*
+                let lightOriginal = colorFixed
+                    .split(",")
+                    [colorFixed.split(",").length - 1].split(")")[0];
+
+                if (protectPaletteColors) {
+                    this.paletteArray.find(
+                        (el2) => el2 == colorFixed && el2 != this.selectedColor
+                    );
+                }
+
+                if (isProtected) {
+                    newColor = el;
+                } else {
+                    newColor =
+                        this.selectedColor.split(",")[0] +
+                        "," +
+                        this.selectedColor.split(",")[1] +
+                        "," +
+                        lightOriginal +
+                        ")";
+                }
+
+                let part = {
+                    original: el,
+                    new: newColor,
+                };
+
+                replaceScheme.push(part);
+            });
+
+            return replaceScheme;
+        } else {
+            /*
             faccio la media e scelco un colore per la palette
         */
-      alert("Conversione automatica non disponibilie");
+            alert("Conversione automatica non disponibilie");
+        }
     }
-  }
 
-  convertToPalette() {
-    //non disponibile
-  }
+    convertToPalette() {
+        //non disponibile
+    }
 }
 
 export default Palette;
