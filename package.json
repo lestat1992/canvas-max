@@ -1,6 +1,6 @@
 {
     "name": "canvas-illustration-storyground-editor",
-    "version": "0.1.2",
+    "version": "0.1.6",
     "type": "module",
     "scripts": {
         "dev": "vite",

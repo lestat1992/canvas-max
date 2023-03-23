@@ -288,14 +288,28 @@ function homepageBg(params) {
                 });
                 CircleBg1.circleBgRect();
                 //.................................
+
                 Palette1.setSelectedColor(params.palette[0]);
-                let paletteNode1 = Palette1.monocromathic([
-                    "#C0C0C0",
-                    "whitesmoke",
-                    "#E5E4E2",
-                    "#808080",
-                    "#646464",
-                ]);
+
+                let paletteNode1;
+
+                if (params.fillNodes) {
+                    paletteNode1 = [
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                        { new: params.palette[0] },
+                    ];
+                } else {
+                    paletteNode1 = Palette1.monocromathic([
+                        "#C0C0C0",
+                        "whitesmoke",
+                        "#E5E4E2",
+                        "#808080",
+                        "#646464",
+                    ]);
+                }
 
                 let defaultPropsNode = {
                     stroke: vw(0.5),
