@@ -9,10 +9,10 @@ import squareBg from "./canvas/squareBg";
 import TheNewExample from "./canvas/TheNewExample";
 
 let params1 = {
-    target: "#hero-canvas",
-    palette: ["#d589be"],
-    bgColors: ["#5d42ad", "#c969ad"],
-    pointColors: "#c969ad",
+  target: "#hero-canvas",
+  palette: ["#d589be"],
+  bgColors: ["#5d42ad", "#c969ad"],
+  pointColors: "#c969ad",
 };
 
 /*
@@ -29,8 +29,8 @@ bgColors: ["lightblue", "red"],
 pointColors: "white",
 */
 
-homepageBg(params1);
-
+let coso = new homepageBg(params1);
+coso.initialize()
 /*
 let params2 = {
   target: "#hero-canvas",

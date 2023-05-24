@@ -1,27 +1,40 @@
-import pointCordinates from "./functions/utility/pointCordinates";
-
-import CircleBg from "./class/CircleBg";
 import CanvasInfo from "./class/CanvasInfo";
 import GradientFullPage from "./class/GradientFullPage";
 import Node from "./class/Node";
-
 import Timelines from "./class/Timelines";
 import Palette from "./class/Palette";
-
 import randomNum from "./functions/utility/randomNumber";
 
-function homepageBg(params) {
-    ///////
-    let t = [];
-    //////
+class HomepageBackground {
+    constructor(params) {
+        console.log("COSTRUCTOR")
+        console.log(params)
 
-    //PRE-RENDER ##################
-    let canvas = document.querySelector(params.target);
+        this.params = params; //WHAT??
+        this.t = [];
+        this.canvas = params.target; //NO QUI HO SBAGLIATO
+        this.stopAnimation = false;
+        this.renderFunction = null;
 
-    if (canvas) {
+        this.handleResize = this.handleResize.bind(this);
+        this.handleFullscreenChange = this.handleFullscreenChange.bind(this);
+        this.handleOrientationChange = this.handleOrientationChange.bind(this);
+        this.handlePopState = this.handlePopState.bind(this);
+    }
+
+    stopScriptExecution() {
+        this.stopAnimation = true;
+        cancelAnimationFrame(this.renderFunction);
+    }
+
+    initialize() {
+        const { params } = this;
         let isAnimation = true;
 
-        let CInfo = new CanvasInfo(canvas);
+        console.log("QUI")
+        console.log(this.canvas)
+
+        const CInfo = new CanvasInfo(this.canvas);
         function vw(percentage) {
             return CInfo.vw(percentage);
         }
@@ -177,18 +190,18 @@ function homepageBg(params) {
                             value: randomNum(
                                 original.value - offsetBase,
                                 original.value +
-                                    offsetBase +
-                                    vw(
-                                        variationValue[
-                                            randomNum(0, variationValue.length)
-                                        ]
-                                    )
+                                offsetBase +
+                                vw(
+                                    variationValue[
+                                    randomNum(0, variationValue.length)
+                                    ]
+                                )
                             ),
                             time:
                                 timerTime * index -
                                 toF(
                                     schemeTimeRandom[
-                                        randomNum(0, schemeTimeRandom.length)
+                                    randomNum(0, schemeTimeRandom.length)
                                     ]
                                 ),
                             type: easinArray[randomNum(0, easinArray.length)],
@@ -207,10 +220,9 @@ function homepageBg(params) {
             showTimelineInDom: false,
         });
 
-        /*
-  render Function ################################################################################
-*/
-        function render() {
+        const render = () => {
+            if (this.stopAnimation) return;
+
             //INITIAL SETTINGS
             CInfo.getSize();
             Timelines1.updateFrame();
@@ -376,14 +388,52 @@ function homepageBg(params) {
                 Node2.drawAll({ exitPoint: false });
                 Node1.drawAll();
 
-                window.requestAnimationFrame(render);
-            }
+                this.renderFunction = requestAnimationFrame(render);
+            };
         }
+        render();
+    }
 
-        // ################################################################################
+    handleResize() {
+        this.stopScriptExecution();
+        this.initialize();
+    }
 
-        window.requestAnimationFrame(render);
+    handleFullscreenChange() {
+        if (document.fullscreenElement) {
+            this.stopScriptExecution();
+        } else {
+            this.initialize();
+        }
+    }
+
+    handleOrientationChange() {
+        this.stopScriptExecution();
+        this.initialize();
+    }
+
+    handlePopState() {
+        this.stopScriptExecution();
+        this.initialize();
+    }
+
+    start() {
+        window.addEventListener("resize", this.handleResize);
+        document.addEventListener("fullscreenchange", this.handleFullscreenChange);
+        window.addEventListener("orientationchange", this.handleOrientationChange);
+        window.addEventListener("popstate", this.handlePopState);
+
+        this.initialize();
+    }
+
+    stop() {
+        window.removeEventListener("resize", this.handleResize);
+        document.removeEventListener("fullscreenchange", this.handleFullscreenChange);
+        window.removeEventListener("orientationchange", this.handleOrientationChange);
+        window.removeEventListener("popstate", this.handlePopState);
+
+        this.stopScriptExecution();
     }
 }
 
-export default homepageBg;
+export default HomepageBackground;
